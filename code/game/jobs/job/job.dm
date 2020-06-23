@@ -405,10 +405,17 @@
 		if(sloc.name != title)	continue
 		if(locate(/mob/living) in sloc.loc)	continue
 		loc_list += sloc
-	if(loc_list.len)
+	if(length(loc_list))//inf, was: if(loc_list.len)
 		return pick(loc_list)
 	else
-		return locate("start*[title]") // use old stype
+		//[INF]
+		var/list/L = list()
+		for(var/turf/i in GLOB.newplayer_start)
+			if(locate(/mob/living) in get_turf(i))	continue
+			L += i
+		return pick(L)
+		//[/INF]
+//inf		return locate("start*[title]") // use old stype
 
 /**
  *  Return appropriate /datum/spawnpoint for given client
@@ -437,9 +444,10 @@
 		else
 			spawnpos = spawntypes()[spawnpoint]
 
-	if(spawnpos && !spawnpos.check_job_spawning(title))
-		if(H)
+	if(spawnpos && !spawnpos.can_spawn_here(H, src))//inf, was: if(spawnpos && !spawnpos.check_job_spawning(title))
+/*[ORIGINAL]		if(H)
 			to_chat(H, "<span class='warning'>Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job ([title]). Spawning you at another spawn point instead.</span>")
+[/ORIGINAL]*/
 		spawnpos = null
 
 	if(!spawnpos)
