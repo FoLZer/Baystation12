@@ -533,6 +533,10 @@ default behaviour is:
 	if(. && pulling)
 		handle_pulling_after_move(old_loc)
 
+	var/obj/structure/table/T = (locate() in old_loc)
+	if(T && src.table_hiding)
+		src.table_hiding=!src.table_hiding
+
 	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
 		s_active.close(src)
 
@@ -568,7 +572,7 @@ default behaviour is:
 	if(!can_pull())
 		stop_pulling()
 		return
-	
+
 	if (!isliving(pulling))
 		if(pulling.loc != loc && pulling.loc != old_loc) //inf
 			step(pulling, get_dir(pulling.loc, old_loc))
@@ -709,6 +713,11 @@ default behaviour is:
 	set name = "Rest"
 	set category = "IC"
 
+	if(table_hiding && resting)
+		var/obj/structure/table/T = (locate() in get_turf(src))
+		if(T)
+			to_chat(src, "<span class='warning'>You can't get up here!</span>")
+			return
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 

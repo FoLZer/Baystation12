@@ -11,6 +11,12 @@
 	if(istype(mover) && mover.checkpass(PASS_FLAG_TABLE))
 		return 1
 	var/obj/structure/table/T = (locate() in get_turf(mover))
+	if(istype(mover,/mob/living))
+		var/mob/living/M = mover
+		if(M.lying)
+			M.table_hiding = 1
+			M.reset_layer()
+			return 1
 	return (T && !T.flipped) 	//If we are moving from a table, check if it is flipped.
 								//If the table we are standing on is not flipped, then we can move freely to another table.
 

@@ -219,7 +219,7 @@
 	qdel(I)
 
 /mob/living/carbon/human/reset_layer()
-	if(hiding)
+	if(hiding || table_hiding)
 		layer = HIDING_MOB_LAYER
 	else if(lying)
 		layer = LYING_HUMAN_LAYER

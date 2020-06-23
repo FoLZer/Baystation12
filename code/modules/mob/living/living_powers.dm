@@ -1,6 +1,9 @@
 /mob/living
 	var/hiding
 
+/mob/living
+	var/table_hiding
+
 /mob/living/proc/hide()
 	set name = "Hide"
 	set desc = "Allows to hide beneath tables or certain items. Toggled on or off."
@@ -24,7 +27,7 @@
 	if (last_special > world.time)
 		to_chat(src, "<span class='warning'>You aren't ready to do that! Wait [round(last_special - world.time) / 10] seconds.</span>")
 		return
-	
+
 	if (incapacitated())
 		to_chat(src, "<span class='warning'>You can't do that while you're incapacitated!</span>")
 		return
@@ -46,7 +49,7 @@
 	if (last_special > world.time)
 		to_chat(src, "<span class='warning'>You aren't ready to do that! Wait [round(last_special - world.time) / 10] seconds.</span>")
 		return
-	
+
 	if (incapacitated())
 		to_chat(src, "<span class='warning'>You can't do that while you're incapacitated!</span>")
 		return
