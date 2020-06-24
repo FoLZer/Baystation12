@@ -32,3 +32,30 @@
 
 /turf/simulated/wall/titanium/ascent
 	paint_color = COLOR_PURPLE
+
+/turf/simulated/wall/invisible
+	icon_state = "invisible"
+
+/turf/simulated/wall/invisible/New(var/newloc)
+	..(newloc,MATERIAL_CRYSTAL, MATERIAL_CRYSTAL)
+
+/turf/simulated/wall/invisible/attackby()
+	return
+
+/turf/simulated/wall/invisible/bullet_act(var/obj/item/projectile/Proj)
+	return
+
+/turf/simulated/wall/invisible/can_engrave()
+	return 0
+
+/turf/simulated/wall/invisible/ex_act(seaverity)
+	return
+
+/turf/simulated/wall/invisible/adjacent_fire_act(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
+	return 0
+
+/turf/simulated/wall/invisible/melt()
+	return
+
+/turf/simulated/wall/invisible/examine(mob/user)
+	return
