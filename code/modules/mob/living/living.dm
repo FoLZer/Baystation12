@@ -534,8 +534,9 @@ default behaviour is:
 		handle_pulling_after_move(old_loc)
 
 	var/obj/structure/table/T = (locate() in old_loc)
-	if(T && src.table_hiding)
-		src.table_hiding=!src.table_hiding
+	if(!T && src.table_hiding)
+		src.table_hiding=0
+		src.set_hiding_layer(0)
 
 	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
 		s_active.close(src)
@@ -818,7 +819,13 @@ default behaviour is:
 	return 1
 
 /mob/living/reset_layer()
-	if(hiding)
+	if(hiding || table_hiding)
+		layer = HIDING_MOB_LAYER
+	else
+		..()
+
+/mob/living/proc/set_hiding_layer(var/hide)
+	if(hide)
 		layer = HIDING_MOB_LAYER
 	else
 		..()

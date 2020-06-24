@@ -15,7 +15,13 @@
 		/mob/living/carbon/slime,
 		/mob/living/simple_animal/mouse,
 		/mob/living/silicon/robot/drone,
-		/mob/living/carbon/alien
+		/mob/living/carbon/human/xdrone,
+		/mob/living/carbon/human/xsentinel,
+		/mob/living/carbon/human/xhunter,
+		/mob/living/carbon/human/xwarrior,
+		/mob/living/carbon/human/xqueen,
+		/mob/living/carbon/human/xspitter,
+		/mob/living/carbon/human/xlord
 		)
 	var/airtight = 0
 

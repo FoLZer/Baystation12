@@ -15,7 +15,7 @@
 		var/mob/living/M = mover
 		if(M.lying)
 			M.table_hiding = 1
-			M.reset_layer()
+			M.set_hiding_layer(1)
 			return 1
 	return (T && !T.flipped) 	//If we are moving from a table, check if it is flipped.
 								//If the table we are standing on is not flipped, then we can move freely to another table.
