@@ -34,7 +34,7 @@
 	paint_color = COLOR_PURPLE
 
 /turf/simulated/wall/invisible
-	icon_state = "invisible"
+	icon_state = "generic"
 
 /turf/simulated/wall/invisible/New(var/newloc)
 	..(newloc,MATERIAL_CRYSTAL, MATERIAL_CRYSTAL)
@@ -58,4 +58,3 @@
 	return
 
 /turf/simulated/wall/invisible/examine(mob/user)
-	return
