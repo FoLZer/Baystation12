@@ -1,9 +1,6 @@
 /mob/living
 	var/hiding
 
-/mob/living
-	var/table_hiding
-
 /mob/living/proc/hide()
 	set name = "Hide"
 	set desc = "Allows to hide beneath tables or certain items. Toggled on or off."

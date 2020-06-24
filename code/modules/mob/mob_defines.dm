@@ -27,6 +27,8 @@
 
 	does_spin = FALSE //because it's looks awful on mobs. You can remove it anytime if you want.
 
+	var/table_hiding
+
 	var/mob_flags
 	var/last_quick_move_time = 0
 	var/list/client_images = list() // List of images applied to/removed from the client on login/logout
