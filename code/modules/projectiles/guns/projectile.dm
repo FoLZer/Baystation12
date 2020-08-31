@@ -33,6 +33,7 @@
 
 	var/is_jammed = 0           //Whether this gun is jammed
 	var/jam_chance = 0          //Chance it jams on fire
+	var/static_jam_chance = 0
 	//TODO generalize ammo icon states for guns
 	//var/magazine_states = 0
 	//var/list/icon_keys = list()		//keys
@@ -88,17 +89,21 @@
 	update_icon()
 
 /obj/item/weapon/gun/projectile/consume_next_projectile()
-	if(!is_jammed && prob(jam_chance))
-		src.visible_message("<span class='danger'>\The [src] jams!</span>")
-		is_jammed = 1
-		var/mob/user = loc
-		if(istype(user))
-			if(prob(user.skill_fail_chance(SKILL_WEAPONS, 100, SKILL_PROF)))
-				return null
-			else
-				to_chat(user, "<span class='notice'>You reflexively clear the jam on \the [src].</span>")
-				is_jammed = 0
-				playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
+	if(!is_jammed)
+		if(prob(jam_chance+static_jam_chance))
+			src.visible_message("<span class='danger'>\The [src] jams!</span>")
+			is_jammed = 1
+			var/mob/user = loc
+			if(istype(user))
+				if(prob(user.skill_fail_chance(SKILL_WEAPONS, 100, SKILL_PROF)))
+					return null
+				else
+					to_chat(user, "<span class='notice'>You reflexively clear the jam on \the [src].</span>")
+					is_jammed = 0
+					jam_chance = 0.03
+					playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
+		else
+			jam_chance += 0.03
 	if(is_jammed)
 		return null
 	//get the next casing
