@@ -100,10 +100,12 @@
 				else
 					to_chat(user, "<span class='notice'>You reflexively clear the jam on \the [src].</span>")
 					is_jammed = 0
-					jam_chance = 0.03
+					jam_chance = 0
+					static_jam_chance += 0.05
 					playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
 		else
 			jam_chance += 0.03
+			static_jam_chance += 0.005
 	if(is_jammed)
 		return null
 	//get the next casing
