@@ -35,7 +35,7 @@
 	if (LAZYLEN(original_settings))
 		for (var/propname in original_settings)
 			gun.vars[propname] = original_settings[propname]
-	
+
 		LAZYCLEARLIST(original_settings)
 
 //Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
@@ -251,6 +251,8 @@ var/global/serials = list()
 	user.setClickCooldown(shoot_time) //no clicking on things while shooting
 	user.SetMoveCooldown(shoot_time) //no moving while shooting either
 	next_fire_time = world.time + shoot_time
+
+	user.newtonian_move(get_dir(target,user))
 
 	var/held_twohanded = (user.can_wield_item(src) && src.is_held_twohanded(user))
 

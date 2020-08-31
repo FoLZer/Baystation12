@@ -238,3 +238,30 @@
 
 /atom/movable/proc/get_bullet_impact_effect_type()
 	return BULLET_IMPACT_NONE
+
+/mob/proc/Process_Spacemove(movement_dir = 0)
+	if(has_gravity(src))
+		return 1
+
+	if(pulledby)
+		return 1
+
+	if(throwing)
+		return 1
+
+	if(locate(/obj/structure/lattice) in orange(1, get_turf(src))) //Not realistic but makes pushing things in space easier
+		return 1
+
+	return 0
+
+/mob/proc/newtonian_move(direction) //Only moves the object if it's under no gravity
+
+	if(!loc || Process_Spacemove(0))
+		inertia_dir = 0
+		return 0
+
+	inertia_dir = direction
+	if(!direction)
+		return 1
+
+	return 1
