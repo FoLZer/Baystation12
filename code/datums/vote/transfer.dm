@@ -1,6 +1,7 @@
 #define CHOICE_TRANSFER "Initiate crew transfer"
 #define CHOICE_EXTEND "Extend the round ([config.vote_autotransfer_interval / 600] minutes)"
 #define CHOICE_ADD_ANTAG "Add antagonist"
+#define CHOICE_DISABLE_AUTOTRANSFER "Disable autotransfer for this round"
 
 /datum/vote/transfer
 	name = "transfer"
@@ -20,6 +21,8 @@
 
 /datum/vote/transfer/setup_vote(mob/creator, automatic)
 	choices = list(CHOICE_TRANSFER, CHOICE_EXTEND)
+	if(automatic)
+		choices += CHOICE_DISABLE_AUTOTRANSFER
 	if (config.allow_extra_antags && SSvote.is_addantag_allowed(creator, automatic))
 		choices += CHOICE_ADD_ANTAG
 	..()
@@ -47,6 +50,8 @@
 		return 1
 	if(result[1] == CHOICE_TRANSFER)
 		init_autotransfer()
+	else if(result[1] == CHOICE_DISABLE_AUTOTRANSFER)
+		disable_autotransfer()
 	else if(result[1] == CHOICE_ADD_ANTAG)
 		SSvote.queued_auto_vote = /datum/vote/add_antagonist
 
@@ -63,6 +68,9 @@
 	if(is_admin(user))
 		config.allow_vote_restart = !config.allow_vote_restart
 
+/datum/vote/transfer/proc/disable_autotransfer()
+	global.transfer_controller.Destroy()
+	to_world("<font color='purple'>Autotransfer was successfully removed!</font>")
 #undef CHOICE_TRANSFER
 #undef CHOICE_EXTEND
 #undef CHOICE_ADD_ANTAG
