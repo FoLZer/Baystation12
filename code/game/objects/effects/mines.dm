@@ -79,6 +79,26 @@
 	spawn(0)
 		qdel(src)
 
+/obj/effect/mine/attackby(var/obj/item/weapon/W, var/mob/user)
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+
+	if(W.attack_verb.len)
+		visible_message("<span class='warning'>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
+	else
+		visible_message("<span class='warning'>\The [src] have been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+
+	if(isMultitool(W))
+		playsound(src.loc, 'sound/effects/compbeep2.ogg', 75, 1)
+		user.visible_message("[user] begins defusing \the [src].", "You begin defusing \the [src].")
+		if(!do_after(user, 5 SECONDS, src))
+			return
+		if(prob(2))
+			Bumped(user)
+			return
+		playsound(src.loc, 'sound/effects/compbeep5.ogg', 75, 1)
+		spawn(0)
+			qdel(src)
+
 /obj/effect/mine/dnascramble
 	name = "Radiation Mine"
 	icon_state = "uglymine"
