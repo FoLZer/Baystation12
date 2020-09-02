@@ -1,6 +1,6 @@
 /turf/simulated/wall
 	name = "wall"
-	desc = "Огромный кусок металла используемый для отделения комнат."
+	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "generic"
 	opacity = 1

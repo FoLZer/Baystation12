@@ -1,6 +1,6 @@
 /obj/item/blueprints
 	name = "blueprints"
-	desc = "Чертежи..."
+	desc = "Blueprints..."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
 	attack_verb = list("attacked", "bapped", "hit")

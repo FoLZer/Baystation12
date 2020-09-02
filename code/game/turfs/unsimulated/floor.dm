@@ -7,7 +7,7 @@
 	name = "\improper bluespace"
 	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespace"
-	desc = "Выглядит как бесконечность."
+	desc = "Looks like infinity."
 
 /turf/unsimulated/mask
 	name = "mask"

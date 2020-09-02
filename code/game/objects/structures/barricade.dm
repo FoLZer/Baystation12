@@ -19,7 +19,7 @@
 	if(!material)
 		return INITIALIZE_HINT_QDEL
 	SetName("[material.display_name] barricade")
-	desc = "Тяжёлый баррьер сделанный из [material.display_name]."
+	desc = "A heavy, solid barrier made of [material.display_name]."
 	color = material.icon_colour
 	maxhealth = material.integrity
 	health = maxhealth
@@ -44,7 +44,7 @@
 		else
 			to_chat(user, "<span class='warning'>You must remain still while building.</span>")
 			return
-
+	
 	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/D = W
 		if(D.get_material_name() != material.name)
@@ -135,7 +135,7 @@
 
 	if(MOVING_DELIBERATELY(victim)) //walking into this is less hurty than running
 		damage_holder = (damage / 4)
-
+	
 	if(isanimal(victim)) //simple animals have simple health, reduce our damage
 		damage_holder = (damage / 4)
 

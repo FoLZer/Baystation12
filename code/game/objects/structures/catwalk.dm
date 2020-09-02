@@ -1,6 +1,6 @@
 /obj/structure/catwalk
 	name = "catwalk"
-	desc = "Коты на самом деле не любят эти вещи."
+	desc = "Cats really don't like these things."
 	icon = 'icons/obj/catwalks.dmi'
 	icon_state = "catwalk"
 	density = 0
