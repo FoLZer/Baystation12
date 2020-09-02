@@ -3,7 +3,7 @@
 // Power cells
 /obj/item/weapon/cell/alien
 	name = "alien device"
-	desc = "It hums with power."
+	desc = "Оно гудит при подаче питания."
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "unknown1"
 	maxcharge = 5000
@@ -26,7 +26,7 @@
 	update_state = 0 //Don't pixelshift us on wall
 	cell_type = /obj/item/weapon/cell/alien
 	autoname = 0
-	
+
 /obj/machinery/power/apc/alien/on_update_icon()
 	check_updates()
 	if(update_state & APC_UPDATE_ALLGOOD)

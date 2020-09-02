@@ -13,7 +13,7 @@
  */
 /obj/item/weapon/card
 	name = "card"
-	desc = "Does card things."
+	desc = "Делает карточные дела."
 	icon = 'icons/obj/card.dmi'
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
