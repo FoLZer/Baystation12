@@ -66,7 +66,7 @@
 
 	if(aiming && aiming.aiming_at) tally += 5 // Iron sights make you slower, it's a well-known fact.
 
-	if(facing_dir) 
+	if(facing_dir)
 		tally += 3 //Locking direction will slow you down.
 
 	if(MUTATION_FAT in src.mutations)
@@ -78,6 +78,9 @@
 
 	if(mRun in mutations)
 		tally = 0
+
+	if(iszombie(src))
+		return (tally += src.zombie_movement_delay())
 
 	return (tally+config.human_delay)
 

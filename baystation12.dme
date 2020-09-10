@@ -3677,6 +3677,8 @@
 #include "infinity\code\modules\species\xenomorphs\alien_species.dm"
 #include "infinity\code\modules\species\xenomorphs\alien_species_handle.dm"
 #include "infinity\code\modules\species\xenomorphs\xenomorphs.dm"
+#include "infinity\code\modules\species\zombies\zombie.dm"
+#include "infinity\code\modules\species\zombies\zombie_misc.dm"
 #include "infinity\code\modules\sprite_accessories\accessory_booster.dm"
 #include "infinity\code\modules\sprite_accessories\accessory_erosan.dm"
 #include "infinity\code\modules\sprite_accessories\accessory_hair.dm"

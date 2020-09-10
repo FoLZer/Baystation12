@@ -106,6 +106,22 @@
 
 		radio_connection.post_signal(src, signal, RADIO_AIRLOCK, AIRLOCK_CONTROL_RANGE)
 
+/obj/machinery/door/airlock/proc/door_rupture(mob/user)
+	var/obj/structure/door_assembly/da = new assembly_type(loc)
+	da.anchored = 0
+	var/target = da.loc
+	for(var/i in 1 to 4)
+		target = get_turf(get_step(target,user.dir))
+	da.throw_at(target, 200, 100, spin = FALSE)
+	if(mineral)
+		da.glass = mineral
+	else if(glass)
+		da.glass = glass
+	da.state = 1
+	da.created_name = name
+	da.update_state()
+
+	qdel(src)
 
 /obj/machinery/door/airlock/open(surpress_send)
 	. = ..()

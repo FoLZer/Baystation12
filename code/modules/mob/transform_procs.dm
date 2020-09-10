@@ -298,7 +298,7 @@
 	return 0
 
 
-/mob/living/carbon/human/proc/zombify()
+/*/mob/living/carbon/human/proc/zombify()
 	ChangeToHusk()
 	mutations |= MUTATION_CLUMSY
 	src.visible_message("<span class='danger'>\The [src]'s skin decays before your very eyes!</span>", "<span class='danger'>Your entire body is ripe with pain as it is consumed down to flesh and bones. You ... hunger. Not only for flesh, but to spread this gift.</span>")
@@ -320,4 +320,4 @@
 	//INF verbs += /mob/living/proc/breath_death
 	verbs += /mob/living/proc/zombie_claws //INF
 	verbs += /mob/living/proc/consume
-	playsound(get_turf(src), 'sound/hallucinations/wail.ogg', 20, 1)
+	playsound(get_turf(src), 'sound/hallucinations/wail.ogg', 20, 1)*/
