@@ -1290,6 +1290,16 @@
 
 		usr.client.cmd_admin_animalize(M)
 
+	else if(href_list["makezombie"])
+		if(!check_rights(R_SPAWN))	return
+
+		var/mob/M = locate(href_list["makezombie"])
+		if(istype(M, /mob/new_player))
+			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+			return
+
+		M.zombify()
+
 	else if(href_list["togmutate"])
 		if(!check_rights(R_SPAWN))	return
 

@@ -230,7 +230,10 @@
 
 	infect_virus2(src, D, forced = TRUE, ignore_antibiotics = TRUE)*/
 
-/mob/living/carbon/human/proc/zombify()
+/mob/proc/zombify()
+	return
+
+/mob/living/carbon/human/zombify()
 	if(iszombie(src))
 		return
 

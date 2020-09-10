@@ -201,6 +201,11 @@ var/global/floorIsLava = 0
 			else
 				body += "<A href='?src=\ref[src];makeanimal=\ref[M]'>Animalize</A> | "
 
+			if(iszombie(M))
+				body += "<B>Zombiefied</B> | "
+			else
+				body += "<A href='?src=\ref[src];makezombie=\ref[M]'>Make Zombie</A> | "
+
 			// DNA2 - Admin Hax
 			if(M.dna && iscarbon(M))
 				body += "<br><br>"
