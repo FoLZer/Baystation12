@@ -52,11 +52,19 @@
 		return
 	W = W.resolve()
 	if(ishuman(W))
-		blood_splatter(T, src, 1)
+		var/obj/effect/decal/cleanable/blood/B = blood_splatter(T, src, 1)
+		for(var/datum/disease/D in data["viruses"])
+			var/datum/disease/newVirus = D.Copy(1)
+			B.viruses += newVirus
+			newVirus.holder = B
 	else if(isalien(W))
 		var/obj/effect/decal/cleanable/blood/B = blood_splatter(T, src, 1)
 		if(B)
 			B.blood_DNA["UNKNOWN DNA STRUCTURE"] = "X*"
+			for(var/datum/disease/D in data["viruses"])
+				var/datum/disease/newVirus = D.Copy(1)
+				B.viruses += newVirus
+				newVirus.holder = B
 
 /datum/reagent/blood/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 
@@ -74,6 +82,56 @@
 /datum/reagent/blood/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.inject_blood(src, volume)
 	remove_self(volume)
+
+/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume)
+	var/datum/reagent/blood/self = src
+	src = null
+	if(self.data && self.data["viruses"])
+		for(var/datum/disease/D in self.data["viruses"])
+			//var/datum/disease/virus = new D.type(0, D, 1)
+			// We don't spread.
+			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS)
+				continue
+			if(method == TOUCH)
+				M.contract_disease(D)
+			else //injected
+				M.contract_disease(D, 1, 0)
+
+	if(self.data && self.data["virus2"] && istype(M, /mob/living/carbon))//infecting...
+		var/list/vlist = self.data["virus2"]
+		if(vlist.len)
+			for(var/ID in vlist)
+				var/datum/disease2/disease/V = vlist[ID]
+				if(method == TOUCH)
+					infect_virus2(M,V.getcopy())
+				else
+					infect_virus2(M,V.getcopy(),1) //injected, force infection!
+
+	if(self.data && self.data["antibodies"] && istype(M, /mob/living/carbon))//... and curing
+		var/mob/living/carbon/C = M
+		C.antibodies |= self.data["antibodies"]
+
+/datum/reagent/vaccine
+	//data must contain virus type
+	name = "Vaccine"
+	reagent_state = LIQUID
+	color = "#c81040" // rgb: 200, 16, 64
+	taste_description = "health"
+
+/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume)
+	var/datum/reagent/vaccine/self = src
+	src = null
+	if(self.data&&method == INGEST)
+		for(var/datum/disease/D in M.viruses)
+			if(istype(D, /datum/disease/advance))
+				var/datum/disease/advance/A = D
+				if(A.GetDiseaseID() == self.data)
+					D.cure()
+			else
+				if(D.type == self.data)
+					D.cure()
+
+			M.resistances += self.data
 
 // Water!
 #define WATER_LATENT_HEAT 9500 // How much heat is removed when applied to a hot turf, in J/unit (9500 makes 120 u of water roughly equivalent to 2L

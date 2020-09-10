@@ -24,6 +24,8 @@
 		//all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
 		handle_statuses()
 
+		handle_virus_updates()
+
 		handle_viruses()
 
 		. = 1

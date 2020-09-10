@@ -28,7 +28,9 @@
 				"blood_DNA" = dna.unique_enzymes,
 				"blood_colour" = species.get_blood_colour(src),
 				"blood_type" = dna.b_type,
-				"trace_chem" = null
+				"trace_chem" = null,
+				"virus2" = null,
+				"antibodies" = null
 			)
 			B.color = B.data["blood_colour"]
 
@@ -122,6 +124,10 @@
 		container.reagents.add_reagent(/datum/reagent/blood, amount, get_blood_data())
 	else
 		B.sync_to(src)
+		if (!B.data["virus2"])
+			B.data["virus2"] = list()
+			B.data["virus2"] |= virus_copylist(src.virus2)
+			B.data["antibodies"] = src.antibodies
 		B.volume += amount
 	return 1
 
@@ -145,6 +151,12 @@
 /mob/living/carbon/proc/inject_blood(var/datum/reagent/blood/injected, var/amount)
 	if (!injected || !istype(injected))
 		return
+	var/list/sniffles = virus_copylist(injected.data["virus2"])
+	for(var/ID in sniffles)
+		var/datum/disease2/disease/sniffle = sniffles[ID]
+		infect_virus2(src,sniffle,1)
+	if (injected.data["antibodies"] && prob(5))
+		antibodies |= injected.data["antibodies"]
 	var/list/chems = list()
 	chems = injected.data["trace_chem"]
 	for(var/C in chems)
@@ -274,6 +286,9 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large,var/spra
 			B.blood_DNA[source.data["blood_DNA"]] = source.data["blood_type"]
 		else
 			B.blood_DNA[source.data["blood_DNA"]] = "O+"
+
+	if(source.data["virus2"])
+		B.virus2 = virus_copylist(source.data["virus2"])
 
 	B.fluorescent  = 0
 	B.set_invisibility(0)

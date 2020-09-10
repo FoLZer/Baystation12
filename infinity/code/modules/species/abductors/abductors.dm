@@ -30,7 +30,7 @@
 
 	primitive_form = "Monkey"
 
-	species_flags = SPECIES_FLAG_NO_SCAN
+	species_flags = SPECIES_FLAG_NO_SCAN | VIRUS_IMMUNE
 	appearance_flags = null
 
 	spawn_flags = SPECIES_IS_RESTRICTED

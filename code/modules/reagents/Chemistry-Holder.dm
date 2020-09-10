@@ -1,5 +1,8 @@
 GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
+var/const/TOUCH = 1
+var/const/INGEST = 2
+
 /datum/reagents
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0

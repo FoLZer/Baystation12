@@ -41,3 +41,7 @@
 	var/stasis_value
 
 	var/player_triggered_sleeping = 0
+
+	var/list/datum/disease2/disease/virus2 = list()
+
+	var/antibodies = 0

@@ -34,6 +34,10 @@
 			breath = vacuum //still nothing? must be vacuum
 
 	handle_breath(breath)
+	if (virus2.len > 0)
+		if (prob(10) && get_infection_chance(src))
+			for(var/mob/living/carbon/M in view(1,src))
+				src.spread_disease_to(M)
 	handle_post_breath(breath)
 
 /mob/living/carbon/proc/get_breath_from_internal(var/volume_needed=STD_BREATH_VOLUME) //hopefully this will allow overrides to specify a different default volume without breaking any cases where volume is passed in.
@@ -96,3 +100,46 @@
 /mob/living/carbon/proc/handle_post_breath(datum/gas_mixture/breath)
 	if(breath)
 		loc.assume_air(breath) //by default, exhale
+
+/mob/living/carbon/proc/handle_virus_updates()
+	if(status_flags & GODMODE)	return 0	//godmode
+	if(bodytemperature > 406)
+		for(var/datum/disease/D in viruses)
+			D.cure()
+		//for (var/ID in virus2) //disabled because of symptom that randomly ignites a mob, which triggers this
+		//	var/datum/disease2/disease/V = virus2[ID]
+		//	V.cure(src)
+	if(life_tick % 3) //don't spam checks over all objects in view every tick.
+		for(var/obj/effect/decal/cleanable/O in view(1,src))
+			if(istype(O,/obj/effect/decal/cleanable/blood))
+				var/obj/effect/decal/cleanable/blood/B = O
+				if(B && B.virus2 && B.virus2.len)
+					for (var/ID in B.virus2)
+						var/datum/disease2/disease/V = B.virus2[ID]
+						if(V.spreadtype == "Contact")
+							infect_virus2(src,V.getcopy())
+
+			else if(istype(O,/obj/effect/decal/cleanable/mucus))
+				var/obj/effect/decal/cleanable/mucus/M = O
+				if(M && M.virus2 && M.virus2.len)
+					for (var/ID in M.virus2)
+						var/datum/disease2/disease/V = M.virus2[ID]
+						if(V.spreadtype == "Contact")
+							infect_virus2(src,V.getcopy())
+
+
+	if(virus2.len)
+		for (var/ID in virus2)
+			var/datum/disease2/disease/V = virus2[ID]
+			if(isnull(V)) // Trying to figure out a runtime error that keeps repeating
+				CRASH("virus2 nulled before calling activate()")
+			else
+				V.activate(src)
+			// activate may have deleted the virus
+			if(!V) continue
+
+			// check if we're immune
+			if(V.antigen & src.antibodies)
+				V.dead = 1
+
+	return

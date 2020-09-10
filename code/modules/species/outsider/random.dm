@@ -4,7 +4,7 @@
 	description = "Some alien humanoid species, unknown to humanity. How exciting."
 	rarity_value = 5
 
-	species_flags = SPECIES_FLAG_NO_SCAN
+	species_flags = SPECIES_FLAG_NO_SCAN | VIRUS_IMMUNE
 	spawn_flags = SPECIES_IS_RESTRICTED
 
 	icobase = 'icons/mob/human_races/species/humanoid/body.dmi'

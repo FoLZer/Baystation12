@@ -189,6 +189,12 @@
 	if(H.getBruteLoss() > 50)
 		dat += "<span class='scan_red'>[b]Severe anatomical damage detected.[endb]</span>"
 
+	if(H.virus2.len)
+		for (var/ID in H.virus2)
+			if (ID in virusDB)
+				var/datum/data/record/V = virusDB[ID]
+				dat += "<span class='warning'>Warning: Pathogen [V.fields["name"]] detected in subject's blood. Known antigen : [V.fields["antigen"]]</span><br>"
+
 	if(skill_level >= SKILL_BASIC)
 		for(var/name in H.organs_by_name)
 			var/obj/item/organ/external/e = H.organs_by_name[name]
