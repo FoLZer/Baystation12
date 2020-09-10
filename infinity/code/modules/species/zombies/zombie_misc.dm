@@ -111,11 +111,6 @@
 
 			//H.infect_zombie_virus(target_zone)
 
-/proc/iszombie(mob/living/carbon/human/H)
-	if(istype(H.species, /datum/species/zombie))
-		return TRUE
-	return FALSE
-
 /datum/species/zombie/on_life(mob/living/carbon/human/H)
 	if(!H.life_tick % 3)
 		return
