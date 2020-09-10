@@ -111,6 +111,43 @@
 
 			//H.infect_zombie_virus(target_zone)
 
+/*/mob/living/carbon/proc/is_infected_with_zombie_virus()
+	for(var/ID in virus2)
+		var/datum/disease2/disease/V = virus2[ID]
+		for(var/datum/disease2/effectholder/e in V.effects)
+			if(istype(e.effect, /datum/disease2/effect/zombie))
+				return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/infect_zombie_virus(target_zone = null, forced = FALSE, fast = FALSE)
+	if(!forced && !prob(get_bite_infection_chance(src, target_zone)))
+		return
+
+	for(var/ID in virus2)
+		var/datum/disease2/disease/V = virus2[ID]
+		for(var/datum/disease2/effectholder/e in V.effects)
+			if(istype(e.effect, /datum/disease2/effect/zombie)) //Already infected
+				e.chance = min(100, e.chance + 10) //Make virus develop faster
+				V.cooldown_mul = min(3, V.cooldown_mul + 1)
+				return
+
+	var/datum/disease2/disease/D = new /datum/disease2/disease
+	var/datum/disease2/effectholder/holder = new /datum/disease2/effectholder
+	var/datum/disease2/effect/zombie/Z = new /datum/disease2/effect/zombie
+	if(target_zone)
+		Z.infected_organ = get_bodypart(target_zone)
+	holder.effect = Z
+	holder.chance = rand(holder.effect.chance_minm, holder.effect.chance_maxm)
+	if(fast)
+		holder.chance = 100
+	D.addeffect(holder)
+	D.uniqueID = rand(0,10000)
+	D.infectionchance = 100
+	D.antigen |= ANTIGEN_Z
+	D.spreadtype = "Blood" // not airborn and not contact, because spreading zombie virus through air or hugs is silly
+
+	infect_virus2(src, D, forced = TRUE, ignore_antibiotics = TRUE)*/
+
 /datum/species/zombie/on_life(mob/living/carbon/human/H)
 	if(!H.life_tick % 3)
 		return
@@ -187,43 +224,6 @@
 	playsound(H, pick(list('sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/wail.ogg')), 25)
 	to_chat(H, "<span class='danger'>Somehow you wake up and your hunger is still outrageous!</span>")
 	H.visible_message("<span class='danger'>[H] suddenly wakes up!</span>")
-
-/*/mob/living/carbon/proc/is_infected_with_zombie_virus()
-	for(var/ID in virus2)
-		var/datum/disease2/disease/V = virus2[ID]
-		for(var/datum/disease2/effectholder/e in V.effects)
-			if(istype(e.effect, /datum/disease2/effect/zombie))
-				return TRUE
-	return FALSE
-
-/mob/living/carbon/human/proc/infect_zombie_virus(target_zone = null, forced = FALSE, fast = FALSE)
-	if(!forced && !prob(get_bite_infection_chance(src, target_zone)))
-		return
-
-	for(var/ID in virus2)
-		var/datum/disease2/disease/V = virus2[ID]
-		for(var/datum/disease2/effectholder/e in V.effects)
-			if(istype(e.effect, /datum/disease2/effect/zombie)) //Already infected
-				e.chance = min(100, e.chance + 10) //Make virus develop faster
-				V.cooldown_mul = min(3, V.cooldown_mul + 1)
-				return
-
-	var/datum/disease2/disease/D = new /datum/disease2/disease
-	var/datum/disease2/effectholder/holder = new /datum/disease2/effectholder
-	var/datum/disease2/effect/zombie/Z = new /datum/disease2/effect/zombie
-	if(target_zone)
-		Z.infected_organ = get_bodypart(target_zone)
-	holder.effect = Z
-	holder.chance = rand(holder.effect.chance_minm, holder.effect.chance_maxm)
-	if(fast)
-		holder.chance = 100
-	D.addeffect(holder)
-	D.uniqueID = rand(0,10000)
-	D.infectionchance = 100
-	D.antigen |= ANTIGEN_Z
-	D.spreadtype = "Blood" // not airborn and not contact, because spreading zombie virus through air or hugs is silly
-
-	infect_virus2(src, D, forced = TRUE, ignore_antibiotics = TRUE)*/
 
 /mob/proc/zombify()
 	return
