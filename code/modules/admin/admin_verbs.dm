@@ -119,6 +119,8 @@ var/list/admin_verbs_fun = list(
 	/datum/admins/proc/call_drop_pod,
 	/client/proc/create_dungeon,
 	/datum/admins/proc/ai_hologram_set,
+	/client/proc/give_disease,
+	/client/proc/give_disease2,
 //[INF],
 	/datum/admins/proc/create_new_skybox_data,
 	/datum/admins/proc/select_and_apply_skybox_data,
@@ -952,3 +954,80 @@ var/list/admin_verbs_xeno = list(
 	T.add_spell(new S)
 	SSstatistics.add_field_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_and_message_admins("gave [key_name(T)] the spell [S].")
+
+/client/proc/give_disease(mob/T as mob in SSmobs.mob_list) // -- Giacom
+	set category = "Fun"
+	set name = "Give Disease (old)"
+	set desc = "Gives a (tg-style) Disease to a mob."
+	var/list/disease_names = list()
+	for(var/v in diseases)
+	//	"/datum/disease/" 15 symbols ~Intercross
+		disease_names.Add(copytext("[v]", 16, 0))
+	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in disease_names
+	if(!D) return
+	var/path = text2path("/datum/disease/[D]")
+	T.contract_disease(new path, 1)
+	log_admin("[key_name(usr)] gave [key_name(T)] the disease [D].")
+	message_admins("<span class='notice'>[key_name_admin(usr)] gave [key_name(T)] the disease [D].</span>")
+
+/client/proc/give_disease2(mob/T as mob in SSmobs.mob_list) // -- Giacom
+	set category = "Fun"
+	set name = "Give Disease"
+	set desc = "Gives a Disease to a mob."
+
+	var/datum/disease2/disease/D = new /datum/disease2/disease()
+
+	var/disease_type = input("Is this a lesser or greater disease?", "Give Disease") in list("Lesser", "Greater", "Custom")
+	var/greater = (disease_type == "Greater")
+
+	if(disease_type == "Custom")
+		D.uniqueID = rand(0,10000)
+		D.antigen |= text2num(pick(ANTIGENS))
+		D.antigen |= text2num(pick(ANTIGENS))
+
+		var/list/datum/disease2/effect/possible_effects = list()
+		for(var/e in subtypesof(/datum/disease2/effect))
+			var/datum/disease2/effect/f = new e
+			if (f.level > 4) //we don't want such strong effects
+				continue
+			if (f.level < 1)
+				continue
+			possible_effects += f
+
+		while(TRUE)
+			var/command = input("Disease menu, ([D.effects.len] symptoms)", "Make custom disease") in list("Add symptom", "Remove symptom", "Done")
+			if(command == "Add symptom" && D.effects.len < D.max_symptoms)
+				if(!possible_effects.len)
+					continue
+				var/effect = input("Add symptom", "Select symptom") as null|anything in possible_effects
+				if(!effect)
+					continue
+				possible_effects -= effect
+				var/datum/disease2/effectholder/holder = new /datum/disease2/effectholder
+				holder.effect = effect
+				holder.name = holder.effect.name
+				holder.chance = rand(holder.effect.chance_minm, holder.effect.chance_maxm)
+				D.addeffect(holder)
+			if(command == "Remove symptom" && D.effects.len > 0)
+				var/datum/disease2/effectholder/holder = input("Remove symptom", "Select symptom to remove") as null|anything in D.effects
+				if(!holder)
+					continue
+				possible_effects += holder.effect
+				D.effects -= holder
+				qdel(holder)
+
+			if(command == "Done")
+				break
+		disease_type = "[disease_type] ([jointext(D.effects, ", ")])"
+	else
+		D.makerandom(greater)
+		if (!greater)
+			D.infectionchance = 1
+
+	D.infectionchance = input("How virulent is this disease? (1-100)", "Give Disease", D.infectionchance) as num
+
+	infect_virus2(T,D,1)
+
+	log_admin("[key_name(usr)] gave [key_name(T)] a [disease_type] disease2 with infection chance [D.infectionchance].")
+	message_admins("[key_name_admin(usr)] gave [key_name(T)] a [disease_type] disease2 with infection chance [D.infectionchance].")
+
