@@ -109,7 +109,7 @@
 			if(target_zone == BP_GROIN && prob(40))
 				target_zone = pick(BP_L_LEG, BP_R_LEG)
 
-			//H.infect_zombie_virus(target_zone)
+			H.infect_zombie_virus(target_zone)
 
 /mob/living/carbon/proc/is_infected_with_zombie_virus()
 	for(var/ID in virus2)
@@ -120,8 +120,8 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/infect_zombie_virus(target_zone = null, forced = FALSE, fast = FALSE)
-	//if(!forced && !prob(get_bite_infection_chance(src, target_zone)))
-	//	return
+	if(!forced && !prob(get_bite_infection_chance(src, target_zone)))
+		return
 
 	for(var/ID in virus2)
 		var/datum/disease2/disease/V = virus2[ID]
