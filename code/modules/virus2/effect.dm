@@ -52,6 +52,7 @@
 	chance_maxm = 20
 	var/activated = FALSE
 	var/obj/item/organ/external/infected_organ = null //if infected part is removed, destroys itself
+	var/prev_stage = 1
 
 /datum/disease2/effect/zombie/activate(mob/living/carbon/mob,datum/disease2/effectholder/holder,datum/disease2/disease/disease)
 	if(ishuman(mob))
@@ -79,32 +80,65 @@
 			return
 
 		switch(holder.stage)
+			if(1)
+				if(prev_stage!=holder.stage)
+					to_chat(H, "<span class='notice'>[pick("Укус на [infected_organ.name] не даёт вам покоя...","Ваш укус побаливает...")]</span>")
 			if(1,2,3) //increased hunger
 				H.nutrition = max(H.nutrition - 20, 0)
-				if(prob(1)) //might never happen and its fine
-					to_chat(H, "<span class='notice'>[pick("You feel an odd gurgle in your stomach.", "You are hungry for something.", "You suddenly feel better.", "You suddenly feel worse.")]</span>")
+				if(prob(4)) //might never happen and its fine
+					to_chat(H, "<span class='notice'>[pick("Вы чувствуете лёгкую слабость.", "В ваших глазах начинает двоиться!", "Вы чувствуете жар.", "Вы чувствуете лёгкий озноб.")]</span>")
+			if(4)
+				if(prev_stage!=holder.stage)
+					to_chat(H, "<span class='warning'>С каждым часом вы чувствуете себя всё хуже и хуже, похоже на то, будто кто-то из коллег заразил вас гриппом.</span>")
 			if(4,5,6) //some random stuff
 				H.adjustToxLoss(1)
-				if(prob(70))
+				if(prob(50))
 					mob.emote(pick("twitch","drool","sneeze","sniff","cough","shiver","giggle","laugh","gasp"))
 				else
-					to_chat(H, "<span class='warning'>[pick("Your [infected_organ.name] seems to become more green...", "Your [infected_organ.name] hurts...")]</span>")
+					if(prob(33))
+						to_chat(H, "<span class='warning'>Вы чувствуете резкую слабость...</span>")
+						H.Stun(3)
+					else if(prob(33))
+						H.vomit()
+						to_chat(H, "<span class='warning'>Вас вырвало!</span>")
+					else
+						to_chat(H, "<span class='warning'>[pick("Ваша [infected_organ.name] немеет...", "Ваша [infected_organ.name] побаливает...")]</span>")
 			if(7,8) //pain
-				to_chat(H, "<span class='danger'>[pick("Your brain hurts.", "Your [infected_organ.name] hurts a lot.", "Your muscles ache.", "Your muscles are sore.")]</span>")
-				H.apply_effect(20,PAIN,0)
-				H.adjustBrainLoss(5)
-				H.adjustToxLoss(3)
-			if(9) //IT HURTS
 				if(prob(33))
-					to_chat(H, "<span class='danger'>[pick("IT HURTS", "You feel a sharp pain across your whole body!")]</span>")
+					H.vomit()
+
+					var/brute_dam = H.getBruteLoss()
+					if(brute_dam < 50)
+						H.adjustBruteLoss(3)
+
+					var/turf/simulated/T = get_turf(H)
+					if(istype(T))
+						T.add_blood_floor(H)
+					H.apply_effect(20,PAIN,0)
+
+					H.visible_message("<span class='danger'>[H] вырывает кровью!</span>","<span class='danger'>Вас вырвало кровью!</span>")
+				else if(prob(20))
+					to_chat(H, "<span class='danger'>Вам трудно дышать...</span>")
+					H.adjustOxyLoss(rand(1,7))
+				else
+					to_chat(H, "<span class='danger'>[pick("Your brain hurts.", "Your [infected_organ.name] hurts a lot.", "Your muscles ache.", "Your muscles are sore.")]</span>")
+					H.apply_effect(20,PAIN,0)
+					H.adjustBrainLoss(5)
+					H.adjustToxLoss(3)
+			if(9) //IT HURTS
+				if(prev_stage!=holder.stage)
+					to_chat(H, "<span class='danger'>Вы едва можете контролировать себя, вашей единственной целью стало - найти антидот!</span>")
+				if(prob(33))
+					to_chat(H, "<span class='danger'>[pick("Ваша рана пылает огнём!", "Вы чувствуете резкую боль в вашей [infected_organ.name]")]</span>")
 					H.adjustBruteLoss(rand(2,5))
 					H.apply_effect(50,PAIN,0)
 				else if(prob(33) && H.stat == CONSCIOUS)
-					to_chat(H, "<span class='danger'>[pick("Your heart stop for a second.", "It\'s hard for you to breathe.")]</span>")
+					to_chat(H, "<span class='danger'>[pick("Ваше сердце останавливается на секунду!", "Вам очень тяжело дышать!")]</span>")
 					H.adjustOxyLoss(rand(10,40))
 				else
-					to_chat(H, "<span class='danger'>[pick("Your body is paralyzed.")]</span>")
-					H.Stun(4)
+					to_chat(H, "<span class='danger'>Ваше тело гниёт!</span>")
+					H.adjustToxLoss(4)
+					H.adjustBruteLoss(7)
 			if(10) //rip
 				if(!activated)
 					activated = TRUE
@@ -112,6 +146,7 @@
 					H.SetSleeping(600 SECONDS)
 					handle_infected_death(H)
 					disease.dead = TRUE
+		prev_stage = holder.stage
 
 /datum/disease2/effect/zombie/copy(datum/disease2/effectholder/holder_old, datum/disease2/effectholder/holder_new, datum/disease2/effect/effect_old)
 	var/datum/disease2/effect/zombie/Z = effect_old
