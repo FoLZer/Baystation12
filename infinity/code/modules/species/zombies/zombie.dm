@@ -15,6 +15,16 @@
 
 	hidden_from_codex = TRUE
 
+	has_organ = list(    // which required-organ checks are conducted.
+		BP_HEART =    /obj/item/organ/internal/heart,
+		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_LIVER =    /obj/item/organ/internal/liver,
+		BP_KIDNEYS =  /obj/item/organ/internal/kidneys,
+		BP_BRAIN =    /obj/item/organ/internal/brain,
+		BP_APPENDIX = /obj/item/organ/internal/appendix,
+		BP_EYES =     /obj/item/organ/internal/eyes
+		)
+
 	genders = list(MALE)
 
 	species_flags = SPECIES_FLAG_NO_SCAN | SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_POISON | SPECIES_FLAG_NO_EMBED | VIRUS_IMMUNE
@@ -27,6 +37,17 @@
 	radiation_mod = 0
 	stun_mod =      0.75
 	paralysis_mod = 2
+
+	warning_low_pressure = 50
+	hazard_low_pressure = -1
+
+	cold_level_1 = 50
+	cold_level_2 = -1
+	cold_level_3 = -1
+
+	heat_level_1 = 900 //Default 360 - Higher is better
+	heat_level_2 = 1200 //Default 400
+	heat_level_3 = 2800 //Default 1000
 
 	speech_sounds = list('sound/voice/growl1.ogg', 'sound/voice/growl2.ogg', 'sound/voice/growl3.ogg')
 	speech_chance = 100
