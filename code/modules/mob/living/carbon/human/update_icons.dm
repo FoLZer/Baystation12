@@ -129,34 +129,35 @@ Please contact me on #coderbus IRC. ~Carn x
 */
 
 //Human Overlays Indexes/////////
-#define HO_MUTATIONS_LAYER  1
-#define HO_SKIN_LAYER       2
-#define HO_DAMAGE_LAYER     3
-#define HO_SURGERY_LAYER    4 //bs12 specific.
-#define HO_UNDERWEAR_LAYER  5
-#define HO_GLOVES_ALT_LAYER 6  //INF, WAS 5-26
-#define HO_UNIFORM_LAYER    7
-#define HO_ID_LAYER         8
-#define HO_SHOES_LAYER      9
-#define HO_GLOVES_LAYER     10
-#define HO_BELT_LAYER       11
-#define HO_SUIT_LAYER       12
-#define HO_TAIL_LAYER       13 //bs12 specific. this hack is probably gonna come back to haunt me
-#define HO_GLASSES_LAYER    14
-#define HO_BELT_LAYER_ALT   15
-#define HO_SUIT_STORE_LAYER 16
-#define HO_BACK_LAYER       17
-#define HO_HAIR_LAYER       18 //TODO: make part of head layer?
-#define HO_GOGGLES_LAYER    19
-#define HO_EARS_LAYER       20
-#define HO_FACEMASK_LAYER   21
-#define HO_HEAD_LAYER       22
-#define HO_COLLAR_LAYER     23
-#define HO_HANDCUFF_LAYER   24
-#define HO_L_HAND_LAYER     25
-#define HO_R_HAND_LAYER     26
-#define HO_FIRE_LAYER       27 //If you're on fire
-#define TOTAL_LAYERS        27
+#define HO_MUTANTRACE_LAYER 1
+#define HO_MUTATIONS_LAYER  2
+#define HO_SKIN_LAYER       3
+#define HO_DAMAGE_LAYER     4
+#define HO_SURGERY_LAYER    5 //bs12 specific.
+#define HO_UNDERWEAR_LAYER  6
+#define HO_GLOVES_ALT_LAYER 7  //INF, WAS 5-26
+#define HO_UNIFORM_LAYER    8
+#define HO_ID_LAYER         9
+#define HO_SHOES_LAYER      10
+#define HO_GLOVES_LAYER     11
+#define HO_BELT_LAYER       12
+#define HO_SUIT_LAYER       13
+#define HO_TAIL_LAYER       14 //bs12 specific. this hack is probably gonna come back to haunt me
+#define HO_GLASSES_LAYER    15
+#define HO_BELT_LAYER_ALT   16
+#define HO_SUIT_STORE_LAYER 17
+#define HO_BACK_LAYER       18
+#define HO_HAIR_LAYER       19 //TODO: make part of head layer?
+#define HO_GOGGLES_LAYER    20
+#define HO_EARS_LAYER       21
+#define HO_FACEMASK_LAYER   22
+#define HO_HEAD_LAYER       23
+#define HO_COLLAR_LAYER     24
+#define HO_HANDCUFF_LAYER   25
+#define HO_L_HAND_LAYER     26
+#define HO_R_HAND_LAYER     27
+#define HO_FIRE_LAYER       28 //If you're on fire
+#define TOTAL_LAYERS        28
 //////////////////////////////////
 
 /mob/living/carbon/human
@@ -305,6 +306,22 @@ var/global/list/damage_icon_parts = list()
 				standing_image.overlays += image(bandage_icon, "[O.icon_name][bandage_level]")
 
 		overlays_standing[HO_DAMAGE_LAYER]	= standing_image
+	if(update_icons)
+		queue_icon_update()
+
+/mob/living/carbon/human/proc/update_mutantrace(var/update_icons=1)
+	overlays_standing[HO_MUTANTRACE_LAYER] = null
+
+	var/list/standing = list()
+
+	if(iszombie(src) && stat != DEAD)
+		var/image/eyes = image(species.icobase, null, "zombie_ms_s", LIGHTING_LAYER + 1)
+		eyes.plane = LIGHTING_PLANE + 1
+		standing += eyes
+
+	if(standing.len)
+		overlays_standing[HO_MUTANTRACE_LAYER]	= standing
+
 	if(update_icons)
 		queue_icon_update()
 

@@ -8,6 +8,7 @@
 	unarmed_types = list(/datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
 	darksight_range = 8
+	darksight_tint = DARKTINT_GREAT
 
 	min_age = 25
 	max_age = 85
@@ -50,6 +51,10 @@
 
 	add_zombie(H)
 
+	H.update_mutantrace()
+
+	H.add_language(LANGUAGE_HUMAN_EURO, 0)
+
 	return ..()
 
 /datum/species/zombie/handle_death(mob/living/carbon/human/H)
@@ -60,6 +65,8 @@
 		qdel(H.r_hand)
 
 	remove_zombie(H)
+
+	H.update_mutantrace()
 
 	return ..()
 
