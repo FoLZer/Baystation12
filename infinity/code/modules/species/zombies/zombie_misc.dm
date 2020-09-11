@@ -178,8 +178,7 @@
 	H.update_body()
 
 /proc/handle_infected_death(mob/living/carbon/human/H)
-	if(H.species.name in list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL))
-		addtimer(CALLBACK(null, .proc/prerevive_zombie, H), rand(600,700))
+	addtimer(CALLBACK(null, .proc/prerevive_zombie, H), rand(600,700))
 
 /proc/prerevive_zombie(mob/living/carbon/human/H)
 	var/obj/item/organ/external/BP = H.organs_by_name[BP_HEAD]
@@ -414,32 +413,35 @@ var/list/zombie_list = list()
 		to_chat(src, "<span class='warning'>You aren't on top of a victim!</span>")
 		return
 
-	last_special = world.time + 5 SECONDS
 	if(!target.organs_by_name[BP_HEAD] || !target.internal_organs_by_name[BP_BRAIN] || iszombie(target))
 		to_chat(src, "<span class='warning'>[target] не имеет мозга!</span>")
 		return
-	src.visible_message("<span class='danger'>[src] яростно вгрызается в голову [target], разрывая её.</span>")
 	if(BP_IS_ROBOTIC(target.organs_by_name[BP_HEAD]))
 		src.visible_message("<span class='danger'>[src] пытается прогрызть металическую пластину головы [target], но без повреждений.</span>")
 		return
-	if(do_mob(src, target, 5 SECONDS))
+	last_special = world.time + 4 SECONDS
+	src.visible_message("<span class='danger'>[src] яростно вгрызается в голову [target], разрывая её.</span>")
+	if(do_mob(src, target, 4 SECONDS))
+		playsound(src.loc, pick(GLOB.trauma_sound), 100, 1, -2)
 		src.visible_message("<span class='danger'>[src] отрывает плоть [target] от его костей!</span>","<span class='danger'>Вы жадно питаетесь плотью [target]!</span>")
-		new /obj/effect/decal/cleanable/blood/gibs(target.loc)
+		new /obj/effect/gibspawner/human(target.loc)
 		var/obj/item/organ/external/O = target.organs_by_name[BP_HEAD]
-		if(O.take_external_damage(5,0,DAM_SHARP,check_dismemberment=1))
+		if(prob(33))
 			if(prob(10))
-				O.removed(src)
+				O.removed(src,0)
 				src.visible_message("<span class='danger'>[src] отрывает голову [target] и полностью съедает её!</span>","<span class='danger'>Вы отрываете голову [target] вместе с плотью и съедаете её!<span>")
-				new /obj/effect/decal/cleanable/blood/gibs(target.loc)
+				new /obj/effect/gibspawner/human(target.loc)
 				target.death()
 			else
-				target.internal_organs_by_name[BP_BRAIN].removed(src)
+				target.internal_organs_by_name[BP_BRAIN].removed(src,0)
 				src.visible_message("<span class='danger'>[src] вырывает мозг из головы [target] и полностью съедает его!</span>","<span class='danger'>Вы вырываете мозг из головы [target] и съедаете его!<span>")
-				new /obj/effect/decal/cleanable/blood/gibs(target.loc)
-				target.death()
-			src.adjustBruteLoss(-50)
+				new /obj/effect/gibspawner/human(target.loc)
+				handle_infected_death(target)
+			src.adjustBruteLoss(-30)
 			return
-		target.adjustBruteLoss(10)
+		O.take_external_damage(10)
 		if(target.getBruteLoss() < -target.maxHealth)
 			target.gib()
 		src.adjustBruteLoss(-10)
+		spawn(1)
+			src.zombie_consume()
