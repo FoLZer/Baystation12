@@ -8,12 +8,12 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 	set waitfor = FALSE
 
 	var/style	//additional style params for the message
-	var/fontsize = 6
+	var/fontsize = 7
 	if(small)
-		fontsize = 5
+		fontsize = 6
 	var/limit = 50
 	if(copytext_char(message, length_char(message) - 1) == "!!")
-		fontsize = 8
+		fontsize = 9
 		limit = 30
 		style += "font-weight: bold;"
 

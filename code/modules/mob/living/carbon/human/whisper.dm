@@ -16,6 +16,9 @@
 	if(get_id_name("Unknown") == GetVoice())
 		SetName(get_id_name("Unknown"))
 
+	if(iszombie(src))
+		message = zombie_talk(message)
+
 	whisper_say(message)
 
 

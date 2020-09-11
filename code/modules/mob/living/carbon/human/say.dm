@@ -3,6 +3,9 @@
 		if(get_id_name("Unknown") == GetVoice())
 			SetName(get_id_name("Unknown"))
 
+	if(iszombie(src))
+		message = zombie_talk(message)
+
 	//parse the language code and consume it
 	if(!speaking)
 		speaking = parse_language(message)
