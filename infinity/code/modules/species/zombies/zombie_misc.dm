@@ -178,7 +178,7 @@
 	H.update_body()
 
 /proc/handle_infected_death(mob/living/carbon/human/H)
-	if(H.species.name in list(HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL))
+	if(H.species.name in list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL))
 		addtimer(CALLBACK(null, .proc/prerevive_zombie, H), rand(600,700))
 
 /proc/prerevive_zombie(mob/living/carbon/human/H)
@@ -323,7 +323,7 @@ var/list/zombie_list = list()
 
 	var/mob/living/carbon/human/user = usr
 
-	if(last_find_brains < world.time)
+	if(last_find_brains > world.time)
 		to_chat(user, "<span class='warning'>You can't sense any brains yet! You must wait [round(last_find_brains - world.time) / 10] seconds.")
 		return
 
@@ -391,3 +391,55 @@ var/list/zombie_list = list()
 				return turn(dir,45)
 			else
 				return dir
+
+/mob/living/proc/zombie_consume()
+	set name = "Consume Brain"
+	set desc = "Regain life by consuming it from others."
+	set category = "Zombie"
+
+	if (last_special > world.time)
+		to_chat(src, "<span class='warning'>You aren't ready to do that! Wait [round(last_special - world.time) / 10] seconds.</span>")
+		return
+
+	if (incapacitated())
+		to_chat(src, "<span class='warning'>You can't do that while you're incapacitated!</span>")
+		return
+
+	var/mob/living/carbon/human/target
+	for (var/mob/living/carbon/human/L in get_turf(src))
+		if (L != src && (L.lying || L.stat == DEAD))
+			target = L
+			break
+	if (!target)
+		to_chat(src, "<span class='warning'>You aren't on top of a victim!</span>")
+		return
+
+	last_special = world.time + 5 SECONDS
+	if(!target.organs_by_name[BP_HEAD] || !target.internal_organs_by_name[BP_BRAIN] || iszombie(target))
+		to_chat(src, "<span class='warning'>[target] не имеет мозга!</span>")
+		return
+	src.visible_message("<span class='danger'>[src] яростно вгрызается в голову [target], разрывая её.</span>")
+	if(BP_IS_ROBOTIC(target.organs_by_name[BP_HEAD]))
+		src.visible_message("<span class='danger'>[src] пытается прогрызть металическую пластину головы [target], но без повреждений.</span>")
+		return
+	if(do_mob(src, target, 5 SECONDS))
+		src.visible_message("<span class='danger'>[src] отрывает плоть [target] от его костей!</span>","<span class='danger'>Вы жадно питаетесь плотью [target]!</span>")
+		new /obj/effect/decal/cleanable/blood/gibs(target.loc)
+		var/obj/item/organ/external/O = target.organs_by_name[BP_HEAD]
+		if(O.take_external_damage(5,0,DAM_SHARP,check_dismemberment=1))
+			if(prob(10))
+				O.removed(src)
+				src.visible_message("<span class='danger'>[src] отрывает голову [target] и полностью съедает её!</span>","<span class='danger'>Вы отрываете голову [target] вместе с плотью и съедаете её!<span>")
+				new /obj/effect/decal/cleanable/blood/gibs(target.loc)
+				target.death()
+			else
+				target.internal_organs_by_name[BP_BRAIN].removed(src)
+				src.visible_message("<span class='danger'>[src] вырывает мозг из головы [target] и полностью съедает его!</span>","<span class='danger'>Вы вырываете мозг из головы [target] и съедаете его!<span>")
+				new /obj/effect/decal/cleanable/blood/gibs(target.loc)
+				target.death()
+			src.adjustBruteLoss(-50)
+			return
+		target.adjustBruteLoss(10)
+		if(target.getBruteLoss() < -target.maxHealth)
+			target.gib()
+		src.adjustBruteLoss(-10)
