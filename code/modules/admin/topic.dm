@@ -1292,13 +1292,42 @@
 
 	else if(href_list["makezombie"])
 		if(!check_rights(R_SPAWN))	return
-
-		var/mob/M = locate(href_list["makezombie"])
-		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+		var/mob/living/carbon/human/M = locate(href_list["makezombie"])
+		if(!istype(M))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		M.zombify()
+		switch(input("Zombie menu", "Select action", "Cancel") in list("Turn into zombie instantly", "Infect with slow zombie virus (10-20 min)", "Infect with fast zombie virus (~3 min)", "Make immune to zombie virus", "Make vulnerable to zombie virus", "Cancel"))
+			if("Turn into zombie instantly")
+				if(M)
+					M.zombify()
+					to_chat(usr, "[M] is now a zombie")
+					log_admin("[key_name(usr)] turned [key_name(M)] into a zombie.")
+					message_admins("[key_name_admin(usr)] turned [key_name(M)] into a zombie.")
+			if("Infect with slow zombie virus (10-20 min)")
+				if(M)
+					M.infect_zombie_virus(target_zone = null, forced = TRUE, fast = FALSE)
+					to_chat(usr, "[M] is now infected with slow zombie virus")
+					log_admin("[key_name(usr)] infected [key_name(M)] with slow zombie virus.")
+					message_admins("[key_name_admin(usr)] infected [key_name(M)] with slow zombie virus.")
+			if("Infect with fast zombie virus (~3 min)")
+				if(M)
+					M.infect_zombie_virus(target_zone = null, forced = TRUE, fast = TRUE)
+					to_chat(usr, "[M] is now infected with fast zombie virus")
+					log_admin("[key_name(usr)] infected [key_name(M)] with fast zombie virus.")
+					message_admins("[key_name_admin(usr)] infected [key_name(M)] with fast zombie virus.")
+			if("Make immune to zombie virus")
+				if(M)
+					M.antibodies |= ANTIGEN_Z
+					to_chat(usr, "[M] is now immune to zombie virus")
+					log_admin("[key_name(usr)] made [key_name(M)] immune to zombie virus.")
+					message_admins("[key_name_admin(usr)] made [key_name(M)] immune to zombie virus.")
+			if("Make vulnerable to zombie virus")
+				if(M)
+					M.antibodies &= ~ANTIGEN_Z
+					to_chat(usr, "[M] is now vulnerable to zombie virus")
+					log_admin("[key_name(usr)] made [key_name(M)] vulnerable to zombie virus.")
+					message_admins("[key_name_admin(usr)] made [key_name(M)] vulnerable to zombie virus.")
 
 	else if(href_list["togmutate"])
 		if(!check_rights(R_SPAWN))	return
