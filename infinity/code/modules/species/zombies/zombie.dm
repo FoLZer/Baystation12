@@ -30,10 +30,10 @@
 	species_flags = SPECIES_FLAG_NO_SCAN | SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_POISON | SPECIES_FLAG_NO_EMBED | VIRUS_IMMUNE
 	spawn_flags = SPECIES_IS_RESTRICTED
 
-	brute_mod = 2
-	burn_mod = 1
+	brute_mod = 0.7
+	burn_mod = 0.5
 	oxy_mod = 0
-	slowdown = -0.2
+	slowdown = 0.8
 	radiation_mod = 0
 	stun_mod =      0.75
 	paralysis_mod = 2
