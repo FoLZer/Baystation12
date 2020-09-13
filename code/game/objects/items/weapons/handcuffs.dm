@@ -81,6 +81,10 @@
 	if(!istype(H))
 		return 0
 
+	if(istype(H.species, /datum/species/zombie) && (!H.stat || (H.stat && H.stat != DEAD)))
+		to_chat(user, "<span class='danger'>[H] слишком сильно дёргается для того, чтобы его заковать в наручники!</span>")
+		return 0
+
 	if (!H.has_organ_for_slot(slot_handcuffed))
 		to_chat(user, "<span class='danger'>\The [H] needs at least two wrists before you can cuff them together!</span>")
 		return 0
