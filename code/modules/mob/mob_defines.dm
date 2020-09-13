@@ -61,6 +61,9 @@
 	var/obj/screen/gun/move/gun_move_icon = null
 	var/obj/screen/gun/run/gun_run_icon = null
 	var/obj/screen/gun/mode/gun_setting_icon = null
+	var/obj/screen/leap/leap_icon = null
+	var/obj/screen/neurotoxin_icon = null
+	var/obj/screen/nightvisionicon = null
 
 	var/obj/screen/movable/ability_master/ability_master = null
 
@@ -95,6 +98,8 @@
 	var/lying_prev = 0
 
 	var/radio_interrupt_cooldown = 0
+
+	var/alien_talk_understand = 0
 
 	var/unacidable = 0
 	var/list/pinned = list()            // List of things pinning this creature to walls (see living_defense.dm)

@@ -18,6 +18,10 @@
 			return u_attack
 	return null
 
+/atom/proc/attack_alien(mob/user)
+	attack_hand(user)
+	return
+
 /mob/living/carbon/human/attack_hand(mob/living/carbon/M as mob)
 
 	var/mob/living/carbon/human/H = M
@@ -161,6 +165,10 @@
 			return 1
 
 		if(I_GRAB)
+			if(istype(src, /mob/living/carbon/human/xenomorph/facehugger))
+				var/mob/living/carbon/human/xenomorph/facehugger/FH = src
+				FH.can_grab(H)
+				return
 			return H.species.attempt_grab(H, src)
 
 		if(I_HURT)

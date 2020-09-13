@@ -18,6 +18,7 @@ var/list/department_radio_keys = list(
 	  ":z" = "Entertainment",".z" = "Entertainment",
 	  ":y" = "Exploration",		".y" = "Exploration",
 	  ":k" = "Recon",		".k" = "Recon",	//Skrell Recon ship
+	  ":a" = "alientalk",   ".a" = "alientalk",
 
 	  ":R" = "right ear",	".R" = "right ear",
 	  ":L" = "left ear",	".L" = "left ear",
@@ -37,6 +38,7 @@ var/list/department_radio_keys = list(
 	  ":Z" = "Entertainment",".Z" = "Entertainment",
 	  ":Y" = "Exploration",		".Y" = "Exploration",
 	  ":K" = "Recon",		".K" = "Recon",	//Skrell Recon ship
+	  ":A" = "alientalk",   ".A" = "alientalk",
 
 	  //localized radio keys by ~KareTa
 	  ":к" = "right ear",	".к" = "right ear",
@@ -56,6 +58,7 @@ var/list/department_radio_keys = list(
 	  ":я" = "Entertainment",".я" = "Entertainment",
 	  ":н" = "Exploration",		".н" = "Exploration",
 	  ":л" = "Recon",		".л" = "Recon",	//Skrell Recon ship
+	  ":ф" = "alientalk",   ".ф" = "alientalk",
 
 	  ":К" = "right ear",	".К" = "right ear",
 	  ":Д" = "left ear",	".Д" = "left ear",
@@ -74,6 +77,7 @@ var/list/department_radio_keys = list(
 	  ":Я" = "Entertainment",".Я" = "Entertainment",
 	  ":Н" = "Exploration",		".Н" = "Exploration",
 	  ":Л" = "Recon",		".Л" = "Recon",	//Skrell Recon ship
+	  ":Ф" = "alientalk",   ".Ф" = "alientalk",
 
 	  /*
 	  //kinda localization -- rastaf0
@@ -92,6 +96,23 @@ var/list/department_radio_keys = list(
 	  ":Г" = "Supply",		".Г" = "Supply",
 	  */
 )
+
+/mob/living/proc/hivecheck()
+	if (isxeno(src))
+		return 1
+	if (!ishuman(src))
+		return
+	var/mob/living/carbon/human/H = src
+	if (H.l_ear || H.r_ear)
+		var/obj/item/device/radio/headset/dongle
+		if(istype(H.l_ear,/obj/item/device/radio/headset))
+			dongle = H.l_ear
+		else
+			dongle = H.r_ear
+		if(!istype(dongle))
+			return
+		if(dongle.translate_binary)
+			return 1
 
 var/list/channel_to_radio_key = new
 proc/get_radio_key_from_channel(var/channel)
