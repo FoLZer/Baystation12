@@ -16,8 +16,27 @@
 
 	attack_verb = list("bitten and scratched", "scratched")
 
+	item_flags = ITEM_FLAG_NO_BLUDGEON
+	w_class = ITEM_SIZE_NO_CONTAINER
+
 /obj/item/weapon/melee/zombie_hand/right
 	icon_state = "bloodhand_right"
+
+/obj/item/weapon/melee/zombie_hand/Initialize(mapload, mob/living/carbon/human/victim)
+	var/mob/living/carbon/human/H = loc
+	if(!istype(H))
+		return INITIALIZE_HINT_QDEL
+	if(!istype(victim))
+		return INITIALIZE_HINT_QDEL
+
+/obj/item/weapon/melee/zombie_hand/dropped()
+	..()
+	if(!QDELETED(src))
+		qdel(src)
+
+/obj/item/weapon/melee/zombie_hand/can_be_dropped_by_client(mob/M)
+	if(M == assailant)
+		return FALSE
 
 /obj/item/weapon/melee/zombie_hand/afterattack(atom/target, mob/user, proximity, params)
 	if(!proximity)
