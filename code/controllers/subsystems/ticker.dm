@@ -111,10 +111,6 @@ SUBSYSTEM_DEF(ticker)
 	if(!length(GLOB.admins))
 		send2adminirc("Раунд начался без администраторов в игре!")
 
-	if(config.ooc_allowed && !config.ooc_during_round)
-		config.ooc_allowed = 0
-		to_world("<B>OOC чат отключен!</B>")
-
 /datum/controller/subsystem/ticker/proc/playing_tick()
 	mode.process()
 	var/mode_finished = mode_finished()
