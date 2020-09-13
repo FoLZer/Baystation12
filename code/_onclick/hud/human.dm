@@ -7,10 +7,7 @@
 	if(!istype(target))
 		hud_data = new()
 	else
-		if(istype(target, /mob/living/carbon/human/xenomorph))
-			hud_data = new /datum/hud_data/alien
-		else
-			hud_data = target.species.hud
+		hud_data = target.species.hud
 
 	if(hud_data.icon)
 		ui_style = hud_data.icon

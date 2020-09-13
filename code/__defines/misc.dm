@@ -28,14 +28,6 @@
 #define SEE_INVISIBLE_MINIMUM 5
 #define INVISIBILITY_MAXIMUM 100
 
-#define MIN_IMPREGNATION_TIME 200
-#define MAX_IMPREGNATION_TIME 250
-
-//Facehugger's control type
-#define FACEHUGGERS_STATIC_AI     0   // don't move by themselves
-#define FACEHUGGERS_DYNAMIC_AI    1   // controlled by simple AI
-#define FACEHUGGERS_PLAYABLE      2   // controlled by players
-
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL 26 // Used to trigger removal from a processing list.
 

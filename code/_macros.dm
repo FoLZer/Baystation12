@@ -77,22 +77,6 @@
 
 #define isslime(A) istype(A, /mob/living/carbon/slime)
 
-#define isxeno(A) istype(A, /mob/living/carbon/human/xenomorph)
-
-#define isfacehugger(A) istype(A, /mob/living/carbon/human/xenomorph/facehugger)
-
-#define isxenolarva(A) istype(A, /mob/living/carbon/human/xenomorph/larva)
-
-#define isxenoqueen(A) istype(A, /mob/living/carbon/human/xenomorph/humanoid/queen)
-
-#define isxenodrone(A) istype(A, /mob/living/carbon/human/xenomorph/humanoid/drone)
-
-#define isxenosentinel(A) istype(A, /mob/living/carbon/human/xenomorph/humanoid/sentinel)
-
-#define isxenohunter(A) istype(A, /mob/living/carbon/human/xenomorph/humanoid/hunter)
-
-#define isxenoadult(A) (istype(A, /mob/living/carbon/human/xenomorph/humanoid))
-
 #define isunderwear(A) istype(A, /obj/item/underwear)
 
 #define isvirtualmob(A) istype(A, /mob/observer/virtual)
