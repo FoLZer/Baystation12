@@ -713,6 +713,18 @@ default behaviour is:
 	set name = "Rest"
 	set category = "IC"
 
+	var/obj/structure/table/T = (locate() in get_turf(src))
+	if(T)
+		if(resting)
+			playsound(src, 'sound/weapons/tablehit1.ogg', 100)
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/obj/item/organ/external/BP = H.organs_by_name[BP_HEAD]
+				BP.take_external_damage(5, 0, DAM_BULLET, used_weapon = "Facepalm") // what?.. that guy was insane anyway.
+			else
+				take_overall_damage(5, used_weapon = "Table")
+			Stun(1)
+			to_chat(src, "<span class='danger'>Ouch!</span>")
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 

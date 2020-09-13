@@ -8,9 +8,21 @@
 			return !density
 		else
 			return 1
-	if(istype(mover) && mover.checkpass(PASS_FLAG_TABLE))
+	if(istype(mover) && (mover.checkpass(PASS_FLAG_TABLE)))
 		return 1
 	var/obj/structure/table/T = (locate() in get_turf(mover))
+	var/obj/structure/table/TT = (locate() in target)
+	if(!istype(TT,/obj/structure/table/rack))
+		if(istype(mover, /mob))
+			var/mob/M = mover
+			if(M.lying && !T)
+				M.layer = BELOW_TABLE_LAYER
+				return 1
+			if(istype(TT, /obj/structure/table))
+				return 	(T && !T.flipped)
+			if(T && !T.flipped)
+				M.layer = LYING_HUMAN_LAYER
+
 	return (T && !T.flipped) 	//If we are moving from a table, check if it is flipped.
 								//If the table we are standing on is not flipped, then we can move freely to another table.
 

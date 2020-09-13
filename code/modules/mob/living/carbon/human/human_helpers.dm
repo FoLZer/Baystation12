@@ -221,8 +221,10 @@
 /mob/living/carbon/human/reset_layer()
 	if(hiding)
 		layer = HIDING_MOB_LAYER
-	else if(lying)
-		layer = LYING_HUMAN_LAYER
+	else if(lying && layer == BELOW_TABLE_LAYER)
+		var/obj/structure/table/T = (locate() in get_turf(src))
+		if(!T)
+			layer = LYING_HUMAN_LAYER
 	else
 		..()
 
