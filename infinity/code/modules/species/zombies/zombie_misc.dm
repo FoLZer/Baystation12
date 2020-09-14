@@ -35,7 +35,8 @@
 		qdel(src)
 
 /obj/item/weapon/melee/zombie_hand/can_be_dropped_by_client(mob/M)
-	if(M == assailant)
+	var/mob/L = loc
+	if(M == L)
 		return FALSE
 
 /obj/item/weapon/melee/zombie_hand/afterattack(atom/target, mob/user, proximity, params)
