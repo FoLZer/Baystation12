@@ -79,6 +79,14 @@
 #define CULTURE_XENOPHAGE_Q    "Xenophage Queen"
 #define FACTION_XENOPHAGE      "Xenophage Hive"
 
+#define CULTURE_SPIDER_L       "Spiderling"
+#define CULTURE_SPIDER_W       "Spider Warrior"
+#define CULTURE_SPIDER_H       "Spider Hunter"
+#define CULTURE_SPIDER_N       "Spider Nurse"
+#define CULTURE_SPIDER_G       "Spider Guard"
+#define CULTURE_SPIDER         "Spider"
+#define FACTION_SPIDER         "Spider Clan"
+
 // Human Cultures
 #define CULTURE_HUMAN_LORRIMAN "Lorrimanian"
 #define CULTURE_HUMAN_AVANOBLE "Avalon Noble"
