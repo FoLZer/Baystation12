@@ -372,7 +372,7 @@ Nurse caste procs
 
 						if(O.anchored)
 							continue
-						
+
 						if(is_type_in_list(O, cocoon_blacklist))
 							continue
 
@@ -445,7 +445,7 @@ Hunter caste procs
 	. = ..()
 	if(!isnull(first_stop_automation))
 		stop_automation = first_stop_automation
-	
+
 /mob/living/simple_animal/hostile/giant_spider/hunter/throw_impact(atom/hit_atom)
 	if(isliving(hit_atom))
 		var/mob/living/target = hit_atom
@@ -473,6 +473,26 @@ Spitter caste procs
 	..()
 	venom_charge--
 
+/mob/living/simple_animal/hostile/giant_spider/player
+	desc = "A monstrously huge green spider with shimmering eyes. You can see something special in this one."
+
+/mob/living/simple_animal/hostile/giant_spider/player/verb/evolve()
+	set name = "Evolve"
+	set desc = "Press to evolve to the next stage"
+	set tab = "Abilities"
+
+	var/evolve_to = input("В кого вы хотите эволюционировать?", "Evolve", "Evolve!") as null|text in list("Warrior","Nurse","Spitter")
+	if(!evolve_to)
+		return
+	Evolve_to(evolve_to)
+
+/mob/living/simple_animal/hostile/giant_spider/nurse/player
+
+/mob/living/simple_animal/hostile/giant_spider/hunter/player
+
+/mob/living/simple_animal/hostile/giant_spider/spitter/player
+
+/mob/living/simple_animal/hostile/giant_spider/warrior/player
 #undef SPINNING_WEB
 #undef LAYING_EGGS
 #undef MOVING_TO_TARGET

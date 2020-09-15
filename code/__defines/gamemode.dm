@@ -58,6 +58,7 @@
 #define MODE_FOUNDATION    "foundation agent"
 #define MODE_MISC_AGITATOR "provocateur"
 #define MODE_HUNTER        "hunter"
+#define MODE_SPIDER        "spider"
 
 #define DEFAULT_TELECRYSTAL_AMOUNT 130
 #define TEAM_TELECRYSTAL_AMOUNT 780 //DEFAULT_TELECRYSTAL_AMOUNT*6
