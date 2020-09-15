@@ -4,7 +4,7 @@
 #define SPINNING_COCOON 4
 
 //base type, generic 'worker' type spider with no defining gimmick
-/mob/living/simple_animal/hostile/giant_spider
+/mob/living/simple_animal/player/hostile/giant_spider
 	name = "giant spider"
 	desc = "A monstrously huge green spider with shimmering eyes."
 	icon = 'icons/mob/simple_animal/spider.dmi'
@@ -52,11 +52,11 @@
 	var/allowed_eye_colours = list(COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_LIME, COLOR_DEEP_SKY_BLUE, COLOR_INDIGO, COLOR_VIOLET, COLOR_PINK)
 	var/hunt_chance = 1 //percentage chance the mob will run to a random nearby tile
 
-/mob/living/simple_animal/hostile/giant_spider/can_do_maneuver(var/decl/maneuver/maneuver, var/silent = FALSE)
+/mob/living/simple_animal/player/hostile/giant_spider/can_do_maneuver(var/decl/maneuver/maneuver, var/silent = FALSE)
 	. = ..() && can_act()
 
 //guards - less venomous, tanky, slower, prioritises protecting nurses
-/mob/living/simple_animal/hostile/giant_spider/guard
+/mob/living/simple_animal/player/hostile/giant_spider/guard
 	desc = "A monstrously huge brown spider with shimmering eyes."
 	icon_state = "brown"
 	icon_living = "brown"
@@ -77,7 +77,7 @@
 	var/mob/living/simple_animal/hostile/giant_spider/nurse/paired_nurse
 
 //nursemaids - these create webs and eggs - the weakest and least threatening
-/mob/living/simple_animal/hostile/giant_spider/nurse
+/mob/living/simple_animal/player/hostile/giant_spider/nurse
 	desc = "A monstrously huge beige spider with shimmering eyes."
 	icon_state = "beige"
 	icon_living = "beige"
@@ -104,7 +104,7 @@
 									 /obj/structure/closet)
 
 //hunters - the most damage, fast, average health and the only caste tenacious enough to break out of nets
-/mob/living/simple_animal/hostile/giant_spider/hunter
+/mob/living/simple_animal/player/hostile/giant_spider/hunter
 	desc = "A monstrously huge black spider with shimmering eyes."
 	icon_state = "black"
 	icon_living = "black"
@@ -128,7 +128,7 @@
 	var/leap_range = 5
 
 //spitters - fast, comparatively weak, very venomous; projectile attacks but will resort to melee once out of ammo
-/mob/living/simple_animal/hostile/giant_spider/spitter
+/mob/living/simple_animal/player/hostile/giant_spider/spitter
 	desc = "A monstrously huge iridescent spider with shimmering eyes."
 	icon_state = "purple"
 	icon_living = "purple"
@@ -150,13 +150,13 @@
 	var/venom_charge = 16
 
 //General spider procs
-/mob/living/simple_animal/hostile/giant_spider/Initialize(var/mapload, var/atom/parent)
+/*/mob/living/simple_animal/player/hostile/giant_spider/Initialize(var/mapload, var/atom/parent)
 	get_light_and_color(parent)
 	spider_randomify()
 	update_icon()
 	. = ..()
 
-/mob/living/simple_animal/hostile/giant_spider/proc/spider_randomify() //random math nonsense to get their damage, health and venomness values
+/mob/living/simple_animal/player/hostile/giant_spider/proc/spider_randomify() //random math nonsense to get their damage, health and venomness values
 	melee_damage_lower = rand(0.8 * initial(melee_damage_lower), initial(melee_damage_lower))
 	melee_damage_upper = rand(initial(melee_damage_upper), (1.2 * initial(melee_damage_upper)))
 	maxHealth = rand(initial(maxHealth), (1.4 * initial(maxHealth)))
@@ -169,7 +169,7 @@
 		I.appearance_flags = RESET_COLOR
 		overlays += I
 
-/mob/living/simple_animal/hostile/giant_spider/on_update_icon()
+/mob/living/simple_animal/player/hostile/giant_spider/on_update_icon()
 	if(stat == DEAD)
 		overlays.Cut()
 		var/image/I = image(icon = icon, icon_state = "[icon_dead]_eyes")
@@ -177,7 +177,7 @@
 		I.appearance_flags = RESET_COLOR
 		overlays += I
 
-/mob/living/simple_animal/hostile/giant_spider/FindTarget()
+/mob/living/simple_animal/player/hostile/giant_spider/FindTarget()
 	. = ..()
 	if(.)
 		if(!ranged) //ranged mobs find target after each shot, dont need this spammed quite so much
@@ -186,7 +186,7 @@
 			if(prob(15))
 				custom_emote(1,"locks its eyes on [.]")
 
-/mob/living/simple_animal/hostile/giant_spider/AttackingTarget()
+/mob/living/simple_animal/player/hostile/giant_spider/AttackingTarget()
 	. = ..()
 	if(isliving(.))
 		if(health < maxHealth)
@@ -202,7 +202,7 @@
 			if(prob(poison_per_bite))
 				to_chat(L, "<span class='warning'>You feel a tiny prick.</span>")
 
-/mob/living/simple_animal/hostile/giant_spider/Life()
+/mob/living/simple_animal/player/hostile/giant_spider/Life()
 	. = ..()
 	if(!.)
 		return FALSE
@@ -218,13 +218,13 @@
 	walk(src,0)
 	kick_stance()
 
-/mob/living/simple_animal/hostile/giant_spider/proc/divorce()
-	return
+/mob/living/simple_animal/player/hostile/giant_spider/proc/divorce()
+	return*/
 
 /****************
 Guard caste procs
 ****************/
-/mob/living/simple_animal/hostile/giant_spider/guard/Life()
+/*/mob/living/simple_animal/player/hostile/giant_spider/guard/Life()
 	. = ..()
 	if(!.)
 		return FALSE
@@ -235,21 +235,21 @@ Guard caste procs
 	if(paired_nurse && !busy && stance == HOSTILE_STANCE_IDLE)
 		protect(paired_nurse)
 
-/mob/living/simple_animal/hostile/giant_spider/guard/death()
+/mob/living/simple_animal/player/hostile/giant_spider/guard/death()
 	. = ..()
 	divorce()
 
-/mob/living/simple_animal/hostile/giant_spider/guard/Destroy()
+/mob/living/simple_animal/player/hostile/giant_spider/guard/Destroy()
 	. = ..()
 	divorce()
 
-/mob/living/simple_animal/hostile/giant_spider/guard/divorce()
+/mob/living/simple_animal/player/hostile/giant_spider/guard/divorce()
 	if(paired_nurse)
 		if(paired_nurse.paired_guard)
 			paired_nurse.paired_guard = null
 		paired_nurse = null
 
-/mob/living/simple_animal/hostile/giant_spider/guard/proc/find_nurse()
+/mob/living/simple_animal/player/hostile/giant_spider/guard/proc/find_nurse()
 	for(var/mob/living/simple_animal/hostile/giant_spider/nurse/N in ListTargets(10))
 		if(N.stat || N.paired_guard)
 			continue
@@ -257,12 +257,12 @@ Guard caste procs
 		paired_nurse.paired_guard = src
 		return 1
 
-/mob/living/simple_animal/hostile/giant_spider/guard/proc/protect(mob/nurse)
+/mob/living/simple_animal/player/hostile/giant_spider/guard/proc/protect(mob/nurse)
 	stop_automated_movement = 1
 	walk_to(src, nurse, 2, move_to_delay)
 	addtimer(CALLBACK(src, .proc/disable_stop_automated_movement), 5 SECONDS)
 
-/mob/living/simple_animal/hostile/giant_spider/guard/proc/go_berserk()
+/mob/living/simple_animal/player/hostile/giant_spider/guard/proc/go_berserk()
 	audible_message("<span class='danger'>\The [src] chitters wildly!</span>")
 	melee_damage_lower +=5
 	melee_damage_upper +=5
@@ -270,24 +270,24 @@ Guard caste procs
 	break_stuff_probability = 45
 	addtimer(CALLBACK(src, .proc/calm_down), 3 MINUTES)
 
-/mob/living/simple_animal/hostile/giant_spider/guard/proc/calm_down()
+/mob/living/simple_animal/player/hostile/giant_spider/guard/proc/calm_down()
 	berserking = FALSE
 	visible_message("<span class='notice'>\The [src] calms down and surveys the area.</span>")
 	melee_damage_lower -= 5
 	melee_damage_upper -= 5
 	move_to_delay++
-	break_stuff_probability = 10
+	break_stuff_probability = 10*/
 
 /****************
 Nurse caste procs
 ****************/
-/mob/living/simple_animal/hostile/giant_spider/nurse/divorce()
+/*/mob/living/simple_animal/player/hostile/giant_spider/nurse/divorce()
 	if(paired_guard)
 		if(paired_guard.paired_nurse)
 			paired_guard.paired_nurse = null
 	paired_guard = null
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/death()
+/mob/living/simple_animal/player/hostile/giant_spider/nurse/death()
 	. = ..()
 	if(paired_guard)
 		paired_guard.vengance = rand(50,100)
@@ -296,11 +296,11 @@ Nurse caste procs
 			paired_guard.go_berserk()
 	divorce()
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/Destroy()
+/mob/living/simple_animal/player/hostile/giant_spider/nurse/Destroy()
 	. = ..()
 	divorce()
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/AttackingTarget()
+/mob/living/simple_animal/player/hostile/giant_spider/nurse/AttackingTarget()
 	. = ..()
 	if(ishuman(.))
 		var/mob/living/carbon/human/H = .
@@ -311,7 +311,7 @@ Nurse caste procs
 				O.implants += eggs
 				max_eggs--
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/proc/GiveUp(var/C)
+/mob/living/simple_animal/player/hostile/giant_spider/nurse/proc/GiveUp(var/C)
 	spawn(100)
 		if(busy == MOVING_TO_TARGET)
 			if(cocoon_target == C && get_dist(src,cocoon_target) > 1)
@@ -319,7 +319,7 @@ Nurse caste procs
 			busy = 0
 			stop_automated_movement = 0
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/Life()
+/mob/living/simple_animal/player/hostile/giant_spider/nurse/Life()
 	. = ..()
 	if(!.)
 		return FALSE
@@ -421,20 +421,20 @@ Nurse caste procs
 
 	else
 		busy = 0
-		stop_automated_movement = 0
+		stop_automated_movement = 0*/
 
 /*****************
 Hunter caste procs
 *****************/
-/mob/living/simple_animal/hostile/giant_spider/hunter/MoveToTarget()
+/*/mob/living/simple_animal/player/hostile/giant_spider/hunter/MoveToTarget()
 	if(!can_act() || perform_maneuver(/decl/maneuver/leap/spider, target_mob))
 		return
 	..()
 
-/mob/living/simple_animal/hostile/giant_spider/hunter/get_jump_distance()
+/mob/living/simple_animal/player/hostile/giant_spider/hunter/get_jump_distance()
 	return leap_range
 
-/mob/living/simple_animal/hostile/giant_spider/hunter/perform_maneuver(var/maneuver, var/atom/target)
+/mob/living/simple_animal/player/hostile/giant_spider/hunter/perform_maneuver(var/maneuver, var/atom/target)
 	if(!isliving(target) || get_dist(src, target) <= 3)
 		return FALSE
 	walk(src,0)
@@ -446,19 +446,19 @@ Hunter caste procs
 	if(!isnull(first_stop_automation))
 		stop_automation = first_stop_automation
 
-/mob/living/simple_animal/hostile/giant_spider/hunter/throw_impact(atom/hit_atom)
+/mob/living/simple_animal/player/hostile/giant_spider/hunter/throw_impact(atom/hit_atom)
 	if(isliving(hit_atom))
 		var/mob/living/target = hit_atom
 		stop_automation = FALSE
 		visible_message(SPAN_DANGER("\The [src] slams into \the [target], knocking them over!"))
 		target.Weaken(1)
 		MoveToTarget()
-	. = ..()
+	. = ..()*/
 
 /******************
 Spitter caste procs
 ******************/
-/mob/living/simple_animal/hostile/giant_spider/spitter/Life()
+/*/mob/living/simple_animal/player/hostile/giant_spider/spitter/Life()
 	. = ..()
 	if(!.)
 		return FALSE
@@ -469,10 +469,22 @@ Spitter caste procs
 			if(venom_charge >= 8)
 				ranged = TRUE
 
-/mob/living/simple_animal/hostile/giant_spider/spitter/Shoot()
+/mob/living/simple_animal/player/hostile/giant_spider/spitter/Shoot()
 	..()
-	venom_charge--
+	venom_charge--*/
 
+/mob/living/simple_animal/player/hostile/giant_spider/verb/evolve()
+	set name = "Evolve"
+	set desc = "Press to evolve to the next stage"
+	set tab = "Abilities"
+
+	var/evolve_to = input("В кого вы хотите эволюционировать?", "Evolve", "Evolve!") as null|text in list("Guard","Nurse","Spitter", "Hunter")
+	if(!evolve_to)
+		return
+	Evolve_to(evolve_to)
+
+/mob/living/simple_animal/player/hostile/giant_spider/proc/Evolve_to(var/evolve)
+	return
 #undef SPINNING_WEB
 #undef LAYING_EGGS
 #undef MOVING_TO_TARGET
