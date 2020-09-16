@@ -24,6 +24,10 @@
 	var/oxygen_reserve = 6
 	var/fake_brain = 0
 
+/obj/item/organ/internal/brain/spider
+	name = "Spine Nerve"
+	w_class = ITEM_SIZE_NORMAL
+
 /obj/item/organ/internal/brain/robotize()
 	replace_self_with(/obj/item/organ/internal/posibrain)
 

@@ -1,4 +1,3 @@
-//Stand-in until this is made more lore-friendly.
 /datum/species/spider
 	name = SPECIES_SPIDER
 	name_plural = "Spiders"
@@ -64,15 +63,14 @@
 	breath_type = null
 	poison_types = null
 
-	vision_flags = SEE_SELF|SEE_MOBS
+	vision_flags = SEE_SELF
 
 	has_organ = list(
-		BP_EYES =     /obj/item/organ/internal/eyes/xeno,
+		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
+		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_BRAIN =    /obj/item/organ/internal/brain/xeno,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
-		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode,
+		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel
 		)
 
 	move_intents = list(/decl/move_intent/walk, /decl/move_intent/run)
@@ -80,17 +78,17 @@
 	var/accelerated_healing_threshold = 10 SECONDS
 
 	has_limbs = list(
-		"chest" =  list("path" = /obj/item/organ/external/chest/unbreakable/xeno),
-		"groin" =  list("path" = /obj/item/organ/external/groin/unbreakable/xeno),
-		"head" =   list("path" = /obj/item/organ/external/head/unbreakable/xeno),
-		"l_arm" =  list("path" = /obj/item/organ/external/arm/unbreakable/xeno),
-		"r_arm" =  list("path" = /obj/item/organ/external/arm/right/unbreakable/xeno),
-		"l_leg" =  list("path" = /obj/item/organ/external/leg/unbreakable/xeno),
-		"r_leg" =  list("path" = /obj/item/organ/external/leg/right/unbreakable/xeno),
-		"l_hand" = list("path" = /obj/item/organ/external/hand/unbreakable/xeno),
-		"r_hand" = list("path" = /obj/item/organ/external/hand/right/unbreakable/xeno),
-		"l_foot" = list("path" = /obj/item/organ/external/foot/unbreakable/xeno),
-		"r_foot" = list("path" = /obj/item/organ/external/foot/right/unbreakable/xeno)
+		"chest" =  list("path" = /obj/item/organ/external/chest/unbreakable/spider),
+		"groin" =  list("path" = /obj/item/organ/external/groin/unbreakable/spider),
+		"head" =   list("path" = /obj/item/organ/external/head/unbreakable/spider),
+		"l_arm" =  list("path" = /obj/item/organ/external/arm/unbreakable/spider),
+		"r_arm" =  list("path" = /obj/item/organ/external/arm/right/unbreakable/spider),
+		"l_leg" =  list("path" = /obj/item/organ/external/leg/unbreakable/spider),
+		"r_leg" =  list("path" = /obj/item/organ/external/leg/right/unbreakable/spider),
+		"l_hand" = list("path" = /obj/item/organ/external/hand/unbreakable/spider),
+		"r_hand" = list("path" = /obj/item/organ/external/hand/right/unbreakable/spider),
+		"l_foot" = list("path" = /obj/item/organ/external/foot/unbreakable/spider),
+		"r_foot" = list("path" = /obj/item/organ/external/foot/right/unbreakable/spider)
 		)
 
 	bump_flag = ALIEN
@@ -108,6 +106,40 @@
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
 
+/datum/species/spider/drone
+	name = "Spider Drone"
+
+	brute_mod =     1.5
+	burn_mod =      1.5
+	weeds_plasma_rate = 15
+
+	slowdown = -0.8
+
+	rarity_value = 2
+	base_color = "#000d1a"
+
+	has_organ = list(
+		BP_EYES =     /obj/item/organ/internal/eyes/spider,
+		BP_HEART =    /obj/item/organ/internal/heart/open,
+		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
+		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
+		)
+
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/pry_open,
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/transfer_plasma,
+		/mob/living/carbon/human/proc/resin
+		)
+
+	force_cultural_info = list(
+		TAG_CULTURE =   CULTURE_SPIDER_D,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION =   FACTION_SPIDER,
+		TAG_RELIGION =  RELIGION_OTHER
+	)
+
 /datum/species/spider/can_shred(var/mob/living/carbon/human/H, var/ignore_intent, var/ignore_antag)
 	return 1
 
@@ -120,32 +152,27 @@
 
 	slowdown = -0.1
 
-	rarity_value = 5
+	rarity_value = 4
 	base_color = "#000d1a"
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_drone.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_drone.dmi'
 
 	has_organ = list(
-		BP_EYES =     /obj/item/organ/internal/eyes/xeno,
+		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
-		BP_BRAIN =    /obj/item/organ/internal/brain/xeno,
+		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
-		BP_ACID =     /obj/item/organ/internal/xeno/acidgland,
-		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode,
-		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner,
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/plant,
-		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/evolve_drone,
-		/mob/living/carbon/human/proc/resin,
-		/mob/living/carbon/human/proc/corrosive_acid,
-		/mob/living/carbon/proc/devour,
-		/mob/living/carbon/human/proc/create_hugger
+		/mob/living/carbon/human/proc/psychic_whisper,
 		)
+
+	force_cultural_info = list(
+		TAG_CULTURE =   CULTURE_SPIDER_W,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION =   FACTION_SPIDER,
+		TAG_RELIGION =  RELIGION_OTHER
+	)
 /*
 /datum/species/xenos/drone/handle_post_spawn(var/mob/living/carbon/human/H)
 
@@ -160,9 +187,6 @@
 	total_health = 150
 	base_color = "#3d0500"
 
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_hunter.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_hunter.dmi'
-
 //	brute_mod =     0.8
 //	burn_mod =      0.8
 //	weeds_plasma_rate = 10
@@ -172,31 +196,22 @@
 	natural_armour_values = list(melee = 35, bullet = 28, laser = 25, energy = 0, bomb = 0, bio = 100, rad = 100)
 
 	has_organ = list(
-		BP_EYES =     /obj/item/organ/internal/eyes/xeno,
+		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
-		BP_BRAIN =    /obj/item/organ/internal/brain/xeno,
+		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel/hunter,
-		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode,
-		BP_MIMIC = 	  /obj/item/organ/internal/xeno/mimicsac,
-		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner
+		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
+		BP_ACID =     /obj/item/organ/internal/xeno/acidgland
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/plant,
-		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/leap,
-		/mob/living/carbon/human/proc/evolve_hunter,
-		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/mimic,
-		/mob/living/carbon/proc/devour
+			/mob/living/carbon/human/proc/psychic_whisper
 		)
 
 	force_cultural_info = list(
-		TAG_CULTURE =   CULTURE_XENOPHAGE_H,
+		TAG_CULTURE =   CULTURE_SPIDER_H,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION =   FACTION_XENOPHAGE,
+		TAG_FACTION =   FACTION_SPIDER,
 		TAG_RELIGION =  RELIGION_OTHER
 	)
 
@@ -205,40 +220,32 @@
 	name = "Spider Nurse"
 	base_color = "#00284d"
 	total_health = 220
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_sentinel.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_sentinel.dmi'
-
 	weeds_plasma_rate = 15
 
+
+	rarity_value = 8
 	has_organ = list(
-		BP_EYES =     /obj/item/organ/internal/eyes/xeno,
+		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
-		BP_BRAIN =    /obj/item/organ/internal/brain/xeno,
+		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel/sentinel,
-		BP_ACID =     /obj/item/organ/internal/xeno/acidgland/moderate,
-		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode,
-		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner,
+		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
+		BP_ACID =     /obj/item/organ/internal/xeno/acidgland
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/plant,
-		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/evolve_sentinel,
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/lay_egg,
 		/mob/living/carbon/human/proc/transfer_plasma,
-		/mob/living/carbon/human/proc/moderate_corrosive_acid,
-		/mob/living/carbon/human/proc/neurotoxin,
-		/mob/living/carbon/proc/devour,
-		/mob/living/carbon/human/proc/create_hugger
+		/mob/living/carbon/human/proc/resin
 		)
 
 	genders = list(FEMALE)
 
 	force_cultural_info = list(
-		TAG_CULTURE =   CULTURE_XENOPHAGE_S,
+		TAG_CULTURE =   CULTURE_SPIDER_N,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION =   FACTION_XENOPHAGE,
+		TAG_FACTION =   FACTION_SPIDER,
 		TAG_RELIGION =  RELIGION_OTHER
 	)
 
@@ -246,7 +253,7 @@
 
 	name = "Spider Guard"
 	total_health = 300
-	rarity_value = 10
+	rarity_value = 6
 
 //	brute_mod =     0.6
 //	burn_mod =      0.6
@@ -254,38 +261,26 @@
 	weeds_plasma_rate = 20
 	slowdown = 0.5
 
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_queen.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_queen.dmi'
-
 	has_organ = list(
-		BP_EYES =     /obj/item/organ/internal/eyes/xeno,
+		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
-		BP_BRAIN =    /obj/item/organ/internal/brain/xeno,
+		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_EGG =      /obj/item/organ/internal/xeno/eggsac,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel/queen,
-		BP_ACID =     /obj/item/organ/internal/xeno/acidgland/moderate,
-		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode,
-		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner
+		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
+		BP_ACID =     /obj/item/organ/internal/xeno/acidglan
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/lay_egg,
-		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/transfer_plasma,
-		/mob/living/carbon/human/proc/moderate_corrosive_acid,
 		/mob/living/carbon/human/proc/neurotoxin,
-		/mob/living/carbon/human/proc/resin,
-		/mob/living/carbon/human/proc/xeno_infest,
-		/mob/living/carbon/proc/devour,
-		/mob/living/carbon/human/proc/create_hugger
+		/mob/living/carbon/human/proc/resin
 		)
 
 	force_cultural_info = list(
-		TAG_CULTURE =   CULTURE_XENOPHAGE_Q,
+		TAG_CULTURE =   CULTURE_SPIDER_G,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
-		TAG_FACTION =   FACTION_XENOPHAGE,
+		TAG_FACTION =   FACTION_SPIDER,
 		TAG_RELIGION =  RELIGION_OTHER
 	)

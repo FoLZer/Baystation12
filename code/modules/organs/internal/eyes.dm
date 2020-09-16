@@ -117,6 +117,9 @@
 	. = ..()
 	robotize()
 
+/obj/item/organ/internal/eyes/spider
+	name = "Spider eyes"
+
 /obj/item/organ/internal/eyes/robotize()
 	..()
 	name = "optical sensor"
