@@ -135,7 +135,7 @@
 			spider_max_eggs--
 			spider_fed--
 
-/mob/living/carbon/human/proc/create_cacoon(O as mob in oview(1))
+/mob/living/carbon/human/proc/spider_create_cocoon(mob/O as mob in oview(1))
 	set name = "Create cacoon"
 	set desc = "Create cacoon"
 	set category = "Abilities"
@@ -147,19 +147,17 @@
 		to_chat(src, "<span class='alium'>[O] is moving too fast.</span>")
 		return
 	src.visible_message("<span class='notice'>\The [src] begins to secrete a sticky substance around \the [O].</span>")
-	stop_automated_movement = 1
-	walk(src,0)
 	if(!do_mob(src,src,50))
 		return
 	if(O in oview(1) && istype(O.loc, /turf) && get_dist(src,O) <= 1)
-		var/obj/effect/spider/cocoon/C = new(O.loc)
+		var/obj/effect/spider/cocoon/C = new /obj/effect/spider/cocoon(O.loc)
 		var/large_cocoon = 0
 		C.pixel_x = O.pixel_x
 		C.pixel_y = O.pixel_y
 		for(var/mob/living/M in C.loc)
 			large_cocoon = 1
-			fed++
-			max_eggs++
+			spider_fed++
+			spider_max_eggs++
 			src.visible_message("<span class='warning'>\The [src] sticks a proboscis into \the [O] and sucks a viscous substance out.</span>")
 			M.forceMove(C)
 			C.pixel_x = M.pixel_x
@@ -192,14 +190,12 @@
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/spider_create_web
+		/mob/living/carbon/human/proc/spider_create_web,
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/transfer_plasma,
+		/mob/living/carbon/human/proc/psychic_whisper
 		)
 
 	force_cultural_info = list(
@@ -296,7 +292,8 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/lay_egg,
+		/mob/living/carbon/human/proc/spider_lay_egg,
+		/mob/living/carbon/human/proc/spider_create_cocoon
 		)
 
 	genders = list(FEMALE)
@@ -326,7 +323,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/neurotoxin,
+		/mob/living/carbon/human/proc/spider_neurotoxin
 		)
 
 	force_cultural_info = list(
@@ -353,7 +350,8 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/neurotoxin,
+		/mob/living/carbon/human/proc/spider_neurotoxin,
+		/mob/living/carbon/human/proc/spider_spit_acid
 		)
 
 	force_cultural_info = list(
@@ -362,3 +360,39 @@
 		TAG_FACTION =   FACTION_SPIDER,
 		TAG_RELIGION =  RELIGION_OTHER
 	)
+
+/mob/living/carbon/human/proc/spider_neurotoxin(mob/target as mob in oview())
+	set name = "Spit Neurotoxin (50)"
+	set desc = "Spits neurotoxin at someone, paralyzing them for a short time if they are not wearing protective gear."
+	set category = "Abilities"
+
+
+	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+		to_chat(src, "You cannot spit neurotoxin in your current state.")
+		return
+
+	if(!(isxenomorph(target) || isalien(target)))
+		visible_message("<span class='warning'>[src] spits neurotoxin at [target]!</span>", "<span class='alium'>You spit neurotoxin at [target].</span>")
+		if(!check_alien_ability(50,0,BP_ACID) && !is_ventcrawling)
+			return
+
+		var/obj/item/projectile/energy/neurotoxin/A = new /obj/item/projectile/energy/neurotoxin(usr.loc)
+		A.launch(target,get_organ_target())
+
+/mob/living/carbon/human/proc/spider_spit_acid(mob/target as mob in oview())
+	set name = "Spit Acid (50)"
+	set desc = "Spits some acid at someone, dealing some damage to them if they are not wearing protective gear."
+	set category = "Abilities"
+
+
+	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+		to_chat(src, "You cannot spit acid in your current state.")
+		return
+
+	if(!(isxenomorph(target) || isalien(target)))
+		visible_message("<span class='warning'>[src] spits some acid at [target]!</span>", "<span class='alium'>You spit acid at [target].</span>")
+		if(!check_alien_ability(50,0,BP_ACID) && !is_ventcrawling)
+			return
+
+		var/obj/item/projectile/energy/alien_acid/A = new /obj/item/projectile/energy/alien_acid(usr.loc)
+		A.launch(target,get_organ_target())
