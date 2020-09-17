@@ -7,7 +7,7 @@
 	rarity_value = 3
 	health_hud_intensity = 1
 
-	slowdown = 0
+	slowdown = -0.4
 	total_health = 100
 
 	natural_armour_values = list(melee = 10, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 10, rad = 100)
@@ -70,12 +70,9 @@
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel
 		)
 
 	move_intents = list(/decl/move_intent/walk, /decl/move_intent/run)
-	var/list/started_healing = list()
-	var/accelerated_healing_threshold = 10 SECONDS
 
 	has_limbs = list(
 		"chest" =  list("path" = /obj/item/organ/external/chest/unbreakable/spider),
@@ -106,12 +103,84 @@
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
 
+/mob/living/carbon/human/proc/spider_create_web()
+	set name = "Create web"
+	set desc = "Create web where you're standing"
+	set category = "Abilities"
+
+	if(incapacitated())
+		return
+
+	src.visible_message("<span class='notice'>\The [src] begins to secrete a sticky substance.</span>")
+
+	if(!do_mob(src,src,40))
+		return
+
+	new /obj/effect/spider/stickyweb(src.loc)
+
+/mob/living/carbon/human/proc/spider_lay_egg()
+	set name = "Lay eggs"
+	set desc = "Lay eggs"
+	set category = "Abilities"
+
+	var/obj/effect/spider/eggcluster/E = locate() in get_turf(src)
+	if(!E && spider_fed > 0 && spider_max_eggs)
+		src.visible_message("<span class='notice'>\The [src] begins to lay a cluster of eggs.</span>")
+		if(!do_mob(src,src,50))
+			return
+
+		E = locate() in get_turf(src)
+		if(!E)
+			new /obj/effect/spider/eggcluster(loc, src)
+			spider_max_eggs--
+			spider_fed--
+
+/mob/living/carbon/human/proc/create_cacoon(O as mob in oview(1))
+	set name = "Create cacoon"
+	set desc = "Create cacoon"
+	set category = "Abilities"
+
+	if(!(O in oview(1)))
+		to_chat(src, "<span class='alium'>[O] is too far away.</span>")
+		return
+	if(!O.stat)
+		to_chat(src, "<span class='alium'>[O] is moving too fast.</span>")
+		return
+	src.visible_message("<span class='notice'>\The [src] begins to secrete a sticky substance around \the [O].</span>")
+	stop_automated_movement = 1
+	walk(src,0)
+	if(!do_mob(src,src,50))
+		return
+	if(O in oview(1) && istype(O.loc, /turf) && get_dist(src,O) <= 1)
+		var/obj/effect/spider/cocoon/C = new(O.loc)
+		var/large_cocoon = 0
+		C.pixel_x = O.pixel_x
+		C.pixel_y = O.pixel_y
+		for(var/mob/living/M in C.loc)
+			large_cocoon = 1
+			fed++
+			max_eggs++
+			src.visible_message("<span class='warning'>\The [src] sticks a proboscis into \the [O] and sucks a viscous substance out.</span>")
+			M.forceMove(C)
+			C.pixel_x = M.pixel_x
+			C.pixel_y = M.pixel_y
+			break
+		for(var/obj/item/I in C.loc)
+			I.forceMove(C)
+		for(var/obj/structure/S in C.loc)
+			if(!S.anchored)
+				S.forceMove(C)
+		for(var/obj/machinery/M in C.loc)
+			if(!M.anchored)
+				M.forceMove(C)
+		if(large_cocoon)
+			C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
+
 /datum/species/spider/drone
 	name = "Spider Drone"
 
 	brute_mod =     1.5
 	burn_mod =      1.5
-	weeds_plasma_rate = 15
 
 	slowdown = -0.8
 
@@ -123,14 +192,14 @@
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
+		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel
 		)
 
 	inherent_verbs = list(
+		/mob/living/carbon/human/proc/spider_create_web
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/transfer_plasma,
-		/mob/living/carbon/human/proc/resin
 		)
 
 	force_cultural_info = list(
@@ -146,11 +215,10 @@
 /datum/species/spider/warrior
 	name = "Spider Warrior"
 
-//	brute_mod =     0.6
-//	burn_mod =      0.6
-	weeds_plasma_rate = 15
+	brute_mod =     0.6
+	burn_mod =      0.6
 
-	slowdown = -0.1
+	slowdown = 0.2
 
 	rarity_value = 4
 	base_color = "#000d1a"
@@ -159,12 +227,12 @@
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/psychic_whisper
 		)
 
 	force_cultural_info = list(
@@ -187,11 +255,10 @@
 	total_health = 150
 	base_color = "#3d0500"
 
-//	brute_mod =     0.8
-//	burn_mod =      0.8
-//	weeds_plasma_rate = 10
+	brute_mod =     0.8
+	burn_mod =      0.8
 
-	slowdown = -0.75
+	slowdown = -0.5
 
 	natural_armour_values = list(melee = 35, bullet = 28, laser = 25, energy = 0, bomb = 0, bio = 100, rad = 100)
 
@@ -200,8 +267,6 @@
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
-		BP_ACID =     /obj/item/organ/internal/xeno/acidgland
 		)
 
 	inherent_verbs = list(
@@ -215,12 +280,10 @@
 		TAG_RELIGION =  RELIGION_OTHER
 	)
 
-
 /datum/species/spider/nurse
 	name = "Spider Nurse"
 	base_color = "#00284d"
 	total_health = 220
-	weeds_plasma_rate = 15
 
 
 	rarity_value = 8
@@ -229,15 +292,11 @@
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
-		BP_ACID =     /obj/item/organ/internal/xeno/acidgland
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/lay_egg,
-		/mob/living/carbon/human/proc/transfer_plasma,
-		/mob/living/carbon/human/proc/resin
 		)
 
 	genders = list(FEMALE)
@@ -255,31 +314,50 @@
 	total_health = 300
 	rarity_value = 6
 
-//	brute_mod =     0.6
-//	burn_mod =      0.6
-	weeds_heal_rate = 2.5 //thicc
-	weeds_plasma_rate = 20
-	slowdown = 0.5
+	slowdown = 0.2
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel,
-		BP_ACID =     /obj/item/organ/internal/xeno/acidglan
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/transfer_plasma,
 		/mob/living/carbon/human/proc/neurotoxin,
-		/mob/living/carbon/human/proc/resin
 		)
 
 	force_cultural_info = list(
 		TAG_CULTURE =   CULTURE_SPIDER_G,
+		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
+		TAG_FACTION =   FACTION_SPIDER,
+		TAG_RELIGION =  RELIGION_OTHER
+	)
+
+/datum/species/spider/spitter
+	name = "Spider Guard"
+	total_health = 300
+	rarity_value = 6
+
+	slowdown = 0.2
+
+	has_organ = list(
+		BP_EYES =     /obj/item/organ/internal/eyes/spider,
+		BP_HEART =    /obj/item/organ/internal/heart/open,
+		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
+		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		)
+
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/pry_open,
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/neurotoxin,
+		)
+
+	force_cultural_info = list(
+		TAG_CULTURE =   CULTURE_SPIDER_S,
 		TAG_HOMEWORLD = HOME_SYSTEM_DEEP_SPACE,
 		TAG_FACTION =   FACTION_SPIDER,
 		TAG_RELIGION =  RELIGION_OTHER

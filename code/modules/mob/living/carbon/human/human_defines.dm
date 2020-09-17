@@ -112,3 +112,6 @@
 	var/list/descriptors
 
 	var/last_smelt = 0
+
+	var/spider_fed = 0
+	var/spider_max_eggs = 8
