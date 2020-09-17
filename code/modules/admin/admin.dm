@@ -207,10 +207,11 @@ var/global/floorIsLava = 0
 				body += "<A href='?src=\ref[src];makezombie=\ref[M]'>Make Zombie</A> | "
 
 			var/mob/living/carbon/human/H = M
-			if(istype(H) && H.species.name != "")
-				body += "<B>Spiderified</B> "
-			else
-				body += "<A href='?src=\ref[src];makezombie=\ref[M]'>Make Spiderling</A>"
+			if(istype(H))
+				if(H.species.name != "")
+					body += "<B>Spiderified</B> "
+				else
+					body += "<A href='?src=\ref[src];makezombie=\ref[M]'>Make Spiderling</A>"
 
 			// DNA2 - Admin Hax
 			if(M.dna && iscarbon(M))

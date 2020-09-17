@@ -101,6 +101,10 @@
 		TAG_RELIGION =  RELIGION_OTHER
 	)
 
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/spider_evolve
+	)
+
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
 
 /mob/living/carbon/human/proc/spider_create_web()
@@ -174,6 +178,36 @@
 		if(large_cocoon)
 			C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
 
+/mob/living/carbon/human/proc/spider_evolve()
+	set name = "Evolve"
+	set desc = "Evolve"
+	set category = "Abilities"
+
+	if(incapitated() || stat)
+		return
+	if(species.name == SPECIES_SPIDER)
+		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Drone","Spider Warrior")
+		if(!choice)
+			return
+		if(incapitated() || stat)
+			return
+		src.set_species(choice)
+	else if(species.name == "Spider Drone")
+		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Nurse")
+		if(!choice)
+			return
+		if(incapitated() || stat)
+			return
+		src.set_species("Spider Nurse")
+	else if(species.name == "Spider Warrior")
+		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Hunter","Spider Guard", "Spider Spitter")
+		if(!choice)
+			return
+		if(incapitated() || stat)
+			return
+		src.set_species(choice)
+
+
 /datum/species/spider/drone
 	name = "Spider Drone"
 
@@ -189,13 +223,14 @@
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/spider_create_web,
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/psychic_whisper
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/spider_evolve
 		)
 
 	force_cultural_info = list(
@@ -228,7 +263,8 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/psychic_whisper
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/spider_evolve
 		)
 
 	force_cultural_info = list(
@@ -262,7 +298,7 @@
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
@@ -287,7 +323,7 @@
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
@@ -317,7 +353,7 @@
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
@@ -334,17 +370,17 @@
 	)
 
 /datum/species/spider/spitter
-	name = "Spider Guard"
-	total_health = 300
-	rarity_value = 6
+	name = "Spider Spitter"
+	total_health = 100
+	rarity_value = 7
 
-	slowdown = 0.2
+	slowdown = -0.3
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
