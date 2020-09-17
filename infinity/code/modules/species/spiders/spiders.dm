@@ -15,9 +15,32 @@
 
 	gear = list()
 
+/datum/species/spider/update_skin(var/mob/living/carbon/human/H)
+	if(H.stat == DEAD)
+		H.overlays.Cut()
+		var/image/I = image(icon = H.icon, icon_state = "[icon_dead]_eyes")
+		I.color = eye_colour
+		I.appearance_flags = RESET_COLOR
+		H.overlays += I
+
+/datum/species/spider/handle_post_spawn(var/mob/living/carbon/human/H)
+	eye_colour = pick(list(COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_LIME, COLOR_DEEP_SKY_BLUE, COLOR_INDIGO, COLOR_VIOLET, COLOR_PINK))
+	if(eye_colour)
+		var/image/I = image(icon = H.icon, icon_state = "[icon_state]_eyes", layer = EYE_GLOW_LAYER)
+		I.color = eye_colour
+		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		I.appearance_flags = RESET_COLOR
+		H.overlays += I
+
+
 /datum/species/spider
 	name = SPECIES_SPIDER
 	name_plural = "Spiders"
+
+	var/eye_colour = COLOR_RED
+	var/icon_state = "green"
+	var/icon_living = "green"
+	var/icon_dead = "green_dead"
 
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
 	hud_type = /datum/hud_data/spider
@@ -144,6 +167,8 @@
 	set desc = "Lay eggs"
 	set category = "Abilities"
 
+	if(incapacitated())
+		return
 	var/obj/effect/spider/eggcluster/E = locate() in get_turf(src)
 	if(!E && spider_fed > 0 && spider_max_eggs)
 		src.visible_message("<span class='notice'>\The [src] begins to lay a cluster of eggs.</span>")
@@ -200,27 +225,27 @@
 	set desc = "Evolve"
 	set category = "Abilities"
 
-	if(incapitated() || stat)
+	if(incapacitated() || stat)
 		return
 	if(species.name == SPECIES_SPIDER)
 		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Drone","Spider Warrior")
 		if(!choice)
 			return
-		if(incapitated() || stat)
+		if(incapacitated() || stat)
 			return
 		src.set_species(choice)
 	else if(species.name == "Spider Drone")
 		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Nurse")
 		if(!choice)
 			return
-		if(incapitated() || stat)
+		if(incapacitated() || stat)
 			return
 		src.set_species("Spider Nurse")
 	else if(species.name == "Spider Warrior")
 		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Hunter","Spider Guard", "Spider Spitter")
 		if(!choice)
 			return
-		if(incapitated() || stat)
+		if(incapacitated() || stat)
 			return
 		src.set_species(choice)
 
@@ -235,6 +260,10 @@
 
 	rarity_value = 2
 	base_color = "#000d1a"
+
+	icon_state = "green"
+	icon_living = "green"
+	icon_dead = "green_dead"
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
@@ -270,6 +299,10 @@
 
 	rarity_value = 4
 	base_color = "#000d1a"
+
+	icon_state = "brown"
+	icon_living = "brown"
+	icon_dead = "brown_dead"
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
@@ -309,6 +342,10 @@
 
 	slowdown = -0.5
 
+	icon_state = "black"
+	icon_living = "black"
+	icon_dead = "black_dead"
+
 	natural_armour_values = list(melee = 35, bullet = 28, laser = 25, energy = 0, bomb = 0, bio = 100, rad = 100)
 
 	has_organ = list(
@@ -334,6 +371,10 @@
 	base_color = "#00284d"
 	total_health = 220
 
+
+	icon_state = "beige"
+	icon_living = "beige"
+	icon_dead = "beige_dead"
 
 	rarity_value = 8
 	has_organ = list(
@@ -366,6 +407,10 @@
 
 	slowdown = 0.2
 
+	icon_state = "brown"
+	icon_living = "brown"
+	icon_dead = "brown_dead"
+
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
@@ -392,6 +437,10 @@
 	rarity_value = 7
 
 	slowdown = -0.3
+
+	icon_state = "purple"
+	icon_living = "purple"
+	icon_dead = "purple_dead"
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
