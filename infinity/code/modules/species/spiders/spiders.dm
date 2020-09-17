@@ -1,9 +1,26 @@
+/datum/hud_data/spider
+
+	icon = 'infinity/icons/mob/screen1_alien.dmi'
+	has_a_intent =  1
+	has_m_intent =  1
+	has_warnings =  1
+	has_hands =     1
+	has_drop =      0
+	has_throw =     0
+	has_resist =    1
+	has_pressure =  1
+	has_nutrition = 0
+	has_bodytemp =  1
+	has_internals = 0
+
+	gear = list()
+
 /datum/species/spider
 	name = SPECIES_SPIDER
 	name_plural = "Spiders"
 
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
-	hud_type = /datum/hud_data/alien
+	hud_type = /datum/hud_data/spider
 	rarity_value = 3
 	health_hud_intensity = 1
 
