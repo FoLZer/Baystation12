@@ -18,7 +18,7 @@
 	var/key1 = 0
 	var/key2 = 0
 	var/key3 = 0
-	var/numkeys = 0
+	var/numkeys = 4
 	var/time
 	var/on = 0
 
@@ -28,7 +28,7 @@
 	..()
 
 /obj/item/clothing/mask/reversebeartrap/attack_self(mob/user)
-	if(!numkeys)
+	if(numkeys==4)
 		var/choice = input("Input number of keys","Keys") as null|anything in list("1","2","3")
 		if(!choice)
 			return
@@ -41,6 +41,8 @@
 				numkeys = 3
 
 /obj/item/clothing/mask/reversebeartrap/attackby(obj/item/weapon/W, mob/user)
+	if(numkeys==4)
+		return
 	if(istype(W,/obj/item/weapon/trapkey))
 		if(istype(loc,/mob/living/carbon/human))
 			var/obj/item/weapon/trapkey/K = W
@@ -70,6 +72,7 @@
 					key2 = K.uid
 				else if(!key3)
 					key3 = K.uid
+				to_chat(user, "You set the key on [src]")
 				numkeys--
 
 	return
@@ -82,25 +85,27 @@
 
 /obj/item/clothing/mask/reversebeartrap/Process()
 	if(on)
-		if(time && world.time-time >= 5 MINUTES)
-			if(istype(loc, /mob/living/carbon/human) && !QDELETED(src))
-				var/mob/living/carbon/human/H = loc
-				var/obj/item/organ/external/head/O = H.internal_organs_by_name[BP_HEAD]
+		if(world.time > time)
+			if(istype(src.loc, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = src.loc
+				var/obj/item/organ/external/head/O = H.organs_by_name[BP_HEAD]
 				O.attempt_dismemberment(10, 0, 0, 1, null, 0, 1)
 				H.visible_message("<span class='danger'>Капкан отрывает голову [H]!</src>")
 				qdel(src)
 
 /obj/item/clothing/mask/reversebeartrap/equipped(mob/user)
-	if(numkeys)
-		time = world.time
+	if(numkeys!=4)
+		time = world.time + 5 MINUTES
 		on = 1
+		START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/trapkey
 	name = "Trap Key"
 	desc = "For what is it?"
 	icon = 'icons/obj/items.dmi'
-	item_state = "beartrap1"
-	icon_state = "beartrap1"
+	icon_state = "keys"
+	w_class = ITEM_SIZE_TINY
+	item_flags = ITEM_FLAG_NO_BLUDGEON
 	var/uid = 0
 
 /obj/item/weapon/trapkey/New()
