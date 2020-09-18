@@ -77,6 +77,12 @@
 		/obj/item/device/destTagger,
 		)
 
+/obj/item/weapon/storage/box/syndie_kit/reversebeartrap
+	startswith = list(
+		/obj/item/clothing/mask/reversebeartrap,
+		/obj/item/weapon/trapkey = 3
+	)
+
 /obj/item/weapon/storage/box/syndie_kit/spy
 	startswith = list(
 		/obj/item/device/spy_bug = 6,

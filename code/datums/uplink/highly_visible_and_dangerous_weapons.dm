@@ -225,4 +225,4 @@
 	name = "Reverse Bear Trap"
 	desc = "DO NOT place this on head"
 	item_cost = 6
-	path = /obj/item/clothing/mask/reversebeartrap
+	path = /obj/item/weapon/storage/box/syndie_kit/reversebeartrap
