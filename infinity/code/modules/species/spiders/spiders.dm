@@ -1,9 +1,49 @@
+/datum/hud_data/spider
+
+	icon = 'infinity/icons/mob/screen1_alien.dmi'
+	has_a_intent =  1
+	has_m_intent =  1
+	has_warnings =  1
+	has_hands =     1
+	has_drop =      0
+	has_throw =     0
+	has_resist =    1
+	has_pressure =  1
+	has_nutrition = 0
+	has_bodytemp =  1
+	has_internals = 0
+
+	gear = list()
+
+/datum/species/spider/update_skin(var/mob/living/carbon/human/H)
+	if(H.stat == DEAD)
+		H.overlays.Cut()
+		var/image/I = image(icon = H.icon, icon_state = "[icon_dead]_eyes")
+		I.color = eye_colour
+		I.appearance_flags = RESET_COLOR
+		H.overlays += I
+
+/datum/species/spider/handle_post_spawn(var/mob/living/carbon/human/H)
+	eye_colour = pick(list(COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_LIME, COLOR_DEEP_SKY_BLUE, COLOR_INDIGO, COLOR_VIOLET, COLOR_PINK))
+	if(eye_colour)
+		var/image/I = image(icon = H.icon, icon_state = "[icon_state]_eyes", layer = EYE_GLOW_LAYER)
+		I.color = eye_colour
+		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		I.appearance_flags = RESET_COLOR
+		H.overlays += I
+
+
 /datum/species/spider
 	name = SPECIES_SPIDER
 	name_plural = "Spiders"
 
+	var/eye_colour = COLOR_RED
+	var/icon_state = "green"
+	var/icon_living = "green"
+	var/icon_dead = "green_dead"
+
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
-	hud_type = /datum/hud_data/alien
+	hud_type = /datum/hud_data/spider
 	rarity_value = 3
 	health_hud_intensity = 1
 
@@ -101,6 +141,10 @@
 		TAG_RELIGION =  RELIGION_OTHER
 	)
 
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/spider_evolve
+	)
+
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/claw
 
 /mob/living/carbon/human/proc/spider_create_web()
@@ -123,6 +167,8 @@
 	set desc = "Lay eggs"
 	set category = "Abilities"
 
+	if(incapacitated())
+		return
 	var/obj/effect/spider/eggcluster/E = locate() in get_turf(src)
 	if(!E && spider_fed > 0 && spider_max_eggs)
 		src.visible_message("<span class='notice'>\The [src] begins to lay a cluster of eggs.</span>")
@@ -135,7 +181,7 @@
 			spider_max_eggs--
 			spider_fed--
 
-/mob/living/carbon/human/proc/create_cacoon(O as mob in oview(1))
+/mob/living/carbon/human/proc/spider_create_cocoon(mob/O as mob in oview(1))
 	set name = "Create cacoon"
 	set desc = "Create cacoon"
 	set category = "Abilities"
@@ -147,19 +193,17 @@
 		to_chat(src, "<span class='alium'>[O] is moving too fast.</span>")
 		return
 	src.visible_message("<span class='notice'>\The [src] begins to secrete a sticky substance around \the [O].</span>")
-	stop_automated_movement = 1
-	walk(src,0)
 	if(!do_mob(src,src,50))
 		return
 	if(O in oview(1) && istype(O.loc, /turf) && get_dist(src,O) <= 1)
-		var/obj/effect/spider/cocoon/C = new(O.loc)
+		var/obj/effect/spider/cocoon/C = new /obj/effect/spider/cocoon(O.loc)
 		var/large_cocoon = 0
 		C.pixel_x = O.pixel_x
 		C.pixel_y = O.pixel_y
 		for(var/mob/living/M in C.loc)
 			large_cocoon = 1
-			fed++
-			max_eggs++
+			spider_fed++
+			spider_max_eggs++
 			src.visible_message("<span class='warning'>\The [src] sticks a proboscis into \the [O] and sucks a viscous substance out.</span>")
 			M.forceMove(C)
 			C.pixel_x = M.pixel_x
@@ -176,6 +220,36 @@
 		if(large_cocoon)
 			C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
 
+/mob/living/carbon/human/proc/spider_evolve()
+	set name = "Evolve"
+	set desc = "Evolve"
+	set category = "Abilities"
+
+	if(incapacitated() || stat)
+		return
+	if(species.name == SPECIES_SPIDER)
+		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Drone","Spider Warrior")
+		if(!choice)
+			return
+		if(incapacitated() || stat)
+			return
+		src.set_species(choice)
+	else if(species.name == "Spider Drone")
+		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Nurse")
+		if(!choice)
+			return
+		if(incapacitated() || stat)
+			return
+		src.set_species("Spider Nurse")
+	else if(species.name == "Spider Warrior")
+		var/choice = input("Choose to whom you want to evolve.","Evolving") as null|anything in list("Spider Hunter","Spider Guard", "Spider Spitter")
+		if(!choice)
+			return
+		if(incapacitated() || stat)
+			return
+		src.set_species(choice)
+
+
 /datum/species/spider/drone
 	name = "Spider Drone"
 
@@ -187,19 +261,22 @@
 	rarity_value = 2
 	base_color = "#000d1a"
 
+	icon_state = "green"
+	icon_living = "green"
+	icon_dead = "green_dead"
+
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
-		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/spider_create_web
+		/mob/living/carbon/human/proc/spider_create_web,
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/transfer_plasma,
+		/mob/living/carbon/human/proc/spider_evolve
 		)
 
 	force_cultural_info = list(
@@ -223,6 +300,10 @@
 	rarity_value = 4
 	base_color = "#000d1a"
 
+	icon_state = "brown"
+	icon_living = "brown"
+	icon_dead = "brown_dead"
+
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
@@ -232,7 +313,8 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/psychic_whisper
+		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/spider_evolve
 		)
 
 	force_cultural_info = list(
@@ -260,13 +342,17 @@
 
 	slowdown = -0.5
 
+	icon_state = "black"
+	icon_living = "black"
+	icon_dead = "black_dead"
+
 	natural_armour_values = list(melee = 35, bullet = 28, laser = 25, energy = 0, bomb = 0, bio = 100, rad = 100)
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
@@ -286,17 +372,22 @@
 	total_health = 220
 
 
+	icon_state = "beige"
+	icon_living = "beige"
+	icon_dead = "beige_dead"
+
 	rarity_value = 8
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/lay_egg,
+		/mob/living/carbon/human/proc/spider_lay_egg,
+		/mob/living/carbon/human/proc/spider_create_cocoon
 		)
 
 	genders = list(FEMALE)
@@ -316,17 +407,21 @@
 
 	slowdown = 0.2
 
+	icon_state = "brown"
+	icon_living = "brown"
+	icon_dead = "brown_dead"
+
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/neurotoxin,
+		/mob/living/carbon/human/proc/spider_neurotoxin
 		)
 
 	force_cultural_info = list(
@@ -337,23 +432,28 @@
 	)
 
 /datum/species/spider/spitter
-	name = "Spider Guard"
-	total_health = 300
-	rarity_value = 6
+	name = "Spider Spitter"
+	total_health = 100
+	rarity_value = 7
 
-	slowdown = 0.2
+	slowdown = -0.3
+
+	icon_state = "purple"
+	icon_living = "purple"
+	icon_dead = "purple_dead"
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/spider,
 		BP_HEART =    /obj/item/organ/internal/heart/open,
 		BP_BRAIN =    /obj/item/organ/internal/brain/spider,
-		BP_STOMACH =  /obj/item/organ/internal/stomach,
+		BP_STOMACH =  /obj/item/organ/internal/stomach
 		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/neurotoxin,
+		/mob/living/carbon/human/proc/spider_neurotoxin,
+		/mob/living/carbon/human/proc/spider_spit_acid
 		)
 
 	force_cultural_info = list(
@@ -362,3 +462,39 @@
 		TAG_FACTION =   FACTION_SPIDER,
 		TAG_RELIGION =  RELIGION_OTHER
 	)
+
+/mob/living/carbon/human/proc/spider_neurotoxin(mob/target as mob in oview())
+	set name = "Spit Neurotoxin (50)"
+	set desc = "Spits neurotoxin at someone, paralyzing them for a short time if they are not wearing protective gear."
+	set category = "Abilities"
+
+
+	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+		to_chat(src, "You cannot spit neurotoxin in your current state.")
+		return
+
+	if(!(isxenomorph(target) || isalien(target)))
+		visible_message("<span class='warning'>[src] spits neurotoxin at [target]!</span>", "<span class='alium'>You spit neurotoxin at [target].</span>")
+		if(!check_alien_ability(50,0,BP_ACID) && !is_ventcrawling)
+			return
+
+		var/obj/item/projectile/energy/neurotoxin/A = new /obj/item/projectile/energy/neurotoxin(usr.loc)
+		A.launch(target,get_organ_target())
+
+/mob/living/carbon/human/proc/spider_spit_acid(mob/target as mob in oview())
+	set name = "Spit Acid (50)"
+	set desc = "Spits some acid at someone, dealing some damage to them if they are not wearing protective gear."
+	set category = "Abilities"
+
+
+	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+		to_chat(src, "You cannot spit acid in your current state.")
+		return
+
+	if(!(isxenomorph(target) || isalien(target)))
+		visible_message("<span class='warning'>[src] spits some acid at [target]!</span>", "<span class='alium'>You spit acid at [target].</span>")
+		if(!check_alien_ability(50,0,BP_ACID) && !is_ventcrawling)
+			return
+
+		var/obj/item/projectile/energy/alien_acid/A = new /obj/item/projectile/energy/alien_acid(usr.loc)
+		A.launch(target,get_organ_target())

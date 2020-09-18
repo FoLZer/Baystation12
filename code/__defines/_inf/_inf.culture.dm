@@ -85,6 +85,7 @@
 #define CULTURE_SPIDER_N       "Spider Nurse"
 #define CULTURE_SPIDER_G       "Spider Guard"
 #define CULTURE_SPIDER_D       "Spider Drone"
+#define CULTURE_SPIDER_S       "Spider Spitter"
 #define CULTURE_SPIDER         "Spider"
 #define FACTION_SPIDER         "Spider Race"
 
