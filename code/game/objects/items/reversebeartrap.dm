@@ -1,5 +1,5 @@
 /obj/item/clothing/mask/reversebeartrap
-	name = "mechanical trap"
+	name = "Mechanical Trap"
 	throw_speed = 2
 	throw_range = 1
 	gender = PLURAL
@@ -22,14 +22,14 @@
 	var/time
 	var/on = 0
 
-/obj/item/clothing/mask/beartrap/attack_hand(mob/user as mob)
+/obj/item/clothing/mask/reversebeartrap/attack_hand(mob/user as mob)
 	if(user.wear_mask == src && !numkeys)
 		return 0
 	..()
 
-/obj/item/clothing/mask/beartrap/attack_self(mob/user)
+/obj/item/clothing/mask/reversebeartrap/attack_self(mob/user)
 	if(!numkeys)
-		var/choice = input("Input number of keys","Keys") as anything|null in list("1","2","3")
+		var/choice = input("Input number of keys","Keys") as null|anything in list("1","2","3")
 		if(!choice)
 			return
 		switch(choice)
@@ -40,30 +40,29 @@
 			if("3")
 				numkeys = 3
 
-/obj/item/clothing/mask/beartrap/attackby(obj/item/weapon/W, mob/user)
+/obj/item/clothing/mask/reversebeartrap/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W,/obj/item/weapon/trapkey))
 		if(istype(loc,/mob/living/carbon/human))
+			var/obj/item/weapon/trapkey/K = W
 			if(numkeys == 0)
-				var/obj/item/weapon/trapkey/K = W
 				if(K.uid!=key1 && K.uid!=key2 && K.uid!=key3)
 					to_chat(user, "It doesn't fit in there!")
 					return
-				switch(W.uid)
-					if(key1)
-						to_chat(user,"You hear a click!")
-						key1 = 0
-						check_keys()
-						return
-					if(key2)
-						to_chat(user,"You hear a click!")
-						key2 = 0
-						check_keys()
-						return
-					if(key3)
-						to_chat(user,"You hear a click!")
-						key3 = 0
-						check_keys()
-						return
+				if(K.uid == key1)
+					to_chat(user,"You hear a click!")
+					key1 = 0
+					check_keys()
+					return
+				else if(K.uid == key2)
+					to_chat(user,"You hear a click!")
+					key2 = 0
+					check_keys()
+					return
+				else if(K.uid == key3)
+					to_chat(user,"You hear a click!")
+					key3 = 0
+					check_keys()
+					return
 			else
 				if(!key1)
 					key1 = K.uid
@@ -75,20 +74,23 @@
 
 	return
 
-/obj/item/clothing/mask/beartrap/proc/check_keys()
+/obj/item/clothing/mask/reversebeartrap/proc/check_keys()
 	if(!key1 && !key2 && !key3)
 		visible_message("[src] disappears!")
 		spawn(1)
 			qdel(src)
 
-/obj/item/clothing/mask/beartrap/Process()
+/obj/item/clothing/mask/reversebeartrap/Process()
 	if(on)
 		if(time && world.time-time >= 5 MINUTES)
 			if(istype(loc, /mob/living/carbon/human) && !QDELETED(src))
-
+				var/mob/living/carbon/human/H = loc
+				var/obj/item/organ/external/head/O = H.internal_organs_by_name[BP_HEAD]
+				O.attempt_dismemberment(10, 0, 0, 1, null, 0, 1)
+				H.visible_message("<span class='danger'>Капкан отрывает голову [H]!</src>")
 				qdel(src)
 
-/obj/item/clothing/mask/beartrap/equipped(mob/user)
+/obj/item/clothing/mask/reversebeartrap/equipped(mob/user)
 	if(numkeys)
 		time = world.time
 		on = 1
@@ -99,7 +101,7 @@
 	icon = 'icons/obj/items.dmi'
 	item_state = "beartrap1"
 	icon_state = "beartrap1"
-	uid = 0
+	var/uid = 0
 
 /obj/item/weapon/trapkey/New()
 	..()

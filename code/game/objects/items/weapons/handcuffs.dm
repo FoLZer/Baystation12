@@ -56,7 +56,7 @@
 				return
 
 			var/mob/living/carbon/human/H = C
-			if(istype(C) && (C.species.name in list(SPECIES_ZOMBIE,SPECIES_ZOMBIE_TAJARA,SPECIES_ZOMBIE_SKRELL,SPECIES_ZOMBIE_UNATHI))
+			if(istype(H) && (H.species.name in list(SPECIES_ZOMBIE,SPECIES_ZOMBIE_TAJARA,SPECIES_ZOMBIE_SKRELL,SPECIES_ZOMBIE_UNATHI)))
 				to_chat(user, "<span class='danger'>You cannot handcuff it!</span>")
 				return
 			//check for an aggressive grab (or robutts)
