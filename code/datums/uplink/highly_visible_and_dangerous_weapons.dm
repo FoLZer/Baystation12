@@ -220,3 +220,9 @@
 	item_cost = 12
 	path = /obj/item/weapon/gun/projectile/heavysniper/boltaction
 	antag_roles = list(MODE_REVOLUTIONARY)
+
+/datum/uplink_item/item/visible_weapons/reversebeartrap
+	name = "Reverse Bear Trap"
+	desc = "DO NOT place this on head"
+	item_cost = 6
+	path = /obj/item/weapon/reversebeartrap
