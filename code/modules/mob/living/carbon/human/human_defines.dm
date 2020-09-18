@@ -115,3 +115,5 @@
 
 	var/spider_fed = 0
 	var/spider_max_eggs = 8
+
+	var/zombie_bites = 0

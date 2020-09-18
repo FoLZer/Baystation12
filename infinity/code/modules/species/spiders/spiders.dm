@@ -52,7 +52,7 @@
 
 	natural_armour_values = list(melee = 10, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 10, rad = 100)
 
-	icon_template = 'icons/mob/simple_animal/spider.dmi'
+	icobase = 'icons/mob/simple_animal/spider.dmi'
 
 	damage_overlays = null //no icons
 	damage_mask =     null //no icons
@@ -61,8 +61,6 @@
 	darksight_range = 8
 	darksight_tint = DARKTINT_GREAT
 
-	antaghud_offset_x = -16
-	pixel_offset_x = -16
 	has_fine_manipulation = 0
 	siemens_coefficient = 0.25
 	gluttonous = GLUT_ANYTHING
@@ -149,7 +147,6 @@
 
 /mob/living/carbon/human/proc/spider_create_web()
 	set name = "Create web"
-	set desc = "Create web where you're standing"
 	set category = "Abilities"
 
 	if(incapacitated())
@@ -164,7 +161,6 @@
 
 /mob/living/carbon/human/proc/spider_lay_egg()
 	set name = "Lay eggs"
-	set desc = "Lay eggs"
 	set category = "Abilities"
 
 	if(incapacitated())
@@ -183,7 +179,6 @@
 
 /mob/living/carbon/human/proc/spider_create_cocoon(mob/O as mob in oview(1))
 	set name = "Create cacoon"
-	set desc = "Create cacoon"
 	set category = "Abilities"
 
 	if(!(O in oview(1)))
@@ -222,7 +217,6 @@
 
 /mob/living/carbon/human/proc/spider_evolve()
 	set name = "Evolve"
-	set desc = "Evolve"
 	set category = "Abilities"
 
 	if(incapacitated() || stat)
