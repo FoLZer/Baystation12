@@ -70,77 +70,6 @@
 		/obj/item/weapon/storage/firstaid/individual/military
 	)
 
-/obj/structure/closet/secure_closet/warden/nostromo
-	name = "warden's locker"
-	req_access = list(access_warden)
-	closet_appearance = /decl/closet_appearance/secure_closet/nostromo/security/warden
-
-/obj/structure/closet/secure_closet/warden/nostromo/WillContain()
-	return list(
-		/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-		/obj/item/clothing/head/helmet/nt,
-		/obj/item/clothing/head/beret/sec/corporate/warden,
-		/obj/item/clothing/head/beret/sec/navy/warden,
-		/obj/item/clothing/under/rank/warden/corp/alt,
-		/obj/item/clothing/under/rank/warden/navyblue,
-		/obj/item/clothing/under/rank/warden/navyblue/alt,
-		/obj/item/device/radio/headset/headset_sec,
-		/obj/item/device/radio/headset/headset_sec/alt,
-		/obj/item/clothing/glasses/sunglasses/sechud/toggle,
-		/obj/item/taperoll/police,
-		/obj/item/weapon/storage/belt/holster/security,
-		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/gun/energy/gun/secure,
-		/obj/item/clothing/accessory/storage/black_vest,
-		/obj/item/weapon/gun/energy/taser,
-		/obj/item/weapon/handcuffs,
-		/obj/item/device/hailer,
-		/obj/item/device/flash,
-		/obj/item/device/megaphone,
-		/obj/item/weapon/hand_labeler,
-		/obj/item/device/holowarrant,
-		/obj/item/clothing/gloves/thick,
-		/obj/item/device/flashlight/maglight,
-		/obj/item/weapon/crowbar/prybar,
-		/obj/item/device/radio/off,
-		/obj/item/clothing/mask/gas/half,
-		/obj/item/weapon/storage/firstaid/individual/military
-	)
-
-/obj/structure/closet/secure_closet/forensics
-	name = "forensics technician's locker"
-	req_access = list(access_forensics_lockers)
-	closet_appearance = /decl/closet_appearance/secure_closet/nostromo/security/forensics
-
-/obj/structure/closet/secure_closet/forensics/WillContain()
-	return list(
-		/obj/item/clothing/gloves/forensic,
-		/obj/item/clothing/head/helmet/nt,
-		/obj/item/clothing/glasses/sunglasses/sechud/toggle,
-		/obj/item/weapon/storage/belt/holster/forensic,
-		/obj/item/weapon/storage/belt/security,
-		/obj/item/device/radio/headset/headset_sec,
-		/obj/item/device/radio/headset/headset_sec/alt,
-		/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-		/obj/item/weapon/gun/energy/gun/small/secure,
-		/obj/item/device/flash,
-		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/taperoll/police,
-		/obj/item/weapon/storage/box/evidence,
-		/obj/item/weapon/storage/box/swabs,
-		/obj/item/weapon/storage/box/gloves,
-		/obj/item/device/taperecorder,
-		/obj/item/device/tape/random = 3,
-		/obj/item/device/holowarrant,
-		/obj/item/device/flashlight/maglight,
-		/obj/item/weapon/crowbar/prybar,
-		/obj/item/device/radio/off,
-		/obj/item/clothing/mask/gas/half,
-		/obj/item/weapon/storage/firstaid/individual/military
-	)
-
 /obj/structure/closet/secure_closet/security/nostromo
 	name = "security guard's locker"
 	req_access = list(access_guard)
@@ -170,25 +99,6 @@
 		/obj/item/device/radio/off,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/weapon/storage/firstaid/individual/military
-	)
-
-/obj/structure/closet/secure_closet/security/nostromo/cadet
-	name = "cadet's locker"
-	req_access = list(access_security)
-
-/obj/structure/closet/secure_closet/security/nostromo/cadet/WillContain()
-	return list(
-		/obj/item/device/flash,
-		/obj/item/device/radio/off,
-		/obj/item/device/flashlight/maglight,
-		/obj/item/device/holowarrant,
-		/obj/item/device/hailer,
-		/obj/item/taperoll/police,
-		/obj/item/weapon/storage/belt/holster/security,
-		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/crowbar/prybar,
-		/obj/item/weapon/gun/energy/confuseray/secure,
-		/obj/item/clothing/glasses/hud/security
 	)
 
 /obj/structure/closet/secure_closet/brig/WillContain()

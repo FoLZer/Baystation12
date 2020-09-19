@@ -1,4 +1,4 @@
-/datum/map/sierra
+/datum/map/nostromo
 	species_to_job_whitelist = list(
 		/datum/species/adherent = list(/datum/job/ai, /datum/job/cyborg, /datum/job/assistant, /datum/job/janitor,\
 									   /datum/job/chef, /datum/job/cargo_assistant, /datum/job/scientist_assistant,\

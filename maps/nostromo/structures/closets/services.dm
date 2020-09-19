@@ -2,13 +2,6 @@
  * Sierra Service
  */
 
-/decl/closet_appearance/secure_closet/nostromo/hydroponics
-	extra_decals = list(
-		"stripe_vertical_right_partial" = COLOR_GREEN_GRAY,
-		"stripe_vertical_mid_partial" =   COLOR_GREEN_GRAY,
-		"hydro" = COLOR_GREEN_GRAY
-	)
-
 /obj/structure/closet/chefcloset_nostromo
 	name = "chef's closet"
 	desc = "It's a storage unit for foodservice equipment."
@@ -26,26 +19,6 @@
 		/obj/item/clothing/suit/chef/classic,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/head/beret/infinity
-	)
-
-/obj/structure/closet/secure_closet/hydroponics_nostromo //done so that it has no access reqs
-	name = "hydroponics locker"
-	req_access = list()
-	closet_appearance = /decl/closet_appearance/secure_closet/nostromo/hydroponics
-
-/obj/structure/closet/secure_closet/hydroponics_nostromo/WillContain()
-	return list(
-		/obj/item/clothing/head/soft/green,
-		/obj/item/weapon/storage/plants,
-		/obj/item/device/scanner/plant,
-		/obj/item/weapon/material/minihoe,
-		/obj/item/clothing/gloves/thick/botany,
-		/obj/item/weapon/material/hatchet,
-		/obj/item/weapon/wirecutters/clippers,
-		/obj/item/weapon/reagent_containers/spray/plantbgone,
-		new /datum/atom_creator/weighted(list(/obj/item/clothing/suit/apron, /obj/item/clothing/suit/apron/overalls)),
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/hydroponics, /obj/item/weapon/storage/backpack/satchel/hyd)),
-		new /datum/atom_creator/simple(/obj/item/weapon/storage/backpack/messenger/hyd, 50)
 	)
 
 /obj/structure/closet/jcloset/nostromo
@@ -107,22 +80,3 @@
 		/obj/item/clothing/head/beret/infinity
 	)
 
-/obj/structure/closet/secure_closet/chaplain_nostromo
-	name = "chaplain's locker"
-	closet_appearance = /decl/closet_appearance/secure_closet/chaplain
-	req_access = list(access_chapel_office)
-
-/obj/structure/closet/secure_closet/chaplain_nostromo/WillContain()
-	return list(
-		/obj/item/clothing/under/rank/chaplain,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/suit/chaplain_hoodie,
-		/obj/item/weapon/storage/candle_box = 3,
-		/obj/item/weapon/deck/tarot,
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/holywater,
-		/obj/item/weapon/nullrod,
-		/obj/item/weapon/storage/bible,
-		/obj/item/weapon/storage/belt/general,
-		/obj/item/weapon/material/urn,
-		/obj/item/device/taperecorder
-	)

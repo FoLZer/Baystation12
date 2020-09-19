@@ -1,9 +1,3 @@
-/obj/machinery/power/apc/charon
-	req_access = list(list(access_expedition_shuttle_helm, access_engine)) //for pilot, EL and field/regular engineers
-
-/obj/machinery/power/apc/merchant
-	req_access = list(access_merchant)
-
 /obj/machinery/power/apc/bsa
 	cell_type = /obj/item/weapon/cell/high
 	/*INF@SHRUG
@@ -13,21 +7,6 @@
 //
 // SMES units
 //
-
-// Substation SMES
-/obj/machinery/power/smes/buildable/preset/nostromo/substation
-	uncreated_component_parts = list(/obj/item/weapon/stock_parts/smes_coil = 2)
-	_input_maxed = TRUE
-	_output_maxed = TRUE
-
-// Substation SMES (charged and with full I/O setting)
-/obj/machinery/power/smes/buildable/preset/nostromo/substation_full
-	uncreated_component_parts = list(/obj/item/weapon/stock_parts/smes_coil = 2)
-	_input_maxed = TRUE
-	_output_maxed = TRUE
-	_input_on = TRUE
-	_output_on = TRUE
-	_fully_charged = TRUE
 
 // Main Engine output SMES
 /obj/machinery/power/smes/buildable/preset/nostromo/engine_main
@@ -42,16 +21,6 @@
 // Shuttle SMES
 /obj/machinery/power/smes/buildable/preset/nostromo/shuttle
 	uncreated_component_parts = list(/obj/item/weapon/stock_parts/smes_coil/super_io = 1)
-	_input_maxed = TRUE
-	_output_maxed = TRUE
-	_input_on = TRUE
-	_output_on = TRUE
-	_fully_charged = TRUE
-
-// Charon's smes - Coltrane97@inf-dev
-/obj/machinery/power/smes/buildable/preset/nostromo/shuttle/charon
-	uncreated_component_parts = list(/obj/item/weapon/stock_parts/smes_coil/super_io = 1,
-									/obj/item/weapon/stock_parts/smes_coil/super_capacity = 1)
 	_input_maxed = TRUE
 	_output_maxed = TRUE
 	_input_on = TRUE

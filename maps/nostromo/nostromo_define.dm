@@ -1,35 +1,35 @@
-/datum/map/sierra
-	name = "Sierra"
-	full_name = "NSV Sierra"
-	path = "sierra"
+/datum/map/nostromo
+	name = "Nostromo"
+	full_name = "USCSS Nostromo"
+	path = "nostromo"
 	flags = MAP_HAS_BRANCH | MAP_HAS_RANK
 
 	load_legacy_saves = TRUE
 
-	station_levels = list(1,2,3)
-	admin_levels = list(4,5)
-	empty_levels = list(6)
-	accessible_z_levels = list("1"=1,"2"=1,"3"=1,"6"=30)
+	station_levels = list(1)
+	admin_levels = list(2,3)
+	empty_levels = list(4)
+	accessible_z_levels = list("1"=1,"4"=30)
 	overmap_size = 40
 	overmap_event_areas = 34
-	usable_email_tlds = list("freemail.net")
+	usable_email_tlds = list("yutani.net")
 
-	allowed_spawns = list("Cryogenic Storage", "Cyborg Storage")
+	allowed_spawns = list("Cryogenic Storage")
 	default_spawn = "Cryogenic Storage"
 
-	station_name  = "NSV Sierra"
-	station_short = "Sierra"
+	station_name  = "USCSS Nostromo"
+	station_short = "Nostromo"
 	dock_name     = "TBD"
 	boss_name     = "Central Command"
 	boss_short    = "Centcomm"
-	company_name  = "NanoTrasen"
-	company_short = "NT"
+	company_name  = "Weyland-Yutani"
+	company_short = "WY"
 
-	map_admin_faxes = list("NanoTrasen Central Office")
+	map_admin_faxes = list("Weyland-Yutani Central Office")
 
 	evac_controller_type = /datum/evacuation_controller/starship
 
-	default_law_type = /datum/ai_laws/nanotrasen
+	default_law_type = /datum/ai_laws/weyland_yutani
 	use_overmap = 1
 	num_exoplanets = 1
 	planet_size = list(129,129)
@@ -40,7 +40,7 @@
 
 	away_site_budget = 3.5
 
-	id_hud_icons = 'maps/sierra/icons/assignment_hud.dmi'
+	id_hud_icons = 'maps/nostromo/icons/assignment_hud.dmi'
 
 	available_cultural_info = list(
 		TAG_HOMEWORLD = list(

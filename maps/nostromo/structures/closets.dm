@@ -2,50 +2,6 @@
  * Sierra Excavation
  */
 
-/decl/closet_appearance/secure_closet/nostromo/excavation
-	extra_decals = list(
-		"stripe_vertical_left_full" =  COLOR_PURPLE_GRAY,
-		"stripe_vertical_right_full" = COLOR_PURPLE_GRAY,
-		"research" = COLOR_PURPLE_GRAY
-	)
-
-/obj/structure/closet/toolcloset/excavation
-	name = "excavation equipment closet"
-	desc = "It's a storage unit for excavation equipment."
-	closet_appearance = /decl/closet_appearance/secure_closet/nostromo/excavation
-
-/obj/structure/closet/toolcloset/excavation/WillContain()
-	return list(
-		/obj/item/weapon/storage/belt/archaeology,
-		/obj/item/weapon/storage/excavation,
-		/obj/item/device/flashlight/lantern,
-		/obj/item/device/ano_scanner,
-		/obj/item/device/depth_scanner,
-		/obj/item/device/core_sampler,
-		/obj/item/device/gps,
-		/obj/item/weapon/pinpointer/radio,
-		/obj/item/device/radio/beacon,
-		/obj/item/clothing/glasses/meson,
-		/obj/item/clothing/glasses/science,
-		/obj/item/weapon/pickaxe,
-		/obj/item/weapon/pickaxe/xeno/hand,
-		/obj/item/device/measuring_tape,
-		/obj/item/weapon/storage/bag/fossils,
-		/obj/item/weapon/hand_labeler,
-		/obj/item/taperoll/research,
-		/obj/item/device/spaceflare
-	)
-
-/obj/structure/closet/wardrobe/ptgear
-	name = "pt gear wardrobe"
-	closet_appearance = /decl/closet_appearance/wardrobe/white
-
-/obj/structure/closet/wardrobe/ptgear/WillContain()
-	return list(
-		/obj/item/clothing/under/solgov/pt/expeditionary = 4,
-		/obj/item/clothing/shoes/white = 2,
-		/obj/item/clothing/shoes/black = 2)
-
 /obj/random/nostromocloset //Random closets taking into account nostromo-specific ones
 	name = "random closet"
 	desc = "This is a random closet."

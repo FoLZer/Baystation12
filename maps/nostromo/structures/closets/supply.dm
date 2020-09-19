@@ -2,18 +2,6 @@
  * Sierra Supply
  */
 
-/decl/closet_appearance/secure_closet/nostromo/prospector
-	color = COLOR_WARM_YELLOW
-	decals = list(
-		"upper_side_vent",
-		"lower_side_vent"
-	)
-	extra_decals = list(
-		"stripe_vertical_mid_partial" = COLOR_BEASTY_BROWN,
-		"stripe_vertical_left_partial" = COLOR_BEASTY_BROWN,
-		"mining" = COLOR_BEASTY_BROWN
-	)
-
 /decl/closet_appearance/secure_closet/nostromo/cargo/decktech
 	extra_decals = list(
 		"stripe_vertical_left_full" = COLOR_BEASTY_BROWN,
@@ -77,28 +65,4 @@
 		/obj/item/clothing/suit/armor/pcarrier/light,
 		/obj/item/device/binoculars,
 		/obj/item/device/scanner/price,
-	)
-
-/obj/structure/closet/secure_closet/prospector
-	name = "prospector's locker"
-	req_access = list(access_mining)
-	closet_appearance = /decl/closet_appearance/secure_closet/nostromo/prospector
-
-/obj/structure/closet/secure_closet/prospector/WillContain()
-	return list(
-		/obj/item/clothing/accessory/storage/webbing,
-		/obj/item/clothing/gloves/thick,
-		/obj/item/clothing/shoes/workboots,
-		/obj/item/device/scanner/gas,
-		/obj/item/weapon/storage/ore,
-		/obj/item/device/radio/headset/headset_mining,
-		/obj/item/device/radio/headset/headset_mining/alt,
-		/obj/item/device/flashlight/lantern,
-		/obj/item/weapon/shovel,
-		/obj/item/weapon/pickaxe,
-		/obj/item/weapon/crowbar,
-		/obj/item/clothing/glasses/material,
-		/obj/item/clothing/glasses/meson,
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/industrial, /obj/item/weapon/storage/backpack/satchel/eng)),
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/eng, /obj/item/weapon/storage/backpack/messenger/engi))
 	)
