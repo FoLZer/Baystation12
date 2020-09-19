@@ -103,6 +103,10 @@
 
 /obj/item/clothing/mask/reversebeartrap/Process()
 	if(on)
+		if(world.time > last_tick)
+			if(istype(src.loc, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = src.loc
+				playsound(H.loc, 'sound/items/tick.ogg', 25, 1)
 		if(world.time > time)
 			if(istype(src.loc, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src.loc
