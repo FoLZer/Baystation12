@@ -22,6 +22,7 @@
 	var/time
 	var/on = 0
 	var/timetodeath = 5 MINUTES
+	var/last_tick
 
 /obj/item/clothing/mask/reversebeartrap/attack_hand(mob/user as mob)
 	if(user.wear_mask == src && !numkeys)
@@ -106,6 +107,7 @@
 		if(world.time > last_tick)
 			if(istype(src.loc, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = src.loc
+				last_tick = world.time + 5 SECONDS
 				playsound(H.loc, 'sound/items/tick.ogg', 25, 1)
 		if(world.time > time)
 			if(istype(src.loc, /mob/living/carbon/human))
