@@ -5,15 +5,15 @@
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	item_state = "beartrap1"
-	icon_state = "beartrap1"
+	icon_state = "ascent_mask"
 	randpixel = 0
 	desc = "A mechanically activated head trap. Low-tech, but reliable. Looks like it has some keyholes in it."
 	throwforce = 0
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	matter = list(MATERIAL_STEEL = 18750)
-	flags_inv = HIDEFACE|BLOCKHAIR|HIDEEARS
-	body_parts_covered = FACE|HEAD
+	flags_inv = HIDEFACE
+	body_parts_covered = FACE
 	w_class = ITEM_SIZE_NORMAL
 	var/key1 = 0
 	var/key2 = 0
