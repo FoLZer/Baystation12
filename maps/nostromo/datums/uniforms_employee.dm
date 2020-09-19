@@ -1,3 +1,15 @@
+/decl/hierarchy/mil_uniform
+	name = "Master outfit hierarchy"
+	hierarchy_type = /decl/hierarchy/mil_uniform
+	var/branch = null
+	var/departments = 0
+	var/min_rank = 0
+
+	var/hat = null
+	var/under = null
+	var/shoes = null
+	var/extra = null
+
 /* ENGINEERING
  * ===========
  */

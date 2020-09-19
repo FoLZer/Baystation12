@@ -15,7 +15,6 @@
 				/obj/structure/closet/jcloset/nostromo,
 				/obj/structure/closet/athletic_mixed,
 				/obj/structure/closet/toolcloset,
-				/obj/structure/closet/toolcloset/excavation,
 				/obj/structure/closet/l3closet/general,
 				/obj/structure/closet/cabinet,
 				/obj/structure/closet/crate,

@@ -4,13 +4,13 @@ Unique items
 
 /obj/item/weapon/pen/multi/cmd/hop
 	name = "head of personnel's pen"
-	icon = 'maps/sierra/icons/obj/uniques.dmi'
+	icon = 'maps/nostromo/icons/obj/uniques.dmi'
 	icon_state = "pen_xo"
 	desc = "A slightly bulky pen with a silvery case. Twisting the top allows you to switch the nib for different colors."
 
 /obj/item/weapon/pen/multi/cmd/captain
 	name = "captain's pen"
-	icon = 'maps/sierra/icons/obj/uniques.dmi'
+	icon = 'maps/nostromo/icons/obj/uniques.dmi'
 	icon_state = "pen_co"
 	desc = "A slightly bulky pen with a golden case. Twisting the top allows you to switch the nib for different colors."
 
@@ -33,7 +33,7 @@ Unique items
 	max_storage_space = 2
 	startswith = list(
 			/obj/item/weapon/reagent_containers/pill/cyanide,
-			/obj/item/weapon/paper/sierrau/liason_note
+			/obj/item/weapon/paper/nostromou/liason_note
 	)
 
 /obj/effect/paint/hull

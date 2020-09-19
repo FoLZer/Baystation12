@@ -7,12 +7,12 @@
 	minimal_player_age = 21
 	economic_power = 20
 	ideal_character_age = 50
-	outfit_type = /decl/hierarchy/outfit/job/sierra/crew/command/captain
+	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/command/captain
 	total_positions = 1
 	spawn_positions = 1
 	req_admin_notify = 1
 	allowed_branches = list(/datum/mil_branch/employee)
-	allowed_ranks = list(/datum/mil_rank/civ/nt)
+	allowed_ranks = list(/datum/mil_rank/civ/wy)
 	min_skill = list(	SKILL_BUREAUCRACY = SKILL_ADEPT,
 						SKILL_PILOT       = SKILL_ADEPT)
 
@@ -38,9 +38,9 @@
 	economic_power = 10
 	minimal_player_age = 21
 	ideal_character_age = 48
-	outfit_type = /decl/hierarchy/outfit/job/sierra/crew/command/cmo
+	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/command/cmo
 	allowed_branches = list(/datum/mil_branch/employee)
-	allowed_ranks = list(/datum/mil_rank/civ/nt)
+	allowed_ranks = list(/datum/mil_rank/civ/wy)
 	min_skill = list(   SKILL_BUREAUCRACY = SKILL_BASIC,
 	                    SKILL_MEDICAL     = SKILL_ADEPT,
 	                    SKILL_ANATOMY     = SKILL_EXPERT,
@@ -79,9 +79,9 @@
 	economic_power = 10
 	ideal_character_age = 40
 	minimal_player_age = 21
-	outfit_type = /decl/hierarchy/outfit/job/sierra/crew/command/chief_engineer
+	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/command/chief_engineer
 	allowed_branches = list(/datum/mil_branch/employee)
-	allowed_ranks = list(/datum/mil_rank/civ/nt)
+	allowed_ranks = list(/datum/mil_rank/civ/wy)
 	min_skill = list(   SKILL_BUREAUCRACY  = SKILL_BASIC,
 	                    SKILL_COMPUTER     = SKILL_ADEPT,
 	                    SKILL_EVA          = SKILL_ADEPT,
@@ -121,8 +121,8 @@
 	воздухом; ремонтирует повреждения, которые могут возникнуть при несчастных случаях. \
 	Почти любая проблема, связанная с механикой и машинерией на борту возлагается на инженеров."
 
-/datum/job/hos
-	title = "Head of Security"
+/datum/job/officer
+	title = "Officer"
 	supervisors = "Капитаном"
 	head_position = 1
 	department = "Security"
@@ -133,9 +133,9 @@
 	economic_power = 10
 	minimal_player_age = 21
 	ideal_character_age = 35
-	outfit_type = /decl/hierarchy/outfit/job/sierra/crew/command/hos
+	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/command/hos
 	allowed_branches = list(/datum/mil_branch/employee)
-	allowed_ranks = list(/datum/mil_rank/civ/nt)
+	allowed_ranks = list(/datum/mil_rank/civ/wy)
 	min_skill = list(   SKILL_BUREAUCRACY = SKILL_ADEPT,
 	                    SKILL_EVA         = SKILL_BASIC,
 	                    SKILL_COMBAT      = SKILL_ADEPT,
@@ -151,7 +151,7 @@
 			            access_maint_tunnels, access_external_airlocks, access_emergency_storage,
 			            access_teleporter, access_eva, access_bridge, access_heads,
 			            access_hos, access_RC_announce, access_keycard_auth, access_sec_doors,
-			            access_hangar, access_gun, access_warden)
+			            access_hangar, access_gun)
 	minimal_access = list()
 
 	software_on_spawn = list(/datum/computer_file/program/comm,

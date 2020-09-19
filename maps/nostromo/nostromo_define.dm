@@ -29,7 +29,7 @@
 
 	evac_controller_type = /datum/evacuation_controller/starship
 
-	default_law_type = /datum/ai_laws/weyland_yutani
+	default_law_type = /datum/ai_laws/nanotrasen
 	use_overmap = 1
 	num_exoplanets = 1
 	planet_size = list(129,129)

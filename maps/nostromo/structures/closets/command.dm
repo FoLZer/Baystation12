@@ -113,8 +113,6 @@
 		/obj/item/device/flash,
 		/obj/item/device/megaphone,
 		/obj/item/modular_computer/tablet/lease/preset/command,
-		/obj/item/device/radio/headset/adjutant,
-		/obj/item/device/radio/headset/adjutant/alt,
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack, /obj/item/weapon/storage/backpack/satchel/grey)),
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag, /obj/item/weapon/storage/backpack/messenger)),
 		new /datum/atom_creator/weighted(list(/obj/item/device/flashlight, /obj/item/device/flashlight/flare, /obj/item/device/flashlight/flare/glowstick/random))

@@ -316,7 +316,7 @@
 	logging_home_tag = "nav_hangar_guppy"
 	logging_access = access_guppy_helm
 	skill_needed = SKILL_NONE
-	ceiling_type = /turf/simulated/floor/shuttle_ceiling/sierra
+	ceiling_type = /turf/simulated/floor/shuttle_ceiling/nostromo
 	warmup_time = 5
 
 /obj/effect/shuttle_landmark/nostromo/hangar/guppy
@@ -345,7 +345,7 @@
 	name = "Space near Bridge"
 	landmark_tag = "nav_bridge_guppy"
 
-/obj/effect/shuttle_landmark/sierra/transit/guppy
+/obj/effect/shuttle_landmark/nostromo/transit/guppy
 	name = "In transit"
 	landmark_tag = "nav_transit_guppy"
 

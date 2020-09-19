@@ -76,7 +76,7 @@
 /area/maintenance/waterstore
 	name = "Third Deck - Water Cistern"
 	icon_state = "disposal"
-	req_access = list(list(access_cargo, access_engine, access_el))
+	req_access = list(list(access_cargo, access_engine))
 
 /area/crew_quarters/commissary
 	name = "Third Deck - Commissary"
@@ -337,13 +337,6 @@
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
 	req_access = list(access_guppy)
 
-/area/shuttle/petrov
-	name = "Shuttle - Petrov"
-	requires_power = 1
-	dynamic_lighting = 1
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
-	req_access = list(access_petrov)
-
 /area/shuttle/petrov/ship
 	icon_state = "shuttlered"
 /area/shuttle/petrov/cell1
@@ -417,11 +410,6 @@
  * =============
  */
 
-/area/command/exploration_leader
-	name = "Third Deck - Expedition - Leader's Office"
-	icon_state = "heads_sea"
-	req_access = list(access_el)
-
 /area/command/bsa
 	name = "Third Deck - Artillery - Obstruction Field Disperser"
 	icon_state = "firingrange"
@@ -489,11 +477,6 @@
 	icon_state = "heads_hos"
 	name = "First Deck - Command - HoS' Office"
 	req_access = list(access_hos)
-
-/area/crew_quarters/heads/office/iaa
-	icon_state = "heads_cl"
-	name = "First Deck - Command - IAA's Office"
-	req_access = list(access_iaa)
 
 /area/bridge
 	name = "Second Deck - Bridge"
@@ -685,16 +668,11 @@
 	name = "Third Deck - Exploration - Storage"
 	icon_state = "mining"
 
-/area/quartermaster/exploration
-	name = "Third Deck - Expedition - Equipment"
-	icon_state = "exploration"
-	req_access = list(access_explorer)
-
 /area/quartermaster/shuttlefuel
 	name = "Third Deck - Hangar - Fuel Bay"
 	icon_state = "toxstorage"
 	sound_env = SMALL_ENCLOSED
-	req_access = list(list(access_cargo, access_expedition_shuttle_helm, access_guppy_helm))
+	req_access = list(list(access_cargo, access_guppy_helm))
 
 /area/quartermaster/hangar
 	name = "Third Deck - Hangar"
@@ -858,12 +836,6 @@
 	name = "Second Deck - Service - Galley Cold Storage"
 	icon_state = "kitchen"
 
-/area/crew_quarters/actor
-	name = "Second Deck - Service - Actor"
-	icon_state = "Theatre"
-	sound_env = SMALL_SOFTFLOOR
-	req_access = list(access_actor)
-
 /area/crew_quarters/dungeon_master_lounge
 	name = "First Deck - Living Room"
 	sound_env = MEDIUM_SOFTFLOOR
@@ -915,11 +887,6 @@
 
 /area/security/nostromo/hallway/port
 	name = "First Deck - Security - Hallway - Port"
-
-/area/security/nostromo/sergeant
-	name = "First Deck - Security - Warden"
-	icon_state = "Warden"
-	req_access = list(access_warden)
 
 /area/security/nostromo/armory
 	name = "First Deck - Security - Armory"

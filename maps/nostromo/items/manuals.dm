@@ -45,7 +45,7 @@
 
 /obj/item/weapon/book/manual/sol_sop
 	name = "Standard Operating Procedures"
-	desc = "SOP aboard the NES Sierra."
+	desc = "SOP aboard the NES Nostromo."
 	icon_state = "booksolregs"
 	author = "The Sol Central Government"
 	title = "Standard Operating Procedure"
@@ -67,7 +67,7 @@
 
 /obj/item/weapon/book/manual/nt_sop
 	name = "NT Standard Operating Procedures"
-	desc = "SOP aboard the NSV Sierra."
+	desc = "SOP aboard the NSV Nostromo."
 	icon = 'infinity/icons/obj/library.dmi'
 	icon_state = "bookNTsop"
 	author = "Employee Materials"
@@ -90,7 +90,7 @@
 
 /obj/item/weapon/book/manual/nt_tc
 	name = "NT Threat Codes"
-	desc = "TC aboard the NSV Sierra."
+	desc = "TC aboard the NSV Nostromo."
 	icon = 'infinity/icons/obj/library.dmi'
 	icon_state = "bookNTtc"
 	author = "Ship Rule Materials"
@@ -118,9 +118,9 @@
 
 /obj/item/weapon/folder/envelope/blanks/Initialize()
 	. = ..()
-	new/obj/item/weapon/paper/sierra/blanks(src)
+	new/obj/item/weapon/paper/nostromo/blanks(src)
 
-/obj/item/weapon/paper/sierra/blanks
+/obj/item/weapon/paper/nostromo/blanks
 	name = "RE: Regarding testing supplies"
 	info = {"
 	<tt><center><b><font color='red'>КОНФИДЕЦИАЛЬНО</font></b>
@@ -128,8 +128,8 @@
 	<img src = bluentlogo.png>
 	</center>
 	<b>ОТ:</b> Swadian Barwuds<br>
-	<b>КОМУ:</b> Исследовательскому Директору NSV Sierra<br>
-	<b>А ТАКЖЕ:</b> Агенту Внутренних Дел NSV Sierra<br>
+	<b>КОМУ:</b> Исследовательскому Директору NSV Nostromo<br>
+	<b>А ТАКЖЕ:</b> Агенту Внутренних Дел NSV Nostromo<br>
 	<b>ТЕМА:</b> Дополнительные Материалы (пересмотр)<br>
 	<hr>
 	Я пересмотрел ваш отчет о проведенных экспериментах и запрос о более совершенных тестовых материалов, РД.<br>
@@ -151,7 +151,7 @@
 	<img src = ntlogo.png>
 	</center>
 	<b>ОТ:</b> Swadian Barwuds<br>
-	<b>КОМУ:</b> Капитану NSV Sierra<br>
+	<b>КОМУ:</b> Капитану NSV Nostromo<br>
 	<b>ТЕМА:</b> Общий Приказ<br>
 	<hr>
 	Капитан,<br>
@@ -177,18 +177,18 @@
 	"}
 	new/obj/item/weapon/paper/important(src, memo, "Standing Orders")
 
-	new/obj/item/weapon/paper/sierra/umbra(src)
+	new/obj/item/weapon/paper/nostromo/umbra(src)
 
 /obj/item/weapon/folder/envelope/rep
 	desc = "A thick envelope. The NT logo is stamped in the corner, along with 'TOP SECRET - SIERRA UMBRA'."
 
 /obj/item/weapon/folder/envelope/rep/Initialize()
 	. = ..()
-	new/obj/item/weapon/paper/sierra/umbra(src)
+	new/obj/item/weapon/paper/nostromo/umbra(src)
 
-/obj/item/weapon/paper/sierra/umbra
+/obj/item/weapon/paper/nostromo/umbra
 	name = "UMBRA Protocol"
-	icon = 'maps/sierra/icons/obj/uniques.dmi'
+	icon = 'maps/nostromo/icons/obj/uniques.dmi'
 	icon_state = "paper_words"
 	info = {"
 	<tt><center><b><font color='red'>СОВЕРШЕННО СЕКРЕТНО<br>КОДОВОЕ СЛОВО: ТЕНЬ</font></b>
@@ -196,8 +196,8 @@
 	<img src = ntlogo.png>
 	</center>
 	<b>ОТ:</b> Kim Taggert, операционный директор НТ<br>
-	<b>КОМУ:</b> Капитану NSV Sierra<br>
-	<b>А ТАКЖЕ:</b> Агенту Внутренних Дел NSV Sierra<br>
+	<b>КОМУ:</b> Капитану NSV Nostromo<br>
+	<b>А ТАКЖЕ:</b> Агенту Внутренних Дел NSV Nostromo<br>
 	<b>ТЕМА:</b> Протокол ТЕНЬ<br>
 	<hr>
 	<li>Это - небольшое дополнение к стандартным процедурам. В отличии от остальных СОП, данная процедура не должна оглашаться персоналу судна. Данный протокол необходим для избежания неприятных казусов после миссии.</li>

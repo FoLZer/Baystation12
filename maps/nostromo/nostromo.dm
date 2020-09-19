@@ -3,10 +3,7 @@
 	#include "nostromo_announcements.dm"
 	#include "nostromo_antagonism.dm"
 	#include "nostromo_areas.dm"
-	#include "nostromo_elevator.dm"
-	#include "nostromo_holodecks.dm"
 	#include "nostromo_lobby.dm"
-	#include "nostromo_npcs.dm"
 	#include "nostromo_overmap.dm"
 	#include "nostromo_presets.dm"
 	#include "nostromo_procs.dm"
@@ -20,21 +17,13 @@
 
 	#include "nostromo_snatch.dm"
 
-	#include "datums/programs.dm"
-
-	#include "datums/uniforms.dm"
-	#include "datums/uniforms_civilian.dm"
-	#include "datums/uniforms_contractor.dm"
 	#include "datums/uniforms_employee.dm"
 
 	#include "datums/reports/command.dm"
-	#include "datums/reports/corporate.dm"
-	#include "datums/reports/exploration.dm"
 	#include "datums/reports/science.dm"
 	#include "datums/reports/security.dm"
 	#include "datums/reports/deck.dm"
 
-	#include "datums/shackle_law_sets.dm"
 	#include "datums/supplypacks/engineering.dm"
 	#include "datums/supplypacks/security.dm"
 	#include "datums/supplypacks/science.dm"
@@ -43,7 +32,6 @@
 	#include "game/antagonist/objective.dm"
 
 	#include "items/cards_ids.dm"
-	#include "items/documents.dm"
 	#include "items/encryption_keys.dm"
 	#include "items/explo_shotgun.dm"
 	#include "items/guns.dm"
@@ -51,15 +39,12 @@
 	#include "items/items.dm"
 	#include "items/lighting.dm"
 	#include "items/manuals.dm"
-	#include "items/mech.dm"
 	#include "items/papers.dm"
 	#include "items/rigs.dm"
 	#include "items/stamps.dm"
 
 	#include "items/clothing/clothing.dm"
-	#include "items/clothing/exploration.dm"
 	#include "items/clothing/override.dm"
-	#include "items/clothing/storages.dm"
 
 	#include "job/access.dm"
 	#include "job/jobs.dm"
@@ -68,18 +53,11 @@
 
 	#include "job/jobs_cargo.dm"
 	#include "job/jobs_command.dm"
-	#include "job/jobs_engineering.dm"
-	#include "job/jobs_exploration.dm"
-	#include "job/jobs_medical.dm"
 	#include "job/jobs_misc.dm"
-	#include "job/jobs_research.dm"
-	#include "job/jobs_security.dm"
 	#include "job/jobs_service.dm"
 
-	#include "machinery/alarm.dm"
 	#include "machinery/doors.dm"
 	#include "machinery/machinery.dm"
-	#include "machinery/navbeacons.dm"
 	#include "machinery/power.dm"
 	#include "machinery/random.dm"
 	#include "machinery/tcomms.dm"
@@ -90,7 +68,6 @@
 	#include "structures/closets.dm"
 	#include "structures/other.dm"
 	#include "structures/override.dm"
-	#include "structures/signs.dm"
 
 	#include "structures/closets/_closets_appearances.dm"
 	#include "structures/closets/armory.dm"
@@ -98,15 +75,12 @@
 	#include "structures/closets/engineering.dm"
 	#include "structures/closets/medical.dm"
 	#include "structures/closets/misc.dm"
-	#include "structures/closets/research.dm"
 	#include "structures/closets/security.dm"
 	#include "structures/closets/services.dm"
 	#include "structures/closets/supply.dm"
-	#include "structures/closets/exploration.dm"
 
 	#include "loadout/_defines.dm"
 	#include "loadout/loadout_accessories.dm"
-	#include "loadout/loadout_ec_skillbages.dm"
 	#include "loadout/loadout_eyes.dm"
 	#include "loadout/loadout_gloves.dm"
 	#include "loadout/loadout_head.dm"
@@ -118,7 +92,7 @@
 	#include "loadout/loadout_xeno.dm"
 	#include "loadout/~defines.dm"
 
-	#include "nostromo-1.dmm"
+	#include "nostromo.dmm"
 	#include "../away/empty.dmm"
 
 	#include "../away_inf/yacht/yacht.dm"

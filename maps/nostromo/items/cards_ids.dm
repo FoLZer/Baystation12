@@ -5,13 +5,6 @@
 	desc = "An identification card issued to personnel aboard the USCSS Nostromo."
 	job_access_type = /datum/job/assistant
 
-/obj/item/weapon/card/id/nostromo/silver
-	desc = "A silver identification card belonging to heads of staff."
-	item_state = "silver_id"
-	job_access_type = /datum/job/hop
-	extra_details = list("goldstripe")
-	color = "#ccecff"
-
 /obj/item/weapon/card/id/nostromo/gold
 	desc = "A golden identification card belonging to the Captain."
 	item_state = "gold_id"
@@ -24,14 +17,14 @@
 	job_access_type = /datum/job/assistant
 	color = "#ccecff"
 
-/obj/item/weapon/card/id/nostromo/silver/medical
+/obj/item/weapon/card/id/nostromo/crew/medical
 	desc = "An identification card issued to medical crewmembers aboard the USCSS Nostromo."
 	job_access_type = /datum/job/cmo
 	detail_color = COLOR_PALE_BLUE_GRAY
 
 //Security
 
-/obj/item/weapon/card/id/nostromo/silver/security
+/obj/item/weapon/card/id/nostromo/crew/security
 	desc = "An identification card issued to asset protection depatment's personnel aboard the USCSS Nostromo."
 	job_access_type = /datum/job/hos
 	detail_color = "#e00000"
@@ -39,13 +32,11 @@
 
 //Engineering
 
-/obj/item/weapon/card/id/nostromo/silver/engineering
+/obj/item/weapon/card/id/nostromo/crew/engineering
 	desc = "An identification card issued to engineering personnel aboard the USCSS Nostromo."
 	job_access_type = /datum/job/chief_engineer
 	detail_color = COLOR_SUN
 	extra_details = list("onegoldstripe")
-
-
 
 /obj/item/weapon/card/id/nostromo/crew/supply/quartermaster
 	job_access_type = /datum/job/qm
@@ -69,9 +60,3 @@
 
 /obj/item/weapon/card/id/nostromo/crew/service/bartender
 	job_access_type = /datum/job/bartender
-
-/obj/item/weapon/card/id/nostromo/crew/service/chaplain
-	job_access_type = /datum/job/chaplain
-
-/obj/item/weapon/card/id/nostromo/crew/service/actor
-	job_access_type = /datum/job/actor

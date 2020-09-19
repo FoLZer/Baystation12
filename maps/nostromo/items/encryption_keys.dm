@@ -1,9 +1,9 @@
-/obj/item/device/encryptionkey/heads/sierra_captain
+/obj/item/device/encryptionkey/heads/nostromo_captain
 	name = "captain's encryption key"
 	icon_state = "cap_cypherkey"
 	channels = list("Command" = 1, "Security" = 1, "Engineering" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "Exploration" = 1)
 
-/obj/item/device/encryptionkey/sierra_quartermaster
+/obj/item/device/encryptionkey/nostromo_quartermaster
 	name = "quartermaster's encryption key"
 	icon_state = "qm_cypherkey"
 	channels = list("Supply" = 1, "Command" = 1)

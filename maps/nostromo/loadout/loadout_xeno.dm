@@ -25,12 +25,6 @@
 /datum/gear/uniform/resomi/med
 	allowed_roles = MEDICAL_ROLES
 
-/datum/gear/uniform/resomi/science
-	allowed_roles = RESEARCH_ROLES
-
-/datum/gear/uniform/resomi/roboitcs
-	allowed_roles = list(/datum/job/roboticist)
-
 /datum/gear/eyes/resomi/lenses_sec
 	allowed_roles = SECURITY_ROLES
 
@@ -38,9 +32,6 @@
 	allowed_roles = MEDICAL_ROLES
 
 // IPC clothing
-
-/datum/gear/suit/lab_xyn_machine
-	allowed_branches = list(/datum/mil_branch/contractor)
 
 // Misc clothing
 
@@ -53,17 +44,3 @@
 	path = /obj/item/clothing/gloves/color/white/modified
 	sort_category = "Xenowear"
 	whitelisted = list(SPECIES_TAJARA, SPECIES_UNATHI, SPECIES_YEOSA, SPECIES_EROSAN)
-
-// Vox clothing
-
-/datum/gear/mask/gas/vox
-	allowed_roles = list(/datum/job/merchant, /datum/job/merchant_trainee, /*/datum/job/stowaway*/)
-
-/datum/gear/gloves/vox
-	allowed_roles = list(/datum/job/merchant, /datum/job/merchant_trainee, /*/datum/job/stowaway*/)
-
-/datum/gear/uniform/vox_cloth
-	allowed_roles = list(/datum/job/merchant, /datum/job/merchant_trainee, /*/datum/job/stowaway*/)
-
-/datum/gear/uniform/vox_robe
-	allowed_roles = list(/datum/job/merchant, /datum/job/merchant_trainee, /*/datum/job/stowaway*/)

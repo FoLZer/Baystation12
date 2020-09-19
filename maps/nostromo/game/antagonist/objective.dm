@@ -1,5 +1,5 @@
 /datum/objective/nuclear/kidnap
-	roles = list(/datum/job/captain, /datum/job/iaa, /datum/job/rd, /datum/job/chief_engineer)
+	roles = list(/datum/job/captain)
 
 /datum/objective/hijack
 	explanation_text = "Провести эвакуацию, предварительно саботировав эвакуационные капсулы."
