@@ -150,7 +150,7 @@ proc/get_radio_key_from_channel(var/channel)
 	return default_language
 
 /mob/proc/is_muzzled()
-	return istype(wear_mask, /obj/item/clothing/mask/muzzle)
+	return istype(wear_mask, /obj/item/clothing/mask/muzzle) || istype(wear_mask, /obj/item/clothing/mask/reversebeartrap)
 
 //Takes a list of the form list(message, verb, whispering) and modifies it as needed
 //Returns 1 if a speech problem was applied, 0 otherwise
@@ -255,6 +255,10 @@ proc/get_radio_key_from_channel(var/channel)
 	if(speaking && (speaking.flags & HIVEMIND))
 		speaking.broadcast(src,trim(message))
 		return 1
+
+	if(istype(wear_mask,/obj/item/clothing/mask/reversebeartrap))
+		visible_message("<span class='danger'>[src] мычит, пытаясь что-то сказать.</span>")
+		return
 
 	if((is_muzzled()) && !(speaking && (speaking.flags & SIGNLANG)))
 		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
