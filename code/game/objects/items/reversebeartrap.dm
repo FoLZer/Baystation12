@@ -21,6 +21,7 @@
 	var/numkeys = 4
 	var/time
 	var/on = 0
+	var/timetodeath = 5 MINUTES
 
 /obj/item/clothing/mask/reversebeartrap/attack_hand(mob/user as mob)
 	if(user.wear_mask == src && !numkeys)
@@ -39,6 +40,23 @@
 				numkeys = 2
 			if("3")
 				numkeys = 3
+
+/obj/item/clothing/mask/reversebeartrap/verb/setdeathtime()
+	set name = "Set Time to Death"
+	set category = "Object"
+
+	if(usr.incapacitated())
+		to_chat(usr,"<span class='warning'>You can't do this right now!</span>")
+		return
+	var/choice = input("Choose time to death(In seconds)", "DEATH!") as null|num
+	if(!choice)
+		return
+	if(usr.incapacitated())
+		to_chat(usr,"<span class='warning'>You can't do this right now!</span>")
+		return
+	timetodeath = choice*10
+	to_chat(usr,"<span class='notice'>You set the timer on [src]</span>")
+
 
 /obj/item/clothing/mask/reversebeartrap/attackby(obj/item/weapon/W, mob/user)
 	if(numkeys==4)
@@ -95,7 +113,7 @@
 
 /obj/item/clothing/mask/reversebeartrap/equipped(mob/user)
 	if(numkeys!=4)
-		time = world.time + 5 MINUTES
+		time = world.time + timetodeath
 		on = 1
 		START_PROCESSING(SSobj, src)
 
