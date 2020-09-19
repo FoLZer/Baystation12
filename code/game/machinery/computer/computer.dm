@@ -32,14 +32,14 @@
 
 /obj/machinery/computer/emp_act(severity)
 	if(prob(8))
-		explosion(target.loc, 0, 0, 2, 4)
+		explosion(src.loc, 0, 0, 2, 4)
 		qdel(src)
 	if(prob(20/severity)) set_broken(TRUE)
 	..()
 
 /obj/machinery/computer/ex_act(severity)
 	if(prob(7))
-		explosion(target.loc, 0, 0, 2, 4)
+		explosion(src.loc, 0, 0, 2, 4)
 		qdel(src)
 	switch(severity)
 		if(1.0)
@@ -61,7 +61,7 @@
 
 /obj/machinery/computer/bullet_act(var/obj/item/projectile/Proj)
 	if(prob(4))
-		explosion(target.loc, 0, 0, 2, 4)
+		explosion(src.loc, 0, 0, 2, 4)
 		qdel(src)
 	if(prob(Proj.get_structure_damage()))
 		set_broken(TRUE)
