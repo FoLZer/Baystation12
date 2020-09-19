@@ -126,6 +126,12 @@ ARMCHAIR(yellow)
 	req_amount = 5
 	time = 50
 
+/datum/stack_recipe/furniture/defensive_barrier
+	title = "defensive barrier"
+	result_type = /obj/structure/barrier
+	req_amount = 10
+	time = 100
+
 /datum/stack_recipe/furniture/stool
 	title = "stool"
 	result_type = /obj/item/weapon/stool
