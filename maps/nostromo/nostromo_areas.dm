@@ -1,4 +1,4 @@
-/datum/map/sierra
+/datum/map/nostromo
 
 	base_floor_type = /turf/simulated/floor/reinforced/airless
 	base_floor_area = /area/maintenance/exterior
@@ -366,19 +366,19 @@
 	area_flags = AREA_FLAG_ION_SHIELDED
 	req_access = list(access_maint_tunnels)
 
-/area/turbolift/sierra_top
+/area/turbolift/nostromo_top
 	name = "Elevator - First Deck"
 	lift_floor_label = "1 Палуба"
 	lift_floor_name = "Оперативная палуба"
 	lift_announce_str = "Оперативная палуба: исследовательский отсек, медицинский отсек, отсек службы безопасности, серверная телекоммуникаций, отсек ВКД."
 
-/area/turbolift/sierra_middle
+/area/turbolift/nostromo_middle
 	name = "Elevator - Second Deck"
 	lift_floor_label = "2 Палуба"
 	lift_floor_name = "Жилая палуба"
 	lift_announce_str = "Жилая палуба: мостик, комната совещаний, отсек криосна, спальное крыло, голодек, библиотека, бар, кафе, гидропоника, спортзал, прачечная, инженерный отсек."
 
-/area/turbolift/sierra_ground
+/area/turbolift/nostromo_ground
 	name = "Elevator - Third Deck"
 	lift_floor_label = "3 Палуба"
 	lift_floor_name = "Лётная палуба"
@@ -790,7 +790,7 @@
 	name = "First Deck - RND - Robotics Lab"
 	icon_state = "robotics"
 
-/* not found on Sierra
+/* not found on nostromo
 /area/assembly/robotics_surgery
 	name = "Robotics Operating Theatre"
 	icon_state = "robotics"
@@ -903,62 +903,62 @@
 /* SECURITY AREAS
  *
  */
-/area/security/sierra/
+/area/security/nostromo/
 	icon_state = "security"
 
-/area/security/sierra/hallway
+/area/security/nostromo/hallway
 	name = "First Deck - Security - Hallway - Fore"
 	sound_env = LARGE_ENCLOSED
 
-/area/security/sierra/hallway/aft
+/area/security/nostromo/hallway/aft
 	name = "First Deck - Security - Hallway - Aft"
 
-/area/security/sierra/hallway/port
+/area/security/nostromo/hallway/port
 	name = "First Deck - Security - Hallway - Port"
 
-/area/security/sierra/sergeant
+/area/security/nostromo/sergeant
 	name = "First Deck - Security - Warden"
 	icon_state = "Warden"
 	req_access = list(access_warden)
 
-/area/security/sierra/armory
+/area/security/nostromo/armory
 	name = "First Deck - Security - Armory"
 	icon_state = "armory"
 	req_access = list(access_armory)
 
-/area/security/sierra/armory/lobby
+/area/security/nostromo/armory/lobby
 	name = "First Deck - Security - Armory Lobby"
 
-/area/security/sierra/suits
+/area/security/nostromo/suits
 	name = "First Deck - Security - Suits Storage"
 	req_access = list(access_seceva)
 
-/area/security/sierra/breakroom
+/area/security/nostromo/breakroom
 	name = "First Deck - Security - Break Room"
 
-/area/security/sierra/hosbed
+/area/security/nostromo/hosbed
 	name = "First Deck - Security - HOS Bedroom"
 	icon_state = "sec_hos"
 	req_access = list(access_hos)
 
-/area/security/sierra/forensic
+/area/security/nostromo/forensic
 	name = "First Deck - Security - Forensic"
 	icon_state = "detective"
 	req_access = list(access_forensics_lockers)
 
-/area/security/sierra/forensic/lab
+/area/security/nostromo/forensic/lab
 	name = "First Deck - Security - Forensic Laboratory"
 
-/area/security/sierra/equipment
+/area/security/nostromo/equipment
 	name = "First Deck - Security - Equipment"
 	req_access = list(access_security)
 
-/area/security/sierra/interrogation
+/area/security/nostromo/interrogation
 	name = "First Deck - Security - Interrogation"
 	icon_state = "detective"
 	req_access = list(list(access_forensics_lockers, access_security))
 
-/area/security/sierra/evidence
+/area/security/nostromo/evidence
 	name = "First Deck - Security - Evidence Storage"
 	icon_state = "detective"
 	req_access = list(list(access_forensics_lockers, access_security))
@@ -972,7 +972,7 @@
 	icon_state = "nuke_storage"
 	req_access = list(access_heads_vault)
 
-/area/security/sierra/dockcheck
+/area/security/nostromo/dockcheck
 	name = "Third Deck - Security - Fore Docks Checkpoint"
 	icon_state = "checkpoint1"
 	req_access = list(list(access_security, access_forensics_lockers))

@@ -50,7 +50,6 @@
 	access_modify_region = list(
 		ACCESS_REGION_SECURITY = list(access_hos, access_change_ids),
 		ACCESS_REGION_MEDBAY = list(access_cmo, access_change_ids),
-		ACCESS_REGION_RESEARCH = list(access_rd, access_change_ids),
 		ACCESS_REGION_ENGINEERING = list(access_ce, access_change_ids),
 		ACCESS_REGION_COMMAND = list(access_change_ids),
 		ACCESS_REGION_GENERAL = list(access_hop, access_change_ids),
@@ -103,5 +102,5 @@
 	required_language = LANGUAGE_HUMAN_EURO
 	psi_latency_chance = 8
 
-/datum/map/sierra
+/datum/map/nostromo
 	default_assistant_title = "Crewman"

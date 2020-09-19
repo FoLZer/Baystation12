@@ -1,4 +1,4 @@
-/datum/map/sierra
+/datum/map/nostromo
 	shuttle_called_message = "Внимание всему персоналу: запущена процедура подготовки к подпространственному прыжку в следующий сектор. Расчетное время окончания зарядки генератора блюспейса: %ETA%."
 	shuttle_docked_message = "Внимание всему персоналу: подготовка к подпространственному прыжку завершена. Начата процедура безопасной активации генератора подпространства. Расчетное время до начала прыжка: %ETD%."
 	shuttle_leaving_dock = "Внимание всему персоналу: прыжок начат. Примерное время окончания прыжка: %ETA%. Сохраняйте спокойствие и трезвость мышления."
@@ -37,7 +37,7 @@
 	use_job_frequency_announcement = FALSE
 	use_radio_announcement = TRUE
 
-/datum/map/sierra/level_x_biohazard_announcement(var/bio_level)
+/datum/map/nostromo/level_x_biohazard_announcement(var/bio_level)
 	if(!isnum(bio_level))
 		CRASH("Expected a number, was: [log_info_line(bio_level)]")
 	if(bio_level < 1 || bio_level > 9)

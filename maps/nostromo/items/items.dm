@@ -1,23 +1,3 @@
-/*******************
-sierra specific items
-*******************/
-
-/obj/item/weapon/storage/backpack/explorer
-	name = "explorer backpack"
-	desc = "A rugged backpack."
-	icon_state = "exppack"
-
-/obj/item/weapon/storage/backpack/satchel_explorer
-	name = "explorer satchel"
-	desc = "A rugged satchel for field work."
-	icon_state = "satchel-exp"
-	worn_access = TRUE
-
-/obj/item/weapon/storage/backpack/messenger/explorer
-	name = "explorer messenger bag"
-	desc = "A rugged backpack worn over one shoulder."
-	icon_state = "courierbagexp"
-
 /***********
 Unique items
 ***********/
@@ -65,6 +45,3 @@ Unique items
 
 /obj/item/device/boombox/anchored/attack_hand(var/mob/user)
 	interact(user)
-
-/obj/item/tape/research
-	req_access = list(list(access_research, access_explorer))

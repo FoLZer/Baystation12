@@ -131,32 +131,6 @@
 		/obj/item/clothing/under/rank/medical/scrubs/lilac, /obj/item/clothing/under/rank/medical/scrubs/teal, \
 		/obj/item/clothing/under/rank/medical/scrubs/heliodor)
 
-/* RESEARCH
- * ========
- */
-
-/decl/hierarchy/mil_uniform/nt/res
-	name = "Employee Research"
-	departments = SCI
-
-	hat = list(\
-		/obj/item/clothing/head/beret/infinity/science)
-	under = list(\
-		/obj/item/clothing/under/sterile, /obj/item/clothing/under/rank/scientist, \
-		/obj/item/clothing/under/rank/scientist_new)
-	shoes = list(\
-		/obj/item/clothing/shoes/white)
-
-/decl/hierarchy/mil_uniform/nt/res/head
-	name = "Employee Research Head"
-	departments = SCI|COM
-
-	hat = list(\
-		/obj/item/clothing/head/beret/infinity/science, /obj/item/clothing/head/beret/infinity/science_rd)
-	under = list(\
-		/obj/item/clothing/under/rank/research_director, /obj/item/clothing/under/rank/research_director/dress_rd, \
-		/obj/item/clothing/under/rank/research_director/rdalt)
-
 /* COMMAND
  * =======
  */

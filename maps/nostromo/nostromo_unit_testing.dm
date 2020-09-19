@@ -1,4 +1,4 @@
-/datum/map/sierra
+/datum/map/nostromo
 	// Unit test exemptions
 	apc_test_exempt_areas = list(
 		/area/space = NO_SCRUBBER|NO_VENT|NO_APC,
@@ -25,8 +25,6 @@
 		/area/shuttle/escape_pod8/station = NO_SCRUBBER|NO_APC|NO_VENT,
 		/area/shuttle/escape_pod9/station = NO_SCRUBBER|NO_APC|NO_VENT,
 		/area/shuttle/escape_pod10/station = NO_SCRUBBER|NO_APC|NO_VENT,
-		/area/shuttle/merchant = 0,
-		/area/shuttle/petrov = 0,
 		/area/solar = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/space = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/storage = NO_SCRUBBER|NO_VENT,
@@ -37,7 +35,6 @@
 		/area/storage/bridge = 0,
 		/area/supply = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/thruster = NO_SCRUBBER,
-		/area/turbolift = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/vacant = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/vacant/gambling = 0,
 		/area/vacant/cargo = NO_SCRUBBER|NO_VENT,
@@ -60,11 +57,6 @@
 		/area/shuttle/syndicate_elite/station,
 		/area/shuttle/escape/centcom,
 		/area/rnd/xenobiology/xenoflora_storage,
-		/area/turbolift,
-		/area/turbolift/start,
-		/area/turbolift/firstdeck,
-		/area/turbolift/seconddeck,
-		/area/turbolift/thirddeck,
 		/area/template_noop
 	)
 

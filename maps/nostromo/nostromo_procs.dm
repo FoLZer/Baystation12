@@ -23,7 +23,7 @@
 	var/list/high_secure_areas
 	var/list/secure_areas
 
-/datum/map/sierra
+/datum/map/nostromo
 	high_secure_areas = list(
 	//	"First Deck - Security - Armory",			WikiPedia's
 	//	"First Deck - Security - Armory Lobby",		Lie

@@ -1,12 +1,7 @@
-var/const/NETWORK_CALYPSO     = "Charon"
-var/const/NETWORK_EXPEDITION  = "Expedition"
 var/const/NETWORK_POD         = "General Utility Pod"
 var/const/NETWORK_FIRST_DECK  = "First Deck"
-var/const/NETWORK_SECOND_DECK = "Second Deck"
-var/const/NETWORK_THIRD_DECK  = "Third Deck"
 var/const/NETWORK_SUPPLY      = "Supply"
 var/const/NETWORK_HANGAR      = "Hangar"
-var/const/NETWORK_PETROV      = "Petrov"
 
 //Overrides
 var/const/NETWORK_COMMAND = "Command"
@@ -14,29 +9,20 @@ var/const/NETWORK_ENGINE  = "Engine"
 var/const/NETWORK_ENGINEERING_OUTPOST = "Engineering Outpost"
 
 
-/datum/map/sierra/get_network_access(var/network)
+/datum/map/nostromo/get_network_access(var/network)
 	switch(network)
-		if(NETWORK_CALYPSO)
-			return access_expedition_shuttle
 		if(NETWORK_POD)
 			return access_guppy
 		if(NETWORK_SUPPLY)
 			return access_mailsorting
 		if(NETWORK_HANGAR)
 			return access_hangar
-		if(NETWORK_PETROV)
-			return access_petrov
-		if(NETWORK_EXPEDITION)
-			return access_expedition_shuttle
 	return get_shared_network_access(network) || ..()
 
-/datum/map/sierra
+/datum/map/nostromo
 	// Networks that will show up as options in the camera monitor program
 	station_networks = list(
-		NETWORK_ROBOTS,
 		NETWORK_FIRST_DECK,
-		NETWORK_SECOND_DECK,
-		NETWORK_THIRD_DECK,
 		NETWORK_COMMAND,
 		NETWORK_ENGINEERING,
 		NETWORK_ENGINE,
@@ -44,10 +30,7 @@ var/const/NETWORK_ENGINEERING_OUTPOST = "Engineering Outpost"
 		NETWORK_RESEARCH,
 		NETWORK_SECURITY,
 		NETWORK_SUPPLY,
-		NETWORK_EXPEDITION,
 		NETWORK_HANGAR,
-		NETWORK_CALYPSO,
-		NETWORK_PETROV,
 		NETWORK_POD,
 		NETWORK_ALARM_ATMOS,
 		NETWORK_ALARM_CAMERA,
@@ -63,26 +46,11 @@ var/const/NETWORK_ENGINEERING_OUTPOST = "Engineering Outpost"
 
 // Networks
 
-/obj/machinery/camera/network/exploration_shuttle
-	network = list(NETWORK_CALYPSO)
-
-/obj/machinery/camera/network/expedition
-	network = list(NETWORK_EXPEDITION)
-
 /obj/machinery/camera/network/first_deck
 	network = list(NETWORK_FIRST_DECK)
 
-/obj/machinery/camera/network/second_deck
-	network = list(NETWORK_SECOND_DECK)
-
-/obj/machinery/camera/network/third_deck
-	network = list(NETWORK_THIRD_DECK)
-
 /obj/machinery/camera/network/pod
 	network = list(NETWORK_POD)
-
-/obj/machinery/camera/network/petrov
-	network = list(NETWORK_PETROV)
 
 /obj/machinery/camera/network/supply
 	network = list(NETWORK_SUPPLY)
@@ -116,12 +84,6 @@ var/const/NETWORK_ENGINEERING_OUTPOST = "Engineering Outpost"
 			return access_heads
 		if(NETWORK_ENGINE, NETWORK_ENGINEERING_OUTPOST)
 			return access_engine
-
-/datum/computer_file/program/merchant
-	required_access = access_merchant_leader
-
-/obj/machinery/computer/shuttle_control/merchant
-	req_access = list(access_merchant_leader)
 
 /turf/simulated/wall //landlubbers go home
 	name = "bulkhead"

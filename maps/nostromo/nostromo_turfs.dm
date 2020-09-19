@@ -10,17 +10,11 @@
 /decl/flooring/tiling
 	name = "deck"
 
-/obj/machinery/door/airlock/glass/research
-	stripe_color = COLOR_NT_RED
-
-/obj/machinery/door/airlock/research
-	stripe_color = COLOR_NT_RED
-
 /obj/machinery/door/airlock/multi_tile/research
 	stripe_color = COLOR_NT_RED
 
-/turf/simulated/floor/shuttle_ceiling/sierra
+/turf/simulated/floor/shuttle_ceiling/nostromo
 	color = COLOR_OFF_WHITE
 
-/turf/simulated/floor/shuttle_ceiling/sierra/air
+/turf/simulated/floor/shuttle_ceiling/nostromo/air
 	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)

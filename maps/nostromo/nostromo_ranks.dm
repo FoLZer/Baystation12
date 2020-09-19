@@ -1,24 +1,12 @@
-/datum/job/submap
-	branch = /datum/mil_branch/civilian
-	rank =   /datum/mil_rank/civ/civ
-	allowed_branches = list(/datum/mil_branch/civilian)
-	allowed_ranks = list(/datum/mil_rank/civ/civ)
-
-/datum/map/sierra
+/datum/map/nostromo
 	branch_types = list(
-		/datum/mil_branch/civilian,
-		/datum/mil_branch/contractor,
 		/datum/mil_branch/employee,
-		/datum/mil_branch/alien,
-		/datum/mil_branch/skrell_fleet
+		/datum/mil_branch/alien
 	)
 
 	spawn_branch_types = list(
-		/datum/mil_branch/civilian,
-		/datum/mil_branch/contractor,
 		/datum/mil_branch/employee,
-		/datum/mil_branch/alien,
-		/datum/mil_branch/skrell_fleet
+		/datum/mil_branch/alien
 	)
 
 /*
@@ -28,57 +16,36 @@
 
 	species_to_branch_blacklist = list(
 		/datum/species/human    = list(
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/machine  = list(
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/adherent = list(
-			/datum/mil_branch/contractor,
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/unathi   = list(
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/skrell   = list(
 			/datum/mil_branch/alien),
 		/datum/species/nabber   = list(
-			/datum/mil_branch/civilian,
 			/datum/mil_branch/employee,
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/diona    = list(
-			/datum/mil_branch/contractor,
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/tajaran  = list(
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/resomi   = list(
-			/datum/mil_branch/alien,
-			/datum/mil_branch/skrell_fleet),
+			/datum/mil_branch/alien),
 		/datum/species/vox      = list(
-			/datum/mil_branch/contractor,
-			/datum/mil_branch/employee,
-			/datum/mil_branch/skrell_fleet
+			/datum/mil_branch/employee
 		)
 	)
 
 	species_to_branch_whitelist = list(
-		/datum/species/diona      = list(/datum/mil_branch/civilian,
-		 								 /datum/mil_branch/employee),
-		/datum/species/nabber     = list(/datum/mil_branch/contractor),
-		/datum/species/skrell     = list(/datum/mil_branch/civilian,
-		 								 /datum/mil_branch/employee,
-		 								 /datum/mil_branch/contractor,
-		 								 /datum/mil_branch/skrell_fleet),
-		/datum/species/unathi     = list(/datum/mil_branch/civilian,
-										 /datum/mil_branch/employee,
-										 /datum/mil_branch/contractor),
-		/datum/species/adherent   = list(/datum/mil_branch/civilian,
-										 /datum/mil_branch/employee),
-		/datum/species/vox        = list(/datum/mil_branch/alien,
-										 /datum/mil_branch/civilian)
+		/datum/species/diona      = list(/datum/mil_branch/employee),
+		/datum/species/nabber     = list(/datum/mil_branch/alien),
+		/datum/species/skrell     = list(/datum/mil_branch/employee),
+		/datum/species/unathi     = list(/datum/mil_branch/employee),
+		/datum/species/adherent   = list(/datum/mil_branch/employee),
+		/datum/species/vox        = list(/datum/mil_branch/alien)
 	)
 
 	species_to_rank_whitelist = list(
@@ -95,60 +62,17 @@
  *  ========
  */
 
-/datum/mil_branch/civilian
-	name = "Civilian"
-	name_short = "civ"
-	email_domain = "freemail.net"
-	allow_custom_email = TRUE
-
-	rank_types = list(
-		/datum/mil_rank/civ/civ,
-		/datum/mil_rank/civ/offduty,
-		/datum/mil_rank/civ/synthetic
-	)
-
-	spawn_rank_types = list(
-		/datum/mil_rank/civ/civ,
-		/datum/mil_rank/civ/offduty,
-		/datum/mil_rank/civ/synthetic
-	)
-
-	assistant_job = "Passenger"
-
-/datum/mil_branch/contractor
-	name = "Contractor"
-	name_short = "contr"
-	email_domain = "freemail.net"
-	allow_custom_email = TRUE
-
-	rank_types = list(
-		/datum/mil_rank/civ/contractor,
-		/datum/mil_rank/civ/offduty,
-		/datum/mil_rank/civ/synthetic
-	)
-
-	spawn_rank_types = list(
-		/datum/mil_rank/civ/contractor,
-		/datum/mil_rank/civ/offduty,
-		/datum/mil_rank/civ/synthetic
-	)
-
-
 /datum/mil_branch/employee
 	name = "Employee"
 	name_short = "empl"
-	email_domain = "mail.nanotrasen.net"
+	email_domain = "mail.yutani.net"
 
 	rank_types = list(
-		/datum/mil_rank/civ/nt,
-		/datum/mil_rank/civ/offduty,
-		/datum/mil_rank/civ/synthetic
+		/datum/mil_rank/civ/wy
 	)
 
 	spawn_rank_types = list(
-		/datum/mil_rank/civ/nt,
-		/datum/mil_rank/civ/offduty,
-		/datum/mil_rank/civ/synthetic
+		/datum/mil_rank/civ/wy
 	)
 
 
@@ -165,21 +89,8 @@
  *  =========
  */
 
-/datum/mil_rank/civ/civ
-	name = "Civilian"
-	name_short = null
-
-/datum/mil_rank/civ/nt
-	name = "NanoTrasen Employee"
-
-/datum/mil_rank/civ/contractor
-	name = "NanoTrasen Contractor"
-
-/datum/mil_rank/civ/offduty
-	name = "Off-Duty Personnel"
-
-/datum/mil_rank/civ/synthetic
-	name = "Synthetic"
+/datum/mil_rank/civ/wy
+	name = "Weyland-Yutani Employee"
 
 /*
  * Vox/foreign alien branch
