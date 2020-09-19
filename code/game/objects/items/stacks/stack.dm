@@ -112,7 +112,7 @@
 	show_browser(user, JOINTEXT(t1), "window=stack")
 	onclose(user, "stack")
 
-/obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, var/quantity, mob/user)
+/obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, var/quantity, mob/user as mob)
 	var/required = quantity*recipe.req_amount
 	var/produced = min(quantity*recipe.res_amount, recipe.max_res_amount)
 
@@ -128,17 +128,14 @@
 
 	if (recipe.time)
 		to_chat(user, "<span class='notice'>Building [recipe.display_name()] ...</span>")
-		if (!user.do_skilled(recipe.time, SKILL_CONSTRUCTION))
-			return
+		if (user.do_skilled(recipe.time, SKILL_CONSTRUCTION, user))
+			if(user.skill_fail_prob(SKILL_CONSTRUCTION, 90, recipe.difficulty))
+				to_chat(user, "<span class='warning'>You waste some [name] and fail to build \the [recipe.display_name()]!</span>")
+				return
+			var/atom/O = recipe.spawn_result(user, user.loc, produced)
+			O.add_fingerprint(user)
 
-	if (use(required))
-		if(user.skill_fail_prob(SKILL_CONSTRUCTION, 90, recipe.difficulty))
-			to_chat(user, "<span class='warning'>You waste some [name] and fail to build \the [recipe.display_name()]!</span>")
-			return
-		var/atom/O = recipe.spawn_result(user, user.loc, produced)
-		O.add_fingerprint(user)
-
-		user.put_in_hands(O)
+			user.put_in_hands(O)
 
 /obj/item/stack/Topic(href, href_list)
 	..()

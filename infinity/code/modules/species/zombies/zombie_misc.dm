@@ -14,7 +14,7 @@
 	throw_speed = 0
 	hitsound = list('sound/voice/growl1.ogg')
 
-	attack_verb = list("bitten and scratched", "scratched")
+	attack_verb = list("bited", "scratched")
 
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 	w_class = ITEM_SIZE_NO_CONTAINER
