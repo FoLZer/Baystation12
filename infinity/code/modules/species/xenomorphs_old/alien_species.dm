@@ -13,7 +13,7 @@
 
 	natural_armour_values = list(melee = 30, bullet = 28, laser = 25, energy = 0, bomb = 0, bio = 100, rad = 100)
 
-	icon_template = 'icons/mob/xenomorph.dmi'
+	icon_template = 'infinity/icons/mob/human_races/species/xenomorph/template.dmi'
 
 	damage_overlays = null //no icons
 	damage_mask =     null //no icons
@@ -133,8 +133,8 @@
 
 	rarity_value = 5
 	base_color = "#000d1a"
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_drone.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_drone.dmi'
+	icobase = 'infinity/icons/mob/human_races/species/xenomorph/drone.dmi'
+	deform =  'infinity/icons/mob/human_races/species/xenomorph/drone.dmi'
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/xeno,
@@ -170,8 +170,8 @@
 	total_health = 150
 	base_color = "#3d0500"
 
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_hunter.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_hunter.dmi'
+	icobase = 'infinity/icons/mob/human_races/species/xenomorph/hunter.dmi'
+	deform =  'infinity/icons/mob/human_races/species/xenomorph/hunter.dmi'
 
 //	brute_mod =     0.8
 //	burn_mod =      0.8
@@ -215,8 +215,8 @@
 	name = "Xenomorph Sentinel"
 	base_color = "#00284d"
 	total_health = 220
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_sentinel.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_sentinel.dmi'
+	icobase = 'infinity/icons/mob/human_races/species/xenomorph/sentinel.dmi'
+	deform =  'infinity/icons/mob/human_races/species/xenomorph/sentinel.dmi'
 
 	weeds_plasma_rate = 15
 
@@ -261,8 +261,8 @@
 	weeds_plasma_rate = 20
 	slowdown = 0.5
 
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_queen.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_queen.dmi'
+	icobase = 'infinity/icons/mob/human_races/species/xenomorph/queen.dmi'
+	deform =  'infinity/icons/mob/human_races/species/xenomorph/queen.dmi'
 
 	has_organ = list(
 		BP_EYES =     /obj/item/organ/internal/eyes/xeno,
@@ -304,8 +304,8 @@
 	total_health = 100
 	base_color = "#3d0500"
 
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_hunter.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_hunter.dmi'
+	icobase = 'infinity/icons/mob/human_races/species/xenomorph/hunter.dmi'
+	deform =  'infinity/icons/mob/human_races/species/xenomorph/hunter.dmi'
 
 //	brute_mod =     0.8
 //	burn_mod =      0.8
@@ -357,8 +357,8 @@
 
 	rarity_value = 5
 	base_color = "#001a13"
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_drone.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_drone.dmi'
+	icobase = 'infinity/icons/mob/human_races/species/xenomorph/drone.dmi'
+	deform =  'infinity/icons/mob/human_races/species/xenomorph/drone.dmi'
 
 	move_intents = list(/decl/move_intent/walk)
 
@@ -394,8 +394,8 @@
 	name = "Xenomorph Hivelord"
 	base_color = "#2b0042"
 	total_health = 190
-	icobase = 'infinity/icons/mob/human_races/species/xenophage/body_sentinel.dmi'
-	deform =  'infinity/icons/mob/human_races/species/xenophage/body_sentinel.dmi'
+	icobase = 'infinity/icons/mob/human_races/species/xenomorph/sentinel.dmi'
+	deform =  'infinity/icons/mob/human_races/species/xenomorph/sentinel.dmi'
 
 	weeds_plasma_rate = 15
 

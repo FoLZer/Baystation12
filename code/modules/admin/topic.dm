@@ -258,6 +258,7 @@
 			if("constructbuilder")	M.change_mob_type( /mob/living/simple_animal/construct/builder , null, null, delmob )
 			if("constructwraith")	M.change_mob_type( /mob/living/simple_animal/construct/wraith , null, null, delmob )
 			if("shade")				M.change_mob_type( /mob/living/simple_animal/shade , null, null, delmob )
+			if("xenolarva")         M.change_mob_type( /mob/living/carbon/alien/xenolarva , null , null , delmob )
 
 
 	/////////////////////////////////////new ban stuff
