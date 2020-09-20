@@ -112,13 +112,14 @@
 	if(on)
 		if(world.time > last_tick)
 			var/mob/living/carbon/human/H = src.loc
-			last_tick = world.time + 5 SECONDS
+			last_tick = world.time + 4 SECONDS
 			playsound(H.loc, 'sound/items/tick.ogg', 25, 1)
 		if(world.time > time)
 			var/mob/living/carbon/human/H = src.loc
 			var/obj/item/organ/external/head/O = H.organs_by_name[BP_HEAD]
-			O.attempt_dismemberment(10, 0, 0, 1, null, 0, 1)
+			new /obj/effect/gibspawner/human(H.loc, H.viruses)
 			H.visible_message("<span class='danger'>Капкан отрывает голову [H]!</src>")
+			O.attempt_dismemberment(10, 0, 0, 1, null, 0, 1)
 			qdel(src)
 
 /obj/item/clothing/mask/reversebeartrap/equipped(mob/user)
