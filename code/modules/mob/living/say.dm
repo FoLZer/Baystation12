@@ -98,7 +98,7 @@ var/list/department_radio_keys = list(
 )
 
 /mob/living/proc/hivecheck()
-	if (isxeno(src))
+	if (isxenomorph(src))
 		return 1
 	if (!ishuman(src))
 		return
