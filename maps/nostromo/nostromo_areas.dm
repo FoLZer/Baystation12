@@ -25,6 +25,22 @@
 	name = "Safe Room"
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
 
+/area/hallway/primary/maindeck
+	name = "Main Deck - Hallway - Central"
+	icon_state = "hallC3"
+
+/area/hallway/primary/maindeck/up
+	name = "Main Deck - Hallway - Up"
+	icon_state = "hallF"
+
+/area/hallway/primary/maindeck/down
+	name = "Main Deck - Hallway - Down"
+	icon_state = "hallA"
+
+/area/hallway/primary/maindeck/emergency
+	name = "Main Deck - Emergency Hallway"
+	icon_state = "hallF"
+
 /* SHUTTLES
  * ========
  */
@@ -67,6 +83,33 @@
 /area/engineering
 	req_access = list(access_engine)
 	icon_state = "engineering"
+
+/area/crew_quarters/heads/office/ce
+	icon_state = "heads_ce"
+	name = "CE's Office"
+	req_access = list(access_ce)
+
+/area/engineering/engine_smes
+	name = "Engineering - SMES"
+	icon_state = "engine_smes"
+	sound_env = SMALL_ENCLOSED
+
+/area/engineering/materials_storage
+	name = "Engineering - Materials Storage"
+	icon_state = "engineering_storage"
+	sound_env = SMALL_ENCLOSED
+
+/area/engineering/mainlobby
+	name = "Engineering - Lobby"
+
+/area/engineering/hardstorage
+	name = "Engineering - Storage"
+	icon_state = "engineering_storage"
+	sound_env = SMALL_ENCLOSED
+
+/area/engineering/crafting
+	name = "Engineering - Crafting Station"
+	icon_state = "engineering_storage"
 
 /* VACANT AREAS
  * ============
@@ -112,6 +155,19 @@
 /* MEDBAY AREAS
  * ============
  */
+
+/area/medical/equipstorage
+	name = "Medical - Storage"
+	icon_state = "medbay4"
+
+/area/medical/mainlobby
+	name = "Medical - Lobby"
+	icon_state = "medbay"
+
+/area/crew_quarters/heads/office/cmo
+	icon_state = "heads_cmo"
+	name = "CMO's Office"
+	req_access = list(access_cmo)
 
 // Misc
 /area/teleporter
