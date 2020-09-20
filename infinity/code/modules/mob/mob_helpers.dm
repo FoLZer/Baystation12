@@ -3,5 +3,5 @@
 		var/mob/living/carbon/human/H = A
 		if(locate(/obj/item/organ/internal/xeno/hivenode) in H)
 			return 1
-		return istype(H.species, /datum/species/xenos) || istype(H, /mob/living/carbon/human/xenomorph)
+		return istype(H.species, /datum/species/xenomorph) || istype(H.species, /datum/species/xenos)
 	return 0

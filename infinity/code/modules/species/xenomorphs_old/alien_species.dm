@@ -22,8 +22,6 @@
 	darksight_range = 8
 	darksight_tint = DARKTINT_GREAT
 
-	antaghud_offset_x = -16
-	pixel_offset_x = -16
 	has_fine_manipulation = 0
 	siemens_coefficient = 0.25
 	gluttonous = GLUT_ANYTHING

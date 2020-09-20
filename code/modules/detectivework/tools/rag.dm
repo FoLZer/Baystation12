@@ -225,6 +225,10 @@
 
 	if(burn_time <= 0)
 		STOP_PROCESSING(SSobj, src)
+		if(istype(loc, /obj/item/weapon/reagent_containers/food/drinks/bottle))
+			var/obj/item/weapon/reagent_containers/food/drinks/bottle/B = loc
+			B.smash()
+			return
 		new /obj/effect/decal/cleanable/ash(location)
 		qdel(src)
 		return
