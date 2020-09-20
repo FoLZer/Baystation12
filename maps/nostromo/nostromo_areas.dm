@@ -22,155 +22,6 @@
 		/area/shuttle/specops/centcom,
 	)
 
-/* THIRD DECK (Z-1)
- * ================
- */
-
-/area/hallway/primary/thirddeck/fore
-	name = "Third Deck - Hallway - Fore"
-	icon_state = "hallF"
-
-/area/hallway/primary/thirddeck/center
-	name = "Third Deck - Hallway - Central"
-	icon_state = "hallC3"
-
-/area/hallway/primary/thirddeck/aft
-	name = "Third Deck - Hallway - Aft"
-	icon_state = "hallA"
-
-/area/hallway/primary/thirddeck/central_stairwell
-	name = "Third Deck - Stairwell - Central"
-	icon_state = "hallC2"
-
-/area/maintenance/thirddeck
-	name = "Third Deck - Maintenance"
-	icon_state = "maintcentral"
-
-/area/maintenance/thirddeck/aft
-	name = "Third Deck - Maintenance - Aft"
-	icon_state = "amaint"
-
-/area/maintenance/thirddeck/foreport
-	name = "Third Deck - Maintenance - Fore-Port "
-	icon_state = "fpmaint"
-
-/area/maintenance/thirddeck/forestarboard
-	name = "Third Deck - Maintenance - Fore-Starboard "
-	icon_state = "fsmaint"
-
-/area/maintenance/thirddeck/starboard
-	name = "Third Deck - Maintenance - Starboard "
-	icon_state = "smaint"
-
-/area/maintenance/thirddeck/port
-	name = "Third Deck - Maintenance - Port"
-	icon_state = "pmaint"
-
-/area/teleporter/thirddeck
-	name = "Third Deck - Teleporter"
-	icon_state = "teleporter"
-
-/area/maintenance/substation/thirddeck
-	name = "Third Deck - Substation"
-
-/area/maintenance/waterstore
-	name = "Third Deck - Water Cistern"
-	icon_state = "disposal"
-	req_access = list(list(access_cargo, access_engine))
-
-/area/crew_quarters/commissary
-	name = "Third Deck - Commissary"
-	req_access = list(access_commissary)
-
-/* SECOND DECK (Z-2)
- * =================
- */
-
-/area/hallway/primary/seconddeck/fore
-	name = "Second Deck - Hallway - Fore "
-	icon_state = "hallF"
-
-/area/hallway/primary/seconddeck/center
-	name = "Second Deck - Hallway - Central"
-	icon_state = "hallC3"
-
-/area/hallway/primary/seconddeck/aft
-	name = "Second Deck - Hallway - Aft"
-	icon_state = "hallA"
-
-/area/hallway/primary/seconddeck/central_stairwell
-	name = "Second Deck - Stairwell - Central "
-	icon_state = "hallC2"
-
-/area/hallway/primary/seconddeck/fore_stairwell
-	name = "Second Deck - Stairwell - Fore "
-	icon_state = "hallC2"
-
-/area/maintenance/seconddeck
-	name = "Second Deck - Maintenance"
-	icon_state = "maintcentral"
-
-/area/maintenance/seconddeck/foreport
-	name = "Second Deck - Maintenance - Fore-Port "
-	icon_state = "fpmaint"
-
-/area/maintenance/seconddeck/forestarboard
-	name = "Second Deck - Maintenance - Fore-Starboard "
-	icon_state = "fsmaint"
-
-/area/maintenance/seconddeck/starboard
-	name = "Second Deck - Maintenance - Starboard "
-	icon_state = "smaint"
-
-/area/maintenance/seconddeck/port
-	name = "Second Deck - Maintenance - Port"
-	icon_state = "pmaint"
-
-/area/maintenance/seconddeck/aftstarboard
-	name = "Second Deck - Maintenance - Aft-Starboard "
-	icon_state = "asmaint"
-
-/area/maintenance/seconddeck/aftport
-	name = "Second Deck - Maintenance - Aft-Port"
-	icon_state = "apmaint"
-
-/area/teleporter/seconddeck
-	name = "Second Deck - Teleporter"
-	icon_state = "teleporter"
-
-/area/crew_quarters/safe_room/seconddeck
-	name = "Second Deck - Safe Room"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
-
-/area/maintenance/substation/seconddeck
-	name = "Second Deck - Substation"
-
-/area/maintenance/compactor
-	name = "Second Deck - Compactor"
-	icon_state = "disposal"
-	sound_env = STANDARD_STATION
-	req_access = list(list(access_cargo, access_maint_tunnels))
-
-/area/crew_quarters/laundry
-	name = "Second Deck - Laundry Room"
-	icon_state = "Sleep"
-
-/area/maintenance/abandoned_compartment
-	name = "Second Deck - Abandoned - Bar"
-	turf_initializer = /decl/turf_initializer/maintenance/heavy
-	icon_state = "cafeteria"
-
-/area/maintenance/abandoned_hydroponics
-	name = "Second Deck - Abandoned - Hydroponics"
-	icon_state = "hydro"
-	turf_initializer = /decl/turf_initializer/maintenance/heavy
-
-/area/maintenance/abandoned_common
-	name = "Second Deck - Abandoned - Actors Room"
-	icon = 'infinity/icons/turf/areas.dmi'
-	icon_state = "music_room"
-	turf_initializer = /decl/turf_initializer/maintenance/heavy
-
 /* FIRST DECK (Z-3)
  * ================
  */
@@ -231,9 +82,6 @@
 	name = "First Deck - Safe Room"
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
 
-/area/maintenance/substation/firstdeck
-	name = "First Deck - Substation"
-
 /* SHUTTLES
  * ========
  */
@@ -252,82 +100,9 @@
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
 	icon_state = "exit"
 
-/area/shuttle/escape_pod7/station
-	name = "Shuttle - Escape - Pod Two"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod8/station
-	name = "Shuttle - Escape - Pod Three"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod9/station
-	name = "Shuttle - Escape - Pod Four"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod10/station
-	name = "Shuttle - Escape - Pod Five"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/* SMALL PODS
- * ==========
- */
-
-/area/shuttle/escape_pod12/station
-	name = "Shuttle - Escape - Small Pod Seven"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod13/station
-	name = "Shuttle - Escape - Small Pod Eight"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod14/station
-	name = "Shuttle - Escape - Small Pod Nine"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod15/station
-	name = "Shuttle - Escape - Small Pod Ten"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod16/station
-	name = "Shuttle - Escape - Small Pod Eleven"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
-/area/shuttle/escape_pod17/station
-	name = "Shuttle - Escape - Small Pod Twelve"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	icon_state = "exit"
-
 /* VESSEL'S SHUTTLES
  * =================
  */
-
-/area/exploration_shuttle
-	name = "Shuttle - Charon"
-	icon_state = "shuttlered"
-	base_turf = /turf/simulated/floor/plating
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
-
-/area/exploration_shuttle/cockpit
-	name = "Shuttle - Charon - Cockpit"
-/area/exploration_shuttle/atmos
-	name = "Shuttle - Charon - Atmos Compartment"
-/area/exploration_shuttle/power
-	name = "Shuttle - Charon - Power Compartment"
-/area/exploration_shuttle/medical
-	name = "Shuttle - Charon - Medical Compartment"
-/area/exploration_shuttle/cargo
-	name = "Shuttle - Charon - Cargo Bay"
-/area/exploration_shuttle/airlock
-	name = "Shuttle - Charon - Airlock Compartment"
 
 /area/guppy_hangar/start
 	name = "Shuttle - Guppy"
@@ -336,75 +111,6 @@
 	dynamic_lighting = 1
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
 	req_access = list(access_guppy)
-
-/area/shuttle/petrov/ship
-	icon_state = "shuttlered"
-/area/shuttle/petrov/cell1
-	name = "Shuttle - Petrov - Isolation Cell 1"
-	icon_state = "shuttle"
-/area/shuttle/petrov/cell2
-	name = "Shuttle - Petrov - Isolation Cell 2"
-	icon_state = "shuttlegrn"
-/area/shuttle/petrov/cell3
-	name = "Shuttle - Petrov - Isolation Cell 3"
-	icon_state = "shuttle"
-
-/* TURBOLIFT
- * =========
- */
-
-/area/turbolift
-	icon_state = "shuttle"
-	dynamic_lighting = 1
-	area_flags = AREA_FLAG_ION_SHIELDED
-	req_access = list(access_maint_tunnels)
-
-/area/turbolift/nostromo_top
-	name = "Elevator - First Deck"
-	lift_floor_label = "1 Палуба"
-	lift_floor_name = "Оперативная палуба"
-	lift_announce_str = "Оперативная палуба: исследовательский отсек, медицинский отсек, отсек службы безопасности, серверная телекоммуникаций, отсек ВКД."
-
-/area/turbolift/nostromo_middle
-	name = "Elevator - Second Deck"
-	lift_floor_label = "2 Палуба"
-	lift_floor_name = "Жилая палуба"
-	lift_announce_str = "Жилая палуба: мостик, комната совещаний, отсек криосна, спальное крыло, голодек, библиотека, бар, кафе, гидропоника, спортзал, прачечная, инженерный отсек."
-
-/area/turbolift/nostromo_ground
-	name = "Elevator - Third Deck"
-	lift_floor_label = "3 Палуба"
-	lift_floor_name = "Лётная палуба"
-	lift_announce_str = "Лётная палуба: главный ангар, экспедиционное крыло, крыло снабжения, стыковочные доки, склады, переработка руды, коморка уборщика, нижний этаж ксенобиологии, NSS 'Petrov'."
-	base_turf = /turf/simulated/floor
-
-/area/turbolift/start
-	name = "Elevator - Start"
-
-/area/turbolift/firstdeck
-	name = "first deck"
-	base_turf = /turf/simulated/open
-
-/area/turbolift/seconddeck
-	name = "second deck"
-	base_turf = /turf/simulated/open
-
-/area/turbolift/thirddeck
-	name = "third deck"
-	base_turf = /turf/simulated/open
-
-/* ADMIN LEVEL (Z-4)
- * =================
- */
-
-//MERCHANT AREAS
-/area/shuttle/merchant/home
-	name = "Merchant Vessel"
-	icon_state = "shuttlegrn"
-	requires_power = 1
-	dynamic_lighting = 1
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	req_access = list(access_merchant)
 
 /* COMMAND AREAS
  * =============
@@ -684,96 +390,6 @@
 	name = "Third Deck - Hangar - Atmospherics Storage"
 	icon_state = "auxstorage"
 
-/* RND AREAS
- * =========
- */
-
-/area/rnd/misc_lab
-	name = "First Deck - RND - Miscellaneous Lab"
-	icon_state = "misclab"
-	req_access = list(access_research)
-
-/area/rnd/research
-	name = "First Deck - RND - Research Lab"
-	icon_state = "research"
-	req_access = list(access_research)
-
-/area/rnd/storage
-	name = "First Deck - RND - Storage"
-	icon_state = "toxstorage"
-	req_access = list(access_tox_storage)
-
-/area/rnd/canister
-	name = "Third Deck - Hangar - Canister Storage"
-	icon_state = "toxstorage"
-	sound_env = SMALL_ENCLOSED
-	req_access = list(access_tox_storage)
-
-/area/rnd/development
-	name = "First Deck - RND - Fabricator Lab"
-	icon_state = "devlab"
-	req_access = list(access_tox)
-
-/area/rnd/entry
-	name = "First Deck - RND - Lobby"
-	icon_state = "decontamination"
-
-/area/rnd/locker
-	name = "First Deck - RND - Locker Room"
-	icon_state = "locker"
-
-/area/rnd/xenobiology/entry
-	name = "Xenobiology Access"
-	icon_state = "xeno_lab"
-
-/area/rnd/xenobiology/entry2
-	name = "Xenobiology Access"
-	icon_state = "xeno_lab"
-
-/area/rnd/xenobiology/level1
-	name = "Xenobiology Level One"
-	icon_state = "xeno_lab"
-
-/area/rnd/xenobiology/level2
-	name = "Xenobiology Level Two"
-	icon_state = "xeno_lab"
-
-/area/rnd/xenobiology/atmos
-	name = "Xenobiology - Atmos Hub"
-	icon_state = "xeno_lab"
-
-/area/rnd/xenobiology/water_cell
-	name = "Xenobiology - Water Cell"
-	icon_state = "xeno_lab"
-
-/area/rnd/xenobiology/storage
-	name = "Xenobiology - Storage"
-	icon_state = "xeno_lab"
-
-/area/rnd/blanks
-	name = "First Deck - RND - Aux Custodial Supplies"
-	icon_state = "decontamination"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-	sound_env = SMALL_ENCLOSED
-	req_access = list(access_rd)
-
-/area/assembly
-	req_access = list(access_robotics)
-
-/area/assembly/chargebay
-	name = "First Deck - RND - Mech Bay"
-	icon_state = "mechbay"
-
-/area/assembly/robotics
-	name = "First Deck - RND - Robotics Lab"
-	icon_state = "robotics"
-
-/* not found on nostromo
-/area/assembly/robotics_surgery
-	name = "Robotics Operating Theatre"
-	icon_state = "robotics"
-*/
-
 /* CREW AREAS
  * ==========
  */
@@ -853,20 +469,19 @@
 	sound_env = SMALL_SOFTFLOOR
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
 
-/area/crew_quarters/sleep/cryo
-	name = "Second Deck - Living - Cryogenic Storage"
+/area/crew_quarters/sleep/cryo1
+	name = "Cryo Storage 1"
 	icon = 'infinity/icons/turf/areas.dmi'
 	icon_state = "cryo"
 
-/area/crew_quarters/sleep/cryo/upper
-	name = "Second Deck - Living - Cryogenic Storage - Upper"
-	icon_state = "cryo_up"
-/area/crew_quarters/sleep/cryo/south
-	name = "Second Deck - Living - Cryogenic Storage - South"
-	icon_state = "cryo_south"
+/area/crew_quarters/sleep/cryo2
+	name = "Cryo Storage 2"
 
-/area/crew_quarters/sleep/cryo/first_deck
-	name = "First Deck - Cryogenic Storage"
+/area/crew_quarters/sleep/cryo3
+	name = "Cryo Storage 3"
+
+/area/crew_quarters/sleep/cryo4
+	name = "Cryo Storage 4"
 
 /area/crew_quarters/adherent
 	name = "Second Deck - Living - Adherent Maintenence"
@@ -1026,28 +641,6 @@
 	name = "Second Deck - Abandoned - Virology Access"
 	req_access = list()
 
-/* CHAPEL AREAS
- * ============
- */
-
-/area/chapel/main
-	name = "Second Deck - Chapel"
-	icon_state = "chapel"
-	ambience = list(
-			'sound/ambience/ambicha1.ogg',
-			'sound/ambience/ambicha2.ogg',
-			'sound/ambience/ambicha3.ogg',
-			'sound/ambience/ambicha4.ogg',
-			'sound/music/traitor.ogg'
-		)
-	sound_env = LARGE_ENCLOSED
-
-/area/chapel/office
-	name = "Second Deck - Chapel - Chaplain's Office"
-	req_access = list(access_chapel_office)
-	color = COLOR_GRAY80
-	sound_env = SMALL_SOFTFLOOR
-
 // Misc
 /area/deity_spawn
 	name = "Deity Spawn"
@@ -1064,18 +657,6 @@
 /area/thruster
 	icon_state = "thruster"
 	req_access = list(access_engine)
-
-/area/thruster/d1port
-	name = "First Deck - Nacelle - Port "
-
-/area/thruster/d1starboard
-	name = "First Deck - Nacelle - Starboard"
-
-/area/thruster/d3port
-	name = "Third Deck - Nacelle - Port"
-
-/area/thruster/d3starboard
-	name = "Third Deck - Nacelle - Starboard"
 
 /area/maintenance/substation
 	name = "Substation"
