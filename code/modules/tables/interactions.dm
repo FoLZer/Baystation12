@@ -111,6 +111,28 @@
 		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
 		return
 
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		if(H.a_intent == I_HURT)
+			if(H.hand)
+				if(H.r_hand)
+					return
+			else
+				if(H.l_hand)
+					return
+			if(reinforced || flipped < 0 || !flip(get_cardinal_dir(H,src)))
+				to_chat(H, "<span class='notice'>It won't budge.</span>")
+				return
+
+			H.visible_message("<span class='warning'>[H] flips \the [src]!</span>")
+
+			if(atom_flags & ATOM_FLAG_CLIMBABLE)
+				object_shaken()
+
+			playsound(src,'infinity/sound/machines/Table_Fall.ogg',100,1)
+
+			return
+
 	// Placing stuff on tables
 	if(user.unEquip(W, src.loc))
 		auto_align(W, click_params)
