@@ -7,10 +7,10 @@
 	desc = "Hangar Deck"
 	region = ACCESS_REGION_GENERAL
 
-/var/const/access_guppy_helm = "ACCESS_GUPPY_HELM"//76
-/datum/access/guppy_helm
-	id = access_guppy_helm
-	desc = "General Utility Pod Helm"
+/var/const/access_narcissus_helm = "ACCESS_NARCISSUS_HELM"//76
+/datum/access/narcissus_helm
+	id = access_narcissus_helm
+	desc = "Narcissus Shuttle Helm"
 	region = ACCESS_REGION_SUPPLY
 
 /var/const/access_gun = "ACCESS_GUN"//87
@@ -19,11 +19,11 @@
 	desc = "BSA Cannon"
 	region = ACCESS_REGION_COMMAND
 
-/var/const/access_guppy = "ACCESS_GUPPY"//89
-/datum/access/guppy
-	id = access_guppy
-	desc = "General Utility Pod"
-	region = ACCESS_REGION_SUPPLY
+/var/const/access_narcissus = "ACCESS_NARCISSUS"//89
+/datum/access/narcissus
+	id = access_narcissus
+	desc = "Narcissus Shuttle"
+	region = ACCESS_REGION_GENERAL
 
 /var/const/access_guard = "ACCESS_GUARD"//92
 /datum/access/guard

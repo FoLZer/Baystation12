@@ -12,7 +12,7 @@ var/const/NETWORK_ENGINEERING_OUTPOST = "Engineering Outpost"
 /datum/map/nostromo/get_network_access(var/network)
 	switch(network)
 		if(NETWORK_POD)
-			return access_guppy
+			return access_narcissus
 		if(NETWORK_SUPPLY)
 			return access_mailsorting
 		if(NETWORK_HANGAR)

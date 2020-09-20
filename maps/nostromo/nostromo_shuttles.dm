@@ -53,119 +53,6 @@
 	number = 6
 /obj/effect/shuttle_landmark/escape_pod/transit/pod6
 	number = 6
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod7
-	shuttle_area = /area/shuttle/escape_pod7/station
-	number = 7
-/obj/effect/shuttle_landmark/escape_pod/start/pod7
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 7
-/obj/effect/shuttle_landmark/escape_pod/out/pod7
-	number = 7
-/obj/effect/shuttle_landmark/escape_pod/transit/pod7
-	number = 7
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod8
-	shuttle_area = /area/shuttle/escape_pod8/station
-	number = 8
-/obj/effect/shuttle_landmark/escape_pod/start/pod8
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 8
-/obj/effect/shuttle_landmark/escape_pod/out/pod8
-	number = 8
-/obj/effect/shuttle_landmark/escape_pod/transit/pod8
-	number = 8
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod9
-	shuttle_area = /area/shuttle/escape_pod9/station
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/start/pod9
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/out/pod9
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/transit/pod9
-	number = 9
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod10
-	shuttle_area = /area/shuttle/escape_pod10/station
-	number = 10
-/obj/effect/shuttle_landmark/escape_pod/start/pod10
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 10
-/obj/effect/shuttle_landmark/escape_pod/out/pod10
-	number = 10
-/obj/effect/shuttle_landmark/escape_pod/transit/pod10
-	number = 10
-
-//Smoll pods
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod12
-	shuttle_area = /area/shuttle/escape_pod12/station
-	number = 12
-/obj/effect/shuttle_landmark/escape_pod/start/pod12
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 12
-/obj/effect/shuttle_landmark/escape_pod/out/pod12
-	number = 12
-/obj/effect/shuttle_landmark/escape_pod/transit/pod12
-	number = 12
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod13
-	shuttle_area = /area/shuttle/escape_pod13/station
-	number = 13
-/obj/effect/shuttle_landmark/escape_pod/start/pod13
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 13
-/obj/effect/shuttle_landmark/escape_pod/out/pod13
-	number = 13
-/obj/effect/shuttle_landmark/escape_pod/transit/pod13
-	number = 13
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod14
-	shuttle_area = /area/shuttle/escape_pod14/station
-	number = 14
-/obj/effect/shuttle_landmark/escape_pod/start/pod14
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 14
-/obj/effect/shuttle_landmark/escape_pod/out/pod14
-	number = 14
-/obj/effect/shuttle_landmark/escape_pod/transit/pod14
-	number = 14
-/*
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod15
-	shuttle_area = /area/shuttle/escape_pod15/station
-	number = 15
-/obj/effect/shuttle_landmark/escape_pod/start/pod15
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 15
-/obj/effect/shuttle_landmark/escape_pod/out/pod15
-	number = 15
-/obj/effect/shuttle_landmark/escape_pod/transit/pod15
-	number = 15
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod116
-	shuttle_area = /area/shuttle/escape_pod16/station
-	number = 16
-/obj/effect/shuttle_landmark/escape_pod/start/pod16
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 16
-/obj/effect/shuttle_landmark/escape_pod/out/pod16
-	number = 16
-/obj/effect/shuttle_landmark/escape_pod/transit/pod16
-	number = 16
-
-/datum/shuttle/autodock/ferry/escape_pod/nostromopod/escape_pod17
-	shuttle_area = /area/shuttle/escape_pod17/station
-	number = 17
-/obj/effect/shuttle_landmark/escape_pod/start/pod17
-	base_turf = /turf/simulated/floor/reinforced/airless
-	number = 17
-/obj/effect/shuttle_landmark/escape_pod/out/pod17
-	number = 17
-/obj/effect/shuttle_landmark/escape_pod/transit/pod17
-	number = 17
-*/
 //Admin
 
 /datum/shuttle/autodock/ferry/administration
@@ -235,10 +122,6 @@
 		)
 
 
-/obj/effect/shuttle_landmark/ert/merchant
-	name = "Local Merchant Station"
-	landmark_tag = "nav_ert_merchant"
-
 /obj/effect/shuttle_landmark/ert/deck1
 	name =  "Southwest of Fourth deck"
 	landmark_tag = "nav_ert_deck1"
@@ -303,51 +186,51 @@
 	base_area = /area/quartermaster/hangar
 	base_turf = /turf/simulated/floor/plating
 
-/datum/shuttle/autodock/overmap/guppy
-	name = "Guppy"
+/datum/shuttle/autodock/overmap/narcissus
+	name = "Narcissus"
 	move_time = 30
-	shuttle_area = /area/guppy_hangar/start
-	dock_target ="guppy_shuttle"
-	current_location = "nav_hangar_guppy"
-	landmark_transition = "nav_transit_guppy"
+	shuttle_area = /area/narcissus_hangar/start
+	dock_target ="narcissus_shuttle"
+	current_location = "nav_hangar_narcissus"
+	landmark_transition = "nav_transit_narcissus"
 	sound_takeoff = 'sound/effects/rocket.ogg'
 	sound_landing = 'sound/effects/rocket_backwards.ogg'
 	fuel_consumption = 2
-	logging_home_tag = "nav_hangar_guppy"
-	logging_access = access_guppy_helm
+	logging_home_tag = "nav_hangar_narcissus"
+	logging_access = access_narcissus_helm
 	skill_needed = SKILL_NONE
 	ceiling_type = /turf/simulated/floor/shuttle_ceiling/nostromo
 	warmup_time = 5
 
-/obj/effect/shuttle_landmark/nostromo/hangar/guppy
-	name = "Guppy Hangar"
-	landmark_tag = "nav_hangar_guppy"
+/obj/effect/shuttle_landmark/nostromo/hangar/narcissus
+	name = "Narcissus Hangar"
+	landmark_tag = "nav_hangar_narcissus"
 	base_area = /area/quartermaster/hangar
 	base_turf = /turf/simulated/floor/plating
 
-/obj/effect/shuttle_landmark/nostromo/deck1/guppy
+/obj/effect/shuttle_landmark/nostromo/deck1/narcissus
 	name = "Space near Fourth Deck"
-	landmark_tag = "nav_deck1_guppy"
+	landmark_tag = "nav_deck1_narcissus"
 
-/obj/effect/shuttle_landmark/nostromo/deck2/guppy
+/obj/effect/shuttle_landmark/nostromo/deck2/narcissus
 	name = "Space near Third Deck"
-	landmark_tag = "nav_deck2_guppy"
+	landmark_tag = "nav_deck2_narcissus"
 
-/obj/effect/shuttle_landmark/nostromo/deck3/guppy
+/obj/effect/shuttle_landmark/nostromo/deck3/narcissus
 	name = "Space near Second Deck"
-	landmark_tag = "nav_deck3_guppy"
+	landmark_tag = "nav_deck3_narcissus"
 
-/obj/effect/shuttle_landmark/nostromo/deck4/guppy
+/obj/effect/shuttle_landmark/nostromo/deck4/narcissus
 	name = "Space near First Deck"
-	landmark_tag = "nav_deck4_guppy"
+	landmark_tag = "nav_deck4_narcissus"
 
-/obj/effect/shuttle_landmark/nostromo/deck5/guppy
+/obj/effect/shuttle_landmark/nostromo/deck5/narcissus
 	name = "Space near Bridge"
-	landmark_tag = "nav_bridge_guppy"
+	landmark_tag = "nav_bridge_narcissus"
 
-/obj/effect/shuttle_landmark/nostromo/transit/guppy
+/obj/effect/shuttle_landmark/nostromo/transit/narcissus
 	name = "In transit"
-	landmark_tag = "nav_transit_guppy"
+	landmark_tag = "nav_transit_narcissus"
 
 //Makes the deck management program use hangar access
 /datum/nano_module/deck_management

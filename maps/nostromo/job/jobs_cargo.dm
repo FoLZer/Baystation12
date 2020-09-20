@@ -18,8 +18,8 @@
 
 	skill_points = 14
 
-	access = list(		access_maint_tunnels, access_emergency_storage, access_tech_storage,  access_cargo, access_guppy_helm,
-						access_cargo_bot, access_qm, access_mailsorting, access_guppy, access_hangar, access_keycard_auth,
+	access = list(		access_maint_tunnels, access_emergency_storage, access_tech_storage,  access_cargo, access_narcissus_helm,
+						access_cargo_bot, access_qm, access_mailsorting, access_narcissus, access_hangar, access_keycard_auth,
 						access_mining, access_mining_office, access_mining_station, access_commissary)
 
 	minimal_access = list()
@@ -45,8 +45,8 @@
 	                    SKILL_HAULING     = SKILL_BASIC,
 	                    SKILL_EVA         = SKILL_BASIC)
 
-	access = list(access_maint_tunnels, access_emergency_storage, access_cargo, access_guppy_helm, access_commissary,
-						access_cargo_bot, access_mining_office, access_mailsorting, access_guppy, access_hangar)
+	access = list(access_maint_tunnels, access_emergency_storage, access_cargo, access_narcissus_helm, access_commissary,
+						access_cargo_bot, access_mining_office, access_mailsorting, access_narcissus, access_hangar)
 
 	minimal_access = list()
 

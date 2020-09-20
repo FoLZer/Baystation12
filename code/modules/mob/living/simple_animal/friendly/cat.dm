@@ -256,6 +256,10 @@
 	holder_type = /obj/item/weapon/holder/cat/fluff/bones
 	var/friend_name = "Erstatz Vryroxes"
 
+/mob/living/simple_animal/cat/fluff/jonesy
+	name = "Jonesy"
+	desc = "Это Джонси. Один из членов экипажа Ностромо, без которого полёты НЕ совершаются."
+
 /mob/living/simple_animal/cat/kitten/New()
 	gender = pick(MALE, FEMALE)
 	..()

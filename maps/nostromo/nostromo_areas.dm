@@ -7,16 +7,6 @@
 		/area/centcom,
 		/area/shuttle/escape/centcom,
 		/area/shuttle/escape_pod6/station,
-		/area/shuttle/escape_pod7/station,
-		/area/shuttle/escape_pod8/station,
-		/area/shuttle/escape_pod9/station,
-		/area/shuttle/escape_pod10/station,
-		/area/shuttle/escape_pod12/station,
-		/area/shuttle/escape_pod13/station,
-		/area/shuttle/escape_pod14/station,
-		/area/shuttle/escape_pod15/station,
-		/area/shuttle/escape_pod16/station,
-		/area/shuttle/escape_pod17/station,
 		/area/shuttle/transport1/centcom,
 		/area/shuttle/administration/centcom,
 		/area/shuttle/specops/centcom,
@@ -104,13 +94,13 @@
  * =================
  */
 
-/area/guppy_hangar/start
-	name = "Shuttle - Guppy"
+/area/narcissus_hangar/start
+	name = "Shuttle - Narcissus"
 	icon_state = "shuttlered"
 	requires_power = 1
 	dynamic_lighting = 1
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
-	req_access = list(access_guppy)
+	req_access = list(access_narcissus)
 
 /* COMMAND AREAS
  * =============
@@ -378,7 +368,7 @@
 	name = "Third Deck - Hangar - Fuel Bay"
 	icon_state = "toxstorage"
 	sound_env = SMALL_ENCLOSED
-	req_access = list(list(access_cargo, access_guppy_helm))
+	req_access = list(list(access_cargo, access_narcissus_helm))
 
 /area/quartermaster/hangar
 	name = "Third Deck - Hangar"
