@@ -53,7 +53,7 @@
 		var/mob/living/carbon/alien/larva/new_xeno = new(spot)
 		new_xeno.key = xeno
 		new_xeno.auto_progress = 1
-		GLOB.xenomorphs.add_antagonist(new_xeno.mind, 1)
+		GLOB.xenophages.add_antagonist(new_xeno.mind, 1)
 
 //		for(var/mob/observer/ghost/O in GLOB.ghost_mob_list)
 //			to_chat(O, FONT_LARGE(SPAN_NOTICE(

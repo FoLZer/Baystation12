@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/larva
+/mob/living/carbon/alien/xenolarva
 	name = "alien larva"
 	real_name = "alien larva"
 	icon = 'infinity/icons/mob/alien.dmi'
@@ -6,13 +6,13 @@
 	mob_size = MOB_TINY
 	see_in_dark = 8
 
-	speak_emote = list("С€РёРїРёС‚")
+	speak_emote = list("шипит")
 	icon_state = "larva"
 	language = "Hivemind"
 	species_language = "Xenophage"
 	maxHealth = 25
 	health = 25
-	auto_progress = 0
+	auto_progress = 1
 
 	var/adult_form = /mob/living/carbon/human
 	var/amount_grown = 0
@@ -21,10 +21,10 @@
 	var/can_namepick_as_adult = 0
 	var/adult_name
 
-/mob/living/carbon/alien/larva/can_feel_pain()
+/mob/living/carbon/alien/xenolarva/can_feel_pain()
 	return 0
 
-/mob/living/carbon/alien/larva/New()
+/mob/living/carbon/alien/xenolarva/New()
 	verbs += /mob/living/proc/night_vision
 	..()
 	time_of_birth = world.time
@@ -32,7 +32,7 @@
 	internal_organs |= new /obj/item/organ/internal/xeno/hivenode(src)
 	create_reagents(100)
 
-/mob/living/carbon/alien/larva/update_icons()
+/mob/living/carbon/alien/xenolarva/update_icons()
 
 	var/state = 0
 	if(amount_grown > max_grown*0.75)
@@ -49,23 +49,23 @@
 	else
 		icon_state = "[initial(icon_state)][state]"
 
-/mob/living/carbon/alien/larva/attack_ghost(var/mob/observer/ghost/user)
+/mob/living/carbon/alien/xenolarva/attack_ghost(var/mob/observer/ghost/user)
 	if(!src)
 		return
 	if(src.mind)
 		return
-	if(jobban_isbanned(user, MODE_XENOPHAGE))
-		to_chat(user, SPAN_DANGER("РЈ РІР°СЃ РёРјРµРµС‚СЃСЏ Р±Р°РЅ РЅР° СЂРѕР»СЊ РєСЃРµРЅРѕС„Р°РіР°. Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РёРіСЂР°С‚СЊ Р·Р° РЅРёС…."))
+	if(jobban_isbanned(user, MODE_XENOMORPH))
+		to_chat(user, SPAN_DANGER("У вас имеется бан на роль xenomorph. Вы не можете играть за них."))
 		return
-	var/confirm = alert(user, "Are you sure you want to join as a Xenophage larva?", "Become Larva", "No", "Yes")
+	var/confirm = alert(user, "Are you sure you want to join as a Xenomorph larva?", "Become Larva", "No", "Yes")
 	if(!src || confirm != "Yes")
 		return
 	if(!user || !user.ckey)
 		return
 	src.ckey = user.ckey
-	GLOB.xenophages.add_antagonist(src.mind, 1)
+	GLOB.xenomorphs.add_antagonist(src.mind, 1)
 	spawn(-1)
 		if(user) qdel(user) // Remove the keyless ghost if it exists.
 
-/mob/living/carbon/alien/larva/on_structure_offset() //too small
+/mob/living/carbon/alien/xenolarva/on_structure_offset() //too small
 	return

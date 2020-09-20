@@ -165,10 +165,6 @@
 			return 1
 
 		if(I_GRAB)
-			if(istype(src, /mob/living/carbon/human/xenomorph/facehugger))
-				var/mob/living/carbon/human/xenomorph/facehugger/FH = src
-				FH.can_grab(H)
-				return
 			return H.species.attempt_grab(H, src)
 
 		if(I_HURT)

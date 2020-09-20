@@ -21,6 +21,7 @@
 #define SPECIES_RESOMI			"Resomi"
 #define SPECIES_XENO			"Xenophage"
 #define SPECIES_BIONIC			"Bionic"
+#define SPECIES_XENOMORPH       "Xenomorph"
 
 #define SPECIES_FBP				"Full Body Prosthesis"
 

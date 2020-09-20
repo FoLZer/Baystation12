@@ -109,7 +109,7 @@
 		to_chat(H, "<span class='alium'>You feel your connection to the hivemind fray and fade away...</span>")
 		H.remove_language("Hivemind")
 		if(H.mind && H.species.get_bodytype(H) != "Xenophage")
-			GLOB.xenomorphs.remove_antagonist(H.mind)
+			GLOB.xenophages.remove_antagonist(H.mind)
 	..(user)
 
 /obj/item/organ/internal/xeno/hivenode/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
@@ -119,6 +119,31 @@
 		var/mob/living/carbon/human/H = owner
 		H.add_language("Hivemind")
 		if(H.mind && H.species.get_bodytype(H) != "Xenophage")
+			to_chat(H, "<span class='alium'>You feel a sense of pressure as a vast intelligence meshes with your thoughts...</span>")
+			GLOB.xenophages.add_antagonist_mind(H.mind,1, GLOB.xenophages.faction_role_text, GLOB.xenophages.faction_welcome)
+	return 1
+
+/obj/item/organ/internal/xeno/hivenode/xenomorph
+
+/obj/item/organ/internal/xeno/hivenode/xenomorph/Process() //hivemind makes you powerful. And dumb.
+	..()
+
+/obj/item/organ/internal/xeno/hivenode/xenomorph/removed(var/mob/living/user)
+	if(owner && ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		to_chat(H, "<span class='alium'>You feel your connection to the hivemind fray and fade away...</span>")
+		H.remove_language("Hivemind")
+		if(H.mind && H.species.get_bodytype(H) != "Xenomorph")
+			GLOB.xenomorphs.remove_antagonist(H.mind)
+	..(user)
+
+/obj/item/organ/internal/xeno/hivenode/xenomorph/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+	if(!..()) return 0
+
+	if(owner && ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.add_language("Hivemind")
+		if(H.mind && H.species.get_bodytype(H) != "Xenomorph")
 			to_chat(H, "<span class='alium'>You feel a sense of pressure as a vast intelligence meshes with your thoughts...</span>")
 			GLOB.xenomorphs.add_antagonist_mind(H.mind,1, GLOB.xenomorphs.faction_role_text, GLOB.xenomorphs.faction_welcome)
 	return 1
@@ -176,6 +201,21 @@
 			qdel(src)
 	. = ..()
 
+/obj/item/organ/internal/xeno/larva/xeno
+
+/obj/item/organ/internal/xeno/larva/xeno/Process()
+	if(H)
+		if(progress < max_progress)
+			progress++
+		else
+			to_chat(H, SPAN_DANGER("Something in your chest is moving, trying to get out and causing sharp pain!"))
+			H.apply_damage(200, BRUTE, location)
+			sleep(5)
+			var/mob/living/carbon/alien/xenolarva/larva = new(get_turf(H))
+			GLOB.xenomorphs.add_antagonist(larva.mind, 1)
+			qdel(src)
+	. = ..()
+
 /obj/item/organ/internal/xeno/mimicsac
 	name = "mimic sac"
 	parent_organ = BP_CHEST
@@ -184,14 +224,14 @@
 	associated_power = /mob/living/carbon/human/proc/mimic
 
 /obj/item/organ/internal/xeno/mimicsac/Process()
-	if(owner.alpha == 255)
+	if(owner.alpha == 235)
 		return
 
 	if(owner.internal_organs_by_name[BP_PLASMA])
 		var/obj/item/organ/internal/xeno/plasmavessel/I = owner.internal_organs_by_name[BP_PLASMA]
 		if(istype(I))
 			if(I.stored_plasma < 5)
-				owner.alpha = 255
+				owner.alpha = 235
 				return
 			else
 				I.stored_plasma -= 5
