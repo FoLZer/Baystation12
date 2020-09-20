@@ -6,6 +6,7 @@
 	preview_icon = 'icons/mob/human_races/r_zombie.dmi'
 	default_h_style = "Bald"
 	unarmed_types = list(/datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	hud_type = /datum/hud_data/zombie
 
 	darksight_range = 8
 	darksight_tint = DARKTINT_GREAT
@@ -144,3 +145,17 @@
 	max_age = 85
 
 	reagent_tag = IS_UNATHI
+
+/datum/hud_data/zombie
+
+	has_a_intent =  1
+	has_m_intent =  1
+	has_warnings =  1
+	has_hands =     1
+	has_drop =      1
+	has_throw =     1
+	has_resist =    1
+	has_pressure =  1
+	has_nutrition = 0
+	has_bodytemp =  1
+	has_internals = 0

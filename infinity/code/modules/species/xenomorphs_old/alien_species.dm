@@ -4,7 +4,7 @@
 	name_plural = "Xenomorphs"
 
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
-	hud_type = /datum/hud_data/alien
+	hud_type = /datum/hud_data/xenomorph
 	rarity_value = 3
 	health_hud_intensity = 1
 

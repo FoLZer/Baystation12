@@ -165,6 +165,7 @@
 		/decl/emote/visible/rshoulder,
 		/decl/emote/visible/squint,
 		/decl/emote/visible/tfist,
+		/decl/emote/visible/scratch,
 		/decl/emote/visible/tilt
 	)
 
