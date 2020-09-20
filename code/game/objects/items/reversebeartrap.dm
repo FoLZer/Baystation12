@@ -4,8 +4,8 @@
 	throw_range = 1
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
-	item_state = "beartrap1"
-	icon_state = "ascent_mask"
+	item_state = "ascent_mask"
+	icon_state = "beartrap1"
 	randpixel = 0
 	desc = "A mechanically activated head trap. Low-tech, but reliable. Looks like it has some keyholes in it."
 	throwforce = 0
@@ -25,8 +25,10 @@
 	var/last_tick
 
 /obj/item/clothing/mask/reversebeartrap/attack_hand(mob/user as mob)
-	if(user.wear_mask == src && !numkeys)
-		return 0
+	if(!numkeys)
+		var/mob/living/carbon/human/H = loc
+		if(istype(H) && H.wear_mask == src)
+			return 0
 	..()
 
 /obj/item/clothing/mask/reversebeartrap/attack_self(mob/user)
@@ -49,6 +51,10 @@
 	if(usr.incapacitated())
 		to_chat(usr,"<span class='warning'>You can't do this right now!</span>")
 		return
+	if(!numkeys)
+		var/mob/living/carbon/human/H = src.loc
+		if(istype(H) && H.wear_mask == src)
+			return
 	var/choice = input("Choose time to death(In seconds)", "DEATH!") as null|num
 	if(!choice)
 		return
@@ -105,23 +111,23 @@
 /obj/item/clothing/mask/reversebeartrap/Process()
 	if(on)
 		if(world.time > last_tick)
-			if(istype(src.loc, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = src.loc
-				last_tick = world.time + 5 SECONDS
-				playsound(H.loc, 'sound/items/tick.ogg', 25, 1)
+			var/mob/living/carbon/human/H = src.loc
+			last_tick = world.time + 5 SECONDS
+			playsound(H.loc, 'sound/items/tick.ogg', 25, 1)
 		if(world.time > time)
-			if(istype(src.loc, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = src.loc
-				var/obj/item/organ/external/head/O = H.organs_by_name[BP_HEAD]
-				O.attempt_dismemberment(10, 0, 0, 1, null, 0, 1)
-				H.visible_message("<span class='danger'>Капкан отрывает голову [H]!</src>")
-				qdel(src)
+			var/mob/living/carbon/human/H = src.loc
+			var/obj/item/organ/external/head/O = H.organs_by_name[BP_HEAD]
+			O.attempt_dismemberment(10, 0, 0, 1, null, 0, 1)
+			H.visible_message("<span class='danger'>Капкан отрывает голову [H]!</src>")
+			qdel(src)
 
 /obj/item/clothing/mask/reversebeartrap/equipped(mob/user)
-	if(numkeys!=4)
-		time = world.time + timetodeath
-		on = 1
-		START_PROCESSING(SSobj, src)
+	if(!numkeys)
+		var/mob/living/carbon/human/H = loc
+		if(istype(H) && H.wear_mask == src)
+			time = world.time + timetodeath
+			on = 1
+			START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/trapkey
 	name = "Trap Key"

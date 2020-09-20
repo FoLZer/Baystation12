@@ -54,7 +54,7 @@
 /mob/living/carbon/human/xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		//oxyloss is only used for suicide
 		//toxloss isn't used for aliens, its actually used as alien powers!!
