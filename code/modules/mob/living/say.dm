@@ -368,7 +368,6 @@ proc/get_radio_key_from_channel(var/channel)
 		spawn(0)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking)
-
 	if(whispering)
 		var/eavesdroping_range = 5
 		var/list/eavesdroping = list()
@@ -395,6 +394,7 @@ proc/get_radio_key_from_channel(var/channel)
 			spawn(0)
 				if(O) //It's possible that it could be deleted in the meantime.
 					O.hear_talk(src, stars(message), verb, speaking)
+		speech_bubble_recipients = eavesdroping
 
 //	flick_overlay(speech_bubble, speech_bubble_recipients, 30) inf-dev
 	//[INF]
