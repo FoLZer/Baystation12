@@ -16,7 +16,7 @@
  * ================
  */
 
-/area/maintenance/
+/area/maintenance
 	name = "Maintenance"
 	icon_state = "maintenance"
 	area_flags = AREA_FLAG_RAD_SHIELDED
@@ -79,6 +79,12 @@
 /area/quartermaster
 	req_access = list(access_cargo)
 
+/area/quartermaster/hangar
+	name = "Hangar"
+	icon_state = "hangar"
+	sound_env = LARGE_ENCLOSED
+	req_access = list(access_hangar)
+
 /* CREW AREAS
  * ==========
  */
@@ -109,7 +115,7 @@
 
 // Misc
 /area/teleporter
-	name = "Second Deck - Teleporter"
+	name = "Teleporter"
 	icon_state = "teleporter"
 	sound_env = SMALL_ENCLOSED
 	req_access = list(access_teleporter)
@@ -150,13 +156,13 @@
 
 // Solars
 /area/maintenance/solar
-	name = "First Deck - Solar - Port"
+	name = "Solar - Port"
 	icon_state = "SolarcontrolP"
 	sound_env = SMALL_ENCLOSED
 	req_access = list(access_engine)
 
 /area/maintenance/solar/starboard
-	name = "First Deck - Solar - Starboard"
+	name = "Solar - Starboard"
 	icon_state = "SolarcontrolS"
 
 /area/solar
@@ -168,30 +174,30 @@
 	sound_env = SPACE
 
 /area/solar/starboard
-	name = "First Deck - Solar - Starboard Array"
+	name = "Solar - Starboard Array"
 	icon_state = "panelsS"
 
 /area/solar/port
-	name = "First Deck - Solar - Port Array"
+	name = "Solar - Port Array"
 	icon_state = "panelsP"
 
 // Storage
 /area/storage/primary
-	name = "Third Deck - Primary Tool Storage"
+	name = "Primary Tool Storage"
 	icon_state = "primarystorage"
 
 /area/storage/tech
-	name = "Second Deck - Engineering - Technical Storage"
+	name = "Engineering - Technical Storage"
 	icon_state = "storage"
 	req_access = list(access_tech_storage)
 
 /area/storage/auxillary/port
-	name = "Third Deck - Supply - Auxillary Warehouse"
+	name = "Supply - Auxillary Warehouse"
 	icon_state = "auxstorage"
 	req_access = list(access_cargo)
 
 /area/storage/bridge
-	name = "First Deck - Bridge - Storage"
+	name = "Bridge - Storage"
 	icon_state = "bridge"
 	sound_env = SMALL_ENCLOSED
 
@@ -231,14 +237,14 @@
 
 // AI
 /area/maintenance/battle_data_servers
-	name = "First Deck - Battle Data Servers"
+	name = "Battle Data Servers"
 	req_access = list(access_maint_tunnels)
 
 /area/ai_monitored
 	name = "AI Monitored Area"
 
 /area/storage/eva
-	name = "First Deck - EVA"
+	name = "EVA"
 	icon_state = "eva"
 	req_access = list(access_eva)
 
@@ -259,19 +265,33 @@
 	icon_state = "ai_foyer"
 
 /area/turret_protected/ai_cyborg_station
-	name = "Second Deck - Cyborg Station"
+	name = "Cyborg Station"
 	icon_state = "ai_cyborg"
 	sound_env = SMALL_ENCLOSED
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
 
 /area/turret_protected/ai_upload
-	name = "Second Deck - AI Upload"
+	name = "AI Upload"
 	icon_state = "ai_upload"
 
 /area/turret_protected/ai_upload_foyer
-	name = "Second Deck - AI Upload Access"
+	name = "AI Upload Access"
 	icon_state = "ai_foyer"
 	sound_env = SMALL_ENCLOSED
 
 /area/ai_abadoned
 	name = "Abadoned Chamber"
+
+/area/shield
+	name = "Engineering - Shield Generator"
+	icon_state = "engineering"
+	sound_env = SMALL_ENCLOSED
+	req_access = list(access_engine, access_atmospherics)
+
+/area/maintenance/exterior
+	name = "Exterior Reinforcements"
+	icon_state = "maint_security_starboard"
+	area_flags = AREA_FLAG_EXTERNAL
+	has_gravity = FALSE
+	turf_initializer = /decl/turf_initializer/maintenance/space
+	sound_env = SPACE

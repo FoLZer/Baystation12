@@ -3,15 +3,9 @@
 	apc_test_exempt_areas = list(
 		/area/space = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/exoplanet = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/engineering/auxpower = NO_SCRUBBER|NO_VENT,
-		/area/engineering/drone_fabrication = NO_SCRUBBER|NO_VENT,
-		/area/engineering/engine_smes = NO_SCRUBBER|NO_VENT,
-		/area/holodeck = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/maintenance = NO_SCRUBBER|NO_VENT,
 		/area/maintenance/exterior = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/turret_protected/ai_cyborg_station = NO_SCRUBBER|NO_VENT,
-		/area/maintenance/firstdeck/fore = NO_SCRUBBER|NO_VENT,
-		/area/maintenance/firstdeck/aftport = 0,
 		/area/shield = NO_SCRUBBER|NO_VENT,
 		/area/shuttle = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/shuttle/escape_pod6/station = NO_SCRUBBER|NO_APC|NO_VENT,
@@ -25,11 +19,6 @@
 		/area/storage/bridge = 0,
 		/area/supply = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/thruster = NO_SCRUBBER,
-		/area/vacant = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/vacant/gambling = 0,
-		/area/vacant/cargo = NO_SCRUBBER|NO_VENT,
-		/area/vacant/infirmary = NO_SCRUBBER|NO_VENT,
-		/area/vacant/monitoring = NO_SCRUBBER|NO_VENT,
 	)
 
 	area_coherency_test_exempt_areas = list(
@@ -45,17 +34,12 @@
 		/area/security/prison,
 		/area/shuttle/syndicate_elite/station,
 		/area/shuttle/escape/centcom,
-		/area/rnd/xenobiology/xenoflora_storage,
 		/area/template_noop
 	)
 
 /datum/unit_test/zas_area_test/ai_chamber
 	name = "ZAS: AI Chamber"
 	area_path = /area/turret_protected/ai
-
-/datum/unit_test/zas_area_test/cargo_bay
-	name = "ZAS: Cargo Bay"
-	area_path = /area/quartermaster/storage
 
 /datum/unit_test/zas_area_test/supply_centcomm
 	name = "ZAS: Supply Shuttle (CentComm)"
