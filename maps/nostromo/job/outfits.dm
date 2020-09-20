@@ -48,46 +48,6 @@ Keeping them simple for now, just spawning with basic EC uniforms, and pretty mu
 	backpack_overrides[/decl/backpack_outfit/satchel] = /obj/item/weapon/storage/backpack/satchel/cap
 	backpack_overrides[/decl/backpack_outfit/messenger_bag] = /obj/item/weapon/storage/backpack/messenger/com
 
-/decl/hierarchy/outfit/job/nostromo/crew/command/cmo
-	name = OUTFIT_JOB_NAME("Chief Medical Officer - Nostromo")
-	l_ear  =/obj/item/device/radio/headset/heads/cmo
-	uniform = /obj/item/clothing/under/rank/chief_medical_officer
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat/cmo
-	shoes = /obj/item/clothing/shoes/brown
-	id_type = /obj/item/weapon/card/id/nostromo/crew/medical
-//	pda_type = /obj/item/modular_computer/pda/heads/cmo
-	pda_slot = slot_l_store
-
-/decl/hierarchy/outfit/job/nostromo/crew/command/cmo/New()
-	..()
-	BACKPACK_OVERRIDE_MEDICAL
-
-/decl/hierarchy/outfit/job/nostromo/crew/command/chief_engineer
-	name = OUTFIT_JOB_NAME("Chief Engineer - Nostromo")
-	uniform = /obj/item/clothing/under/rank/chief_engineer
-	shoes = /obj/item/clothing/shoes/workboots/alt
-	l_ear = /obj/item/device/radio/headset/heads/ce
-	id_type = /obj/item/weapon/card/id/nostromo/crew/engineering
-//	pda_type = /obj/item/modular_computer/pda/heads/ce
-	pda_slot = slot_l_store
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
-
-/decl/hierarchy/outfit/job/nostromo/crew/command/chief_engineer/New()
-	..()
-	BACKPACK_OVERRIDE_ENGINEERING
-
-/decl/hierarchy/outfit/job/nostromo/crew/command/hos
-	name = OUTFIT_JOB_NAME("Head of Security - Nostromo")
-	l_ear = /obj/item/device/radio/headset/heads/hos
-	uniform = /obj/item/clothing/under/rank/head_of_security/corp
-	shoes = /obj/item/clothing/shoes/jackboots
-	id_type = /obj/item/weapon/card/id/nostromo/crew/security
-//	pda_type = /obj/item/modular_computer/pda/heads/hos
-
-/decl/hierarchy/outfit/job/nostromo/crew/command/hos/New()
-	..()
-	BACKPACK_OVERRIDE_SECURITY
-
 	///////////////
 	//ENGINEERING//
 	///////////////

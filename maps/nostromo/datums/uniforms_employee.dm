@@ -14,7 +14,7 @@
  * ===========
  */
 
-/decl/hierarchy/mil_uniform/nt/eng
+/decl/hierarchy/mil_uniform/wy/eng
 	name = "Employee Engineering"
 	departments = ENG
 
@@ -26,7 +26,7 @@
 	shoes = list(\
 		/obj/item/clothing/shoes/workboots, /obj/item/clothing/shoes/workboots/alt)
 
-/decl/hierarchy/mil_uniform/nt/eng/head
+/decl/hierarchy/mil_uniform/wy/eng/head
 	name = "Employee Engineering Head"
 	departments = ENG|COM
 
@@ -40,7 +40,7 @@
  * ======
  */
 
-/decl/hierarchy/mil_uniform/nt/sup
+/decl/hierarchy/mil_uniform/wy/sup
 	name = "Employee Supply"
 	departments = SUP
 
@@ -51,7 +51,7 @@
 	shoes = list(\
 		/obj/item/clothing/shoes/brown, /obj/item/clothing/shoes/dutyboots)
 
-/decl/hierarchy/mil_uniform/nt/sup/head
+/decl/hierarchy/mil_uniform/wy/sup/head
 	name = "Employee Supply Head"
 	departments = SUP|COM
 
@@ -64,7 +64,7 @@
  * ========
  */
 
-/decl/hierarchy/mil_uniform/nt/sec
+/decl/hierarchy/mil_uniform/wy/sec
 	name = "Employee Security"
 	departments = SEC
 
@@ -81,7 +81,7 @@
 	shoes = list(\
 		/obj/item/clothing/shoes/jackboots)
 
-/decl/hierarchy/mil_uniform/nt/sec/head
+/decl/hierarchy/mil_uniform/wy/sec/head
 	name = "Employee Security Head"
 	departments = SEC|COM
 
@@ -98,7 +98,7 @@
  * =======
  */
 
-/decl/hierarchy/mil_uniform/nt/med
+/decl/hierarchy/mil_uniform/wy/med
 	name = "Employee Medical"
 	departments = MED
 
@@ -124,7 +124,7 @@
 	shoes = list(\
 		/obj/item/clothing/shoes/white)
 
-/decl/hierarchy/mil_uniform/nt/med/head
+/decl/hierarchy/mil_uniform/wy/med/head
 	name = "Employee Medical Head"
 	departments = MED|COM
 
@@ -147,6 +147,6 @@
  * =======
  */
 
-/decl/hierarchy/mil_uniform/nt/com
+/decl/hierarchy/mil_uniform/wy/com
 	name = "Employee Command"
 	departments = COM

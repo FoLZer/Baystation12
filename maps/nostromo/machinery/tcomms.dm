@@ -1,8 +1,3 @@
-/obj/machinery/telecomms/relay/preset/charon
-	id = "Charon Relay"
-	toggled = 0
-	autolinkers = list("s_relay")
-
 /datum/map/nostromo/default_internal_channels()
 	return list(
 		num2text(PUB_FREQ)   = list(),
@@ -22,6 +17,6 @@
 /obj/machinery/telecomms/hub/preset
 	id = "Hub"
 	network = "tcommsat"
-	autolinkers = list("hub", "relay", "c_relay", "s_relay", "m_relay", "r_relay", "b_relay", "1_relay", "2_relay", "3_relay", "4_relay", "5_relay", "s_relay", "medical",
+	autolinkers = list("hub", "relay", "c_relay", "m_relay", "r_relay", "b_relay", "1_relay", "2_relay", "3_relay", "4_relay", "5_relay", "s_relay", "medical",
 	"supply", "service", "common", "command", "engineering", "security", "unused", "m_relay_a",
 	"receiverA", "broadcasterA")

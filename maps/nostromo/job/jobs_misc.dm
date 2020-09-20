@@ -1,4 +1,4 @@
 /datum/job/cyborg
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "установленными Вам законами"

@@ -3,9 +3,9 @@
 	department = "Service"
 	department_flag = SRV
 
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "Главой Персонала"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "Капитаном"
 	ideal_character_age = 20
 	alt_titles = list(
 		"Sanitation Technician")
@@ -24,7 +24,7 @@
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Главой Персонала"
+	supervisors = "Капитаном"
 	alt_titles = list(
 		"Cook",
 		"Culinary Specialist"
@@ -43,7 +43,9 @@
 /datum/job/bartender
 	department = "Service"
 	department_flag = SRV
-	supervisors = "Главой Персонала"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "Капитаном"
 	ideal_character_age = 30
 	selection_color = "#515151"
 	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/service/bartender

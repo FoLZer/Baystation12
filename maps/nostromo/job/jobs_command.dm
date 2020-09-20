@@ -38,7 +38,7 @@
 	economic_power = 10
 	minimal_player_age = 21
 	ideal_character_age = 48
-	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/command/cmo
+	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/medical/doctor
 	allowed_branches = list(/datum/mil_branch/employee)
 	allowed_ranks = list(/datum/mil_rank/civ/wy)
 	min_skill = list(   SKILL_BUREAUCRACY = SKILL_BASIC,
@@ -54,16 +54,14 @@
 	skill_points = 36
 
 	access = list(access_medical, access_morgue, access_maint_tunnels, access_external_airlocks, access_emergency_storage,
-			            access_teleporter, access_eva, access_bridge, access_heads,
-			            access_sec_doors,
+			            access_teleporter, access_eva, access_heads,
 			            access_chapel_office, access_crematorium, access_chemistry, access_virology,
-			            access_cmo, access_surgery, access_RC_announce, access_keycard_auth, access_psychiatrist,
-			            access_medical_equip, access_senmed, access_hangar)
+			            access_cmo, access_surgery, access_RC_announce, access_keycard_auth,
+			            access_medical_equip, access_hangar)
 
 	minimal_access = list()
 
-	software_on_spawn = list(/datum/computer_file/program/comm,
-							 /datum/computer_file/program/suit_sensors,
+	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
 							 /datum/computer_file/program/camera_monitor,
 							 /datum/computer_file/program/reports)
 
@@ -79,7 +77,7 @@
 	economic_power = 10
 	ideal_character_age = 40
 	minimal_player_age = 21
-	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/command/chief_engineer
+	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/engineering/engineer
 	allowed_branches = list(/datum/mil_branch/employee)
 	allowed_ranks = list(/datum/mil_rank/civ/wy)
 	min_skill = list(   SKILL_BUREAUCRACY  = SKILL_BASIC,
@@ -97,16 +95,15 @@
 	skill_points = 30
 
 	access = list(access_engine, access_engine_equip, access_maint_tunnels, access_external_airlocks, access_emergency_storage,
-			            access_ai_upload, access_teleporter, access_eva, access_bridge, access_heads,
+			            access_teleporter, access_eva, access_heads,
 			            access_tech_storage, access_atmospherics, access_janitor, access_construction,
-			            access_sec_doors, access_medical,
+			            access_sec_doors,
 			            access_network, access_ce, access_RC_announce, access_keycard_auth, access_tcomsat,
-			            access_seneng, access_hangar)
+			            access_hangar)
 
 	minimal_access = list()
 
-	software_on_spawn = list(/datum/computer_file/program/comm,
-							 /datum/computer_file/program/ntnetmonitor,
+	software_on_spawn = list(/datum/computer_file/program/ntnetmonitor,
 							 /datum/computer_file/program/power_monitor,
 							 /datum/computer_file/program/supermatter_monitor,
 							 /datum/computer_file/program/alarm_monitor,
@@ -133,7 +130,7 @@
 	economic_power = 10
 	minimal_player_age = 21
 	ideal_character_age = 35
-	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/command/hos
+	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/security/officer
 	allowed_branches = list(/datum/mil_branch/employee)
 	allowed_ranks = list(/datum/mil_rank/civ/wy)
 	min_skill = list(   SKILL_BUREAUCRACY = SKILL_ADEPT,

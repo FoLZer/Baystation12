@@ -46,7 +46,7 @@
 		/obj/item/clothing/head/helmet/nt,
 		/obj/item/clothing/head/HoS/dermal,
 		/obj/item/device/radio/headset/heads/hos,
-		/obj/item/device/radio/headset/heads/hos/alt,
+		/obj/item/device/radio/headset/nostromo_officer/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud/toggle,
 		/obj/item/taperoll/police,
 		/obj/item/weapon/handcuffs,

@@ -10,13 +10,8 @@
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 
-/obj/item/device/radio/headset/heads/hop/alt
-	name = "head of personnel's bowman headset"
-	icon_state = "com_headset_alt"
-	item_state = "com_headset_alt"
-
-/obj/item/device/radio/headset/heads/hos/alt
-	name = "head of security's bowman headset"
+/obj/item/device/radio/headset/nostromo_officer/alt
+	name = "head security officer's bowman headset"
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 

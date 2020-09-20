@@ -92,7 +92,7 @@
 	#include "loadout/loadout_xeno.dm"
 	#include "loadout/~defines.dm"
 
-	#include "nostromo.dmm"
+	//#include "nostromo.dmm"
 	#include "../away/empty.dmm"
 
 	#include "../away_inf/yacht/yacht.dm"
@@ -104,6 +104,7 @@
 	#include "../away_inf/patrol/patrol.dm"
 	#include "../away_inf/bearcat/bearcat.dm"
 //	#include "../away_inf/ascent/ascent.dm"
+	#include "../away_inf/xeno_planet/xeno_planet.dm"
 
 	#include "../away/ascent/ascent.dm"
 	#include "../away/derelict/derelict.dm"

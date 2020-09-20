@@ -81,8 +81,7 @@
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/suit/armor/pcarrier/medium,
 		/obj/item/clothing/head/helmet,
-		/obj/item/device/radio/headset/heads/hop,
-		/obj/item/device/radio/headset/heads/hop/alt,
+
 		/obj/item/clothing/accessory/storage/holster/thigh,
 		/obj/item/weapon/gun/energy/gun/secure,
 		/obj/item/weapon/melee/telebaton,

@@ -25,18 +25,6 @@
 	desc = "General Utility Pod"
 	region = ACCESS_REGION_SUPPLY
 
-/var/const/access_seneng = "ACCESS_SENENG"//90
-/datum/access/seneng
-	id = access_seneng
-	desc = "Senior Engineer"
-	region = ACCESS_REGION_ENGINEERING
-
-/var/const/access_senmed = "ACCESS_SENMED"//91
-/datum/access/senmed
-	id = access_senmed
-	desc = "Physician"
-	region = ACCESS_REGION_MEDBAY
-
 /var/const/access_guard = "ACCESS_GUARD"//92
 /datum/access/guard
 	id = access_guard

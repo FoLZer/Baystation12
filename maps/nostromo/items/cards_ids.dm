@@ -13,7 +13,7 @@
 	extra_details = list("goldstripe")
 
 /obj/item/weapon/card/id/nostromo/crew
-	desc = "An identification card issued to NanoTrasen crewmembers aboard the USCSS Nostromo."
+	desc = "An identification card issued to Weyland-Yutani crewmembers aboard the USCSS Nostromo."
 	job_access_type = /datum/job/assistant
 	color = "#ccecff"
 

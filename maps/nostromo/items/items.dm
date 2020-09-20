@@ -1,13 +1,6 @@
 /***********
 Unique items
 ***********/
-
-/obj/item/weapon/pen/multi/cmd/hop
-	name = "head of personnel's pen"
-	icon = 'maps/nostromo/icons/obj/uniques.dmi'
-	icon_state = "pen_xo"
-	desc = "A slightly bulky pen with a silvery case. Twisting the top allows you to switch the nib for different colors."
-
 /obj/item/weapon/pen/multi/cmd/captain
 	name = "captain's pen"
 	icon = 'maps/nostromo/icons/obj/uniques.dmi'

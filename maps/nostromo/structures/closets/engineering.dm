@@ -38,7 +38,7 @@
 
 /obj/structure/closet/secure_closet/engineering_senior
 	name = "senior engineer's locker"
-	req_access = list(access_seneng)
+	req_access = list(access_engine)
 	closet_appearance = /decl/closet_appearance/secure_closet/engineering
 
 /obj/structure/closet/secure_closet/engineering_senior/WillContain()
