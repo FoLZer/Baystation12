@@ -25,7 +25,7 @@
 		space_things |= O
 
 	var/list/distress_calls
-	for(var/obj/effect/overmap/visitable/O in space_things)
+	for(O in space_things)
 		var/location_desc = " на текущем квадрате."
 		if(O.loc != nostromo.loc)
 			var/bearing = round(90 - Atan2(O.x - nostromo.x, O.y - nostromo.y),5) //fucking triangles how do they work
