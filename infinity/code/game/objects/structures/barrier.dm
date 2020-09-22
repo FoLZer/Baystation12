@@ -90,7 +90,7 @@
 
 /obj/structure/barrier/attack_hand(mob/living/carbon/human/user as mob)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if(user.species.can_shred(user) && user.a_intent == I_HURT || user.get_species() == SPECIES_XENO)
+	if(user.species.can_shred(user) && user.a_intent == I_HURT || user.get_species() == SPECIES_XENO || iszombie(user))
 		take_damage(20)
 		return
 	if(deployed)

@@ -259,6 +259,11 @@
 			S.attack_generic(src,rand(melee_damage_lower,melee_damage_upper),attacktext)
 			return
 
+		var/obj/structure/barrier/B = locate(/obj/structure/barrier) in targ
+		if(B && B.density && !B.CanPass(src,targ))
+			B.attack_generic(src, rand(melee_damage_lower, melee_damage_upper), attacktext)
+			return
+
 		for(var/type in valid_obstacles_by_priority)
 			var/obj/obstacle = locate(type) in targ
 			if(obstacle)

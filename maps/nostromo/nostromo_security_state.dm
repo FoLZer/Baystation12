@@ -168,6 +168,8 @@
 	Весь экипаж должен обратиться к главам для получения инструкций. \
 	Экипажу разрешено воспользоваться резервным оружием из хранилища. Капитану судна необходимо предоставить безопасное место для экипажа.", \
 	"Внимание! Код угрозы понижен до Красного")
+	if(evacuation_controller.is_evacuating())
+		evacuation_controller.cancel_evacuation()
 	notify_station()
 	GLOB.using_map.lock_secure_areas()
 	GLOB.using_map.lock_high_secure_areas()
@@ -190,9 +192,10 @@
 
 /decl/security_level/default/nostromodept/code_delta/switching_up_to()
 	security_announcement_delta.Announce("Внимание всему персоналу! Инициирован модуль самоуничтожения судна! \
-	Главам судна необходимо запустить процесс запуска спасательных капсул. \
+	Спасательные капсулы были активированы. Весь экипаж должен следовать инструкциям глав и охраны. \
 	Это не учебная тревога.", "Внимание! Код Дельта")
 	notify_station()
+	evacuation_controller.call_evacuation(null, 1, 1)
 	GLOB.using_map.unlock_secure_areas()
 	GLOB.using_map.unlock_high_secure_areas()
 	GLOB.using_map.toggle_crew_sensors(3)
