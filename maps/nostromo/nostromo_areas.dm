@@ -75,6 +75,11 @@
  * =============
  */
 
+/area/bridge
+	name = "Second Deck - Bridge"
+	icon_state = "bridge"
+	req_access = list(access_bridge)
+	ambience = list('infinity/sound/SS2/ambience/ambbridge.wav')
 
 /* ENGINEERING AREAS
  * =================
@@ -128,9 +133,47 @@
 	sound_env = LARGE_ENCLOSED
 	req_access = list(access_hangar)
 
+/area/quartermaster/office
+	name = "Supply - Office"
+	icon_state = "quartoffice"
+	req_access = list(access_mailsorting, access_cargo)
+
+/area/quartermaster/lobby
+	name = "Supply - Lobby"
+	icon_state = "quartoffice"
+	req_access = list(access_cargo)
+
+/area/quartermaster/workplace
+	name = "Supply - Workplace"
+	icon_state = "hangar"
+	req_access = list(access_cargo)
+
 /* CREW AREAS
  * ==========
  */
+
+/area/crew_quarters
+	icon_state = "crew_quarters"
+
+/area/crew_quarters/canteen
+	name = "Living - Canteen"
+	icon_state = "cafeteria"
+	sound_env = LARGE_SOFTFLOOR
+
+/area/crew_quarters/cafe
+	name = "Living - Cafe"
+	icon_state = "cafeteria"
+
+/area/crew_quarters/head
+	name = "Living - Restroom"
+	icon_state = "toilet"
+	sound_env = SMALL_ENCLOSED
+
+/area/crew_quarters/sleep/bunk
+	name = "Living - Dormitory"
+	icon_state = "Sleep"
+	sound_env = SMALL_SOFTFLOOR
+	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_ION_SHIELDED
 
 /area/crew_quarters/sleep/cryo1
 	name = "Cryo Storage 1"
@@ -151,6 +194,11 @@
  */
 /area/security/nostromo/
 	icon_state = "security"
+
+/area/security/nostromo/armory
+	name = "Security - Armory"
+	icon_state = "armory"
+	req_access = list(access_armory)
 
 /* MEDBAY AREAS
  * ============
@@ -351,3 +399,24 @@
 	has_gravity = FALSE
 	turf_initializer = /decl/turf_initializer/maintenance/space
 	sound_env = SPACE
+
+/area/tcommsat/
+	ambience = list(
+			'sound/ambience/ambisin2.ogg',
+			'sound/ambience/signal.ogg',
+			'sound/ambience/ambigen10.ogg',
+			'infinity/sound/SS2/ambience/ambservers.wav'
+		)
+	req_access = list(access_tcomsat)
+
+/area/tcommsat/chamber
+	name = "First Deck - Telecoms"
+	icon_state = "tcomsatcham"
+
+/area/tcommsat/computer
+	name = "First Deck - Telecoms - Monitoring"
+	icon_state = "tcomsatcomp"
+
+/area/tcommsat/storage
+	name = "First Deck - Telecoms - Storage"
+	icon_state = "tcomsatstore"

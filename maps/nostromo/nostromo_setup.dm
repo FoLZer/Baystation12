@@ -10,7 +10,7 @@
 	to_chat(victim, "<br><span class='danger'>Внимание!</span> На данный момент существует баг, из-за которого слоты с персонажами могут не загрузиться. Если он произошел - зайдите во вкладку OOC и нажмите 'Fix characters load'.")
 
 /datum/map/nostromo/send_welcome()
-	var/welcome_text = "<center><img src = ntlogo.png /><br /><font size = 3><b>USCSS Nostromo</b> Показания Сенсоров:</font><hr />"
+	var/welcome_text = "<center><img src = wylogo.png /><br /><font size = 3><b>USCSS Nostromo</b> Показания Сенсоров:</font><hr />"
 	welcome_text += "Отчет сгенерирован [stationdate2text()] в [stationtime2text()]</center><br /><br />"
 	welcome_text += "Текущая система: <b>[system_name()]</b><br />"
 	welcome_text += "Дней до Солнечной Системы: <b>[rand(15,45)]</b><br />"
@@ -19,14 +19,9 @@
 
 	var/list/space_things = list()
 	var/obj/effect/overmap/nostromo = map_sectors["1"]
-	for(var/zlevel in map_sectors)
-		var/obj/effect/overmap/visitable/O = map_sectors[zlevel]
-		if(O.name == nostromo.name)
-			continue
-		if(istype(O, /obj/effect/overmap/visitable/ship/landable)) //Don't show shuttles
-			continue
-		if(O.hide_from_reports)
-			continue
+
+	var/obj/effect/overmap/visitable/O = map_sectors["1"]
+	if(O.name != nostromo.name && (!istype(O, /obj/effect/overmap/visitable/ship/landable) || istype(O,/obj/effect/overmap/visitable/sector/arcticplanet)) && !O.hide_from_reports)
 		space_things |= O
 
 	var/list/distress_calls

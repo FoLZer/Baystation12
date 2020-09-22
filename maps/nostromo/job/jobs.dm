@@ -39,7 +39,7 @@
 		ACCESS_REGION_ENGINEERING = list(access_ce, access_change_ids),
 		ACCESS_REGION_COMMAND = list(access_change_ids),
 		ACCESS_REGION_GENERAL = list(access_hop, access_change_ids),
-		ACCESS_REGION_SUPPLY = list(access_qm, access_change_ids),
+		ACCESS_REGION_SUPPLY = list(access_qm, access_change_ids)
 	)
 
 /*

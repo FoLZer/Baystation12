@@ -29,22 +29,15 @@
 	//	"First Deck - Security - Armory Lobby",		Lie
 	//	"First Deck - Vault",
 	//	"AI Chamber",
-		"Second Deck - AI Upload",
-		"Second Deck - AI Upload Access")
+		"AI Upload",
+		"AI Upload Access")
 
 	secure_areas = list(
-		"Second Deck - Engine - Supermatter",
-		"Second Deck - Engineering - Technical Storage",
-		"Second Deck - Teleporter",
-		"First Deck - Telecoms - Storage",
-		"First Deck - Telecoms - Monitoring",
-		"First Deck - Telecoms",
-		"First Deck - EVA",
-		"Security - Brig",
-		"Security - Prison Wing",
-		"Third Deck - Hangar",
-		"Third Deck - Hangar - Atmospherics Storage",
-		"Third Deck - Water Cistern"
+		"Telecoms - Storage",
+		"Telecoms - Monitoring",
+		"Telecoms",
+		"Brig",
+		"Hangar"
 		)
 
 /datum/map/proc/area_lockdown(var/a)
