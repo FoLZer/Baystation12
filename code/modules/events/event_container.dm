@@ -187,6 +187,7 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 		new /datum/event_meta/no_overmap(EVENT_LEVEL_MAJOR, "Electrical Storm",		/datum/event/electrical_storm, 		0,	list(ASSIGNMENT_ENGINEER = 10, ASSIGNMENT_JANITOR = 5)),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Drone Revolution",				/datum/event/rogue_maint_drones/,	0,	list(ASSIGNMENT_ENGINEER = 10,ASSIGNMENT_MEDICAL = 10,ASSIGNMENT_SECURITY = 10)),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Alien Infestation",				/datum/event/aliens, 				0,	list(ASSIGNMENT_SECURITY = 10)), //inf
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Zombie Infestation",              /datum/event/zombie_infestation,    0,  list(ASSIGNMENT_SECURITY = 10)),
 	)
 
 
