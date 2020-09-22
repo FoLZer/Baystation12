@@ -24,7 +24,7 @@
 	faction = "zombies"
 	pass_flags = PASS_FLAG_TABLE
 	move_to_delay = 3
-	speed = 1
+	speed = 2.5
 	max_gas = list(GAS_PHORON = 1, GAS_CO2 = 5, GAS_METHYL_BROMIDE = 1)
 	break_stuff_probability = 25
 	pry_time = 8 SECONDS
