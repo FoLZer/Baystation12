@@ -3,14 +3,6 @@
 	blacklisted_jobs = list(/datum/job/ai, /datum/job/cyborg, /datum/job/submap)
 	protected_jobs = list(/datum/job/captain, /datum/job/officer)
 
-/datum/antagonist/godcultist
-	blacklisted_jobs = list(/datum/job/ai, /datum/job/cyborg, /datum/job/submap)
-	protected_jobs = list(/datum/job/captain, /datum/job/officer)
-
-/datum/antagonist/cultist
-	blacklisted_jobs = list(/datum/job/ai, /datum/job/cyborg, /datum/job/chaplain, /datum/job/submap)
-	protected_jobs = list(/datum/job/captain, /datum/job/officer)
-
 /datum/antagonist/loyalists
 	blacklisted_jobs = list(/datum/job/ai, /datum/job/cyborg, /datum/job/submap)
 

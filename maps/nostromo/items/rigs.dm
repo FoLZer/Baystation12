@@ -68,42 +68,6 @@
 		)
 
 /*
- * HEAD OF PERSONELL
- */
-/obj/item/weapon/rig/command/hop
-	name = "HoP's HCM"
-	suit_type = "advanced command hardsuit"
-	desc = "A specialized hardsuit rig control module issued to ranking personnel command staff of the NanoTrasen and their peers."
-	icon_state = "command_XO_rig"
-	armor = list(
-		melee = ARMOR_MELEE_KNIVES,
-		bullet = ARMOR_BALLISTIC_SMALL,
-		laser = ARMOR_LASER_MINOR,
-		energy = ARMOR_ENERGY_SMALL,
-		bomb = ARMOR_BOMB_PADDED,
-		bio = ARMOR_BIO_SHIELDED,
-		rad = ARMOR_RAD_SMALL
-		)
-
-	chest_type = /obj/item/clothing/suit/space/rig/command/hop
-	helm_type = /obj/item/clothing/head/helmet/space/rig/command/hop
-
-	allowed = list(/obj/item/weapon/gun, /obj/item/ammo_magazine, /obj/item/device/flashlight, /obj/item/weapon/tank, /obj/item/device/suit_cooling_unit, /obj/item/weapon/storage/secure/briefcase)
-	req_access = list(access_hop)
-
-/obj/item/clothing/head/helmet/space/rig/command/hop
-	icon_state = "command_XO_rig"
-/obj/item/clothing/suit/space/rig/command/hop
-	icon_state = "command_XO_rig"
-
-/obj/item/weapon/rig/command/hop/equipped
-	initial_modules = list(
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/flash/advanced,
-		/obj/item/rig_module/grenade_launcher/smoke,
-		/obj/item/rig_module/cooling_unit)
-
-/*
  * COMMANDING OFFICER
  */
 /obj/item/weapon/rig/command/captain

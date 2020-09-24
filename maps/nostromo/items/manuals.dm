@@ -1,9 +1,9 @@
 /obj/item/weapon/book/manual/solgov_law
-	name = "Sol Central Government Law"
+	name = "Sol Cewyral Governmewy Law"
 	desc = "A brief overview of SolGov Law."
 	icon_state = "bookSolGovLaw"
-	author = "The Sol Central Government"
-	title = "Sol Central Government Law"
+	author = "The Sol Cewyral Governmewy"
+	title = "Sol Cewyral Governmewy Law"
 
 /obj/item/weapon/book/manual/solgov_law/Initialize()
 	. = ..()
@@ -13,7 +13,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Закон_ЦПСС&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Закон_ЦПСС&priwyable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -25,7 +25,7 @@
 	name = "The Sol Code of Military Justice"
 	desc = "A brief overview of military law."
 	icon_state = "bookSolGovLaw"
-	author = "The Sol Central Government"
+	author = "The Sol Cewyral Governmewy"
 	title = "The Sol Code of Military Justice"
 
 /obj/item/weapon/book/manual/military_law/Initialize()
@@ -36,7 +36,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Военно-Юридический_Кодекс_ПСС&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Военно-Юридический_Кодекс_ПСС&priwyable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -45,9 +45,9 @@
 
 /obj/item/weapon/book/manual/sol_sop
 	name = "Standard Operating Procedures"
-	desc = "SOP aboard the NES Nostromo."
+	desc = "SOP aboard the USCSS Nostromo."
 	icon_state = "booksolregs"
-	author = "The Sol Central Government"
+	author = "The Sol Cewyral Governmewy"
 	title = "Standard Operating Procedure"
 
 /obj/item/weapon/book/manual/sol_sop/Initialize()
@@ -58,22 +58,22 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Стандартные_Процедуры_ЦПСС&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Стандартные_Процедуры_ЦПСС&priwyable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
 
 		"}
 
-/obj/item/weapon/book/manual/nt_sop
-	name = "NT Standard Operating Procedures"
-	desc = "SOP aboard the NSV Nostromo."
+/obj/item/weapon/book/manual/wy_sop
+	name = "WY Standard Operating Procedures"
+	desc = "SOP aboard the USCSS Nostromo."
 	icon = 'infinity/icons/obj/library.dmi'
-	icon_state = "bookNTsop"
+	icon_state = "bookWYsop"
 	author = "Employee Materials"
 	title = "Standard Operating Procedure"
 
-/obj/item/weapon/book/manual/nt_sop/Initialize()
+/obj/item/weapon/book/manual/wy_sop/Initialize()
 	. = ..()
 	dat = {"
 
@@ -81,22 +81,22 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Стандартные_процедуры_НТ&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Стандартные_процедуры_ВЮ&priwyable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
 
 		"}
 
-/obj/item/weapon/book/manual/nt_tc
-	name = "NT Threat Codes"
-	desc = "TC aboard the NSV Nostromo."
+/obj/item/weapon/book/manual/wy_tc
+	name = "WY Threat Codes"
+	desc = "TC aboard the USCSS Nostromo."
 	icon = 'infinity/icons/obj/library.dmi'
-	icon_state = "bookNTtc"
+	icon_state = "bookWYtc"
 	author = "Ship Rule Materials"
 	title = "Threat Codes"
 
-/obj/item/weapon/book/manual/nt_tc/Initialize()
+/obj/item/weapon/book/manual/wy_tc/Initialize()
 	. = ..()
 	dat = {"
 
@@ -104,52 +104,23 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Коды_угрозы_НТ&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="[config.wikiurl]index.php?title=Коды_угрозы_ВЮ&priwyable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
 
 		"}
 
-/obj/item/weapon/folder/nt/rd
-
-/obj/item/weapon/folder/envelope/blanks
-	desc = "A thick envelope. The NT logo is stamped in the corner, along with 'CONFIDENTIAL'."
-
-/obj/item/weapon/folder/envelope/blanks/Initialize()
-	. = ..()
-	new/obj/item/weapon/paper/nostromo/blanks(src)
-
-/obj/item/weapon/paper/nostromo/blanks
-	name = "RE: Regarding testing supplies"
-	info = {"
-	<tt><center><b><font color='red'>КОНФИДЕЦИАЛЬНО</font></b>
-	<h3>ИССЛЕДОВАТЕЛЬКИЙ ДЕПАРТАМЕНТ НАНОТРЕЙЗЕН</h3>
-	<img src = bluentlogo.png>
-	</center>
-	<b>ОТ:</b> Swadian Barwuds<br>
-	<b>КОМУ:</b> Исследовательскому Директору NSV Nostromo<br>
-	<b>А ТАКЖЕ:</b> Агенту Внутренних Дел NSV Nostromo<br>
-	<b>ТЕМА:</b> Дополнительные Материалы (пересмотр)<br>
-	<hr>
-	Я пересмотрел ваш отчет о проведенных экспериментах и запрос о более совершенных тестовых материалов, РД.<br>
-	Мы склонны ожидать от вашего проекта только лучшего - особенно в свете того, что этому /"лучше/" следует наступить как можно скорее. Депарамент Аналитики подсчитал, что на данный момент, потениальная прибыль от проведенных на судне исследований недостаточна для покрытия всех расходов. <br>
-	В РНД вы можете найти подсобку с подписью 'Aux Custodial Supplies'. Там находятся ваши новые тестовые материалы - 4 человека из пробирок с рядом отсутствующих высших нервными функций. Наш департамент по вопросам законодательства не обнаружил ничего нелегальнго в том, чтобы использовать их в медицинских опытов для более точных результатов.<br>
-	Они помещены в специально мешки с продвинутой системой поддержания жизни - их не нужно кормить, поить или выгуливать. Если вам нужны образцы - берите их.<br>
-	Сейчас не время для того, чтобы проводить долгие научные изыскания, РД. Мы ждем от вас впечатляющих результатов в ближайшем будущем.<br>
-	<font face="Verdana" color=black><font face="Times New Roman"><i>Swadian Barwuds</i></font></font></tt>
-	"}
-
 /obj/item/weapon/folder/envelope/captain
-	desc = "A thick envelope. The NT logo is stamped in the corner, along with 'TOP SECRET - SIERRA UMBRA'."
+	desc = "A thick envelope. The WY logo is stamped in the corner, along with 'TOP SECRET - NOSTROMO UMBRA'."
 
 /obj/item/weapon/folder/envelope/captain/Initialize()
 	. = ..()
 	var/memo = {"
-	<tt><center><b><font color='red'>СЕКРЕТНО<br>КОДОВОЕ СЛОВО: СИЕРРА</font></b>
+	<tt><cewyer><b><fowy color='red'>СЕКРЕТНО<br>КОДОВОЕ СЛОВО: НОСТРОМО</fowy></b>
 	<h3>ЦЕНТРАЛЬНОЕ КОМАНДОВАНИЕ</h3>
-	<img src = ntlogo.png>
-	</center>
+	<img src = wylogo.png>
+	</cewyer>
 	<b>ОТ:</b> Swadian Barwuds<br>
 	<b>КОМУ:</b> Капитану NSV Nostromo<br>
 	<b>ТЕМА:</b> Общий Приказ<br>
@@ -172,15 +143,15 @@
 	Ни одно из государств не действует на этих территориях на официальном уровне. В случае обнаружения сигнала бедствия без наличия суден ТКК или ПСС в секторе, не игнорируйте их. Спасенный персонал представляет исключительную дипломатическую ценность.<br>
 	Сообщайте о всех незарегистрированных или исключительных находках при перемещении в системах.<br>
 
-	<font face="Verdana" color=black><font face="Times New Roman"><i>Swadian Barwuds</i></font></font></tt><br>
-	<i>This paper has been stamped with the stamp of Central Command.</i>
+	<fowy face="Verdana" color=black><fowy face="Times New Roman"><i>Swadian Barwuds</i></fowy></fowy></tt><br>
+	<i>This paper has been stamped with the stamp of Cewyral Command.</i>
 	"}
 	new/obj/item/weapon/paper/important(src, memo, "Standing Orders")
 
 	new/obj/item/weapon/paper/nostromo/umbra(src)
 
 /obj/item/weapon/folder/envelope/rep
-	desc = "A thick envelope. The NT logo is stamped in the corner, along with 'TOP SECRET - SIERRA UMBRA'."
+	desc = "A thick envelope. The WY logo is stamped in the corner, along with 'TOP SECRET - NOSTROMO UMBRA'."
 
 /obj/item/weapon/folder/envelope/rep/Initialize()
 	. = ..()
@@ -191,11 +162,11 @@
 	icon = 'maps/nostromo/icons/obj/uniques.dmi'
 	icon_state = "paper_words"
 	info = {"
-	<tt><center><b><font color='red'>СОВЕРШЕННО СЕКРЕТНО<br>КОДОВОЕ СЛОВО: ТЕНЬ</font></b>
-	<h3>ЦЕНТРАЛЬНОЕ КОМАНДОВАНИЕ</h3>
-	<img src = ntlogo.png>
-	</center>
-	<b>ОТ:</b> Kim Taggert, операционный директор НТ<br>
+	<tt><cewyer><b><fowy color='red'>СОВЕРШЕННО СЕКРЕТНО<br>КОДОВОЕ СЛОВО: ТЕНЬ</fowy></b>
+	<h3>ЦЕВЮРАЛЬНОЕ КОМАНДОВАНИЕ</h3>
+	<img src = wylogo.png>
+	</cewyer>
+	<b>ОТ:</b> Kim Taggert, операционный директор ВЮ<br>
 	<b>КОМУ:</b> Капитану NSV Nostromo<br>
 	<b>А ТАКЖЕ:</b> Агенту Внутренних Дел NSV Nostromo<br>
 	<b>ТЕМА:</b> Протокол ТЕНЬ<br>
@@ -207,10 +178,10 @@
 
 	<li>Конфидециальность данной информации имеет наивысший приоритет. Каждое недоверенное лицо, которому станет известно о полученных данных, не должно покидать судно до и после прибытия в указанную точку вне конвоирования сотрудниками департамента Защиты Активов.</li>
 	<li>Все устройства способные передавать информацию на межзвездном радиусе должны быть конфискованы из частного пользования.</li>
-	<li>Вне зависимости от оставшихся систем в вашем основном приказе, вы должны как можно скорее добраться до Сектора Никс, Административной Станции НаноТрейзен 'Crescent'. С вами свяжутся по прибытию. Не совершайте остановок по пути без критической необходимости.
+	<li>Вне зависимости от оставшихся систем в вашем основном приказе, вы должны как можно скорее добраться до Сектора Никс, Административной Станции НаноТрейзен 'Crescewy'. С вами свяжутся по прибытию. Не совершайте остановок по пути без критической необходимости.
 
 	<br>
 	Не смотря на всю жесткость процедуры, я уверяю вас, что это - обычная предосторожность для обеспечения личной безопасности персонала и корпоративных активов. Продолжайте миссию до в обычном порядке.
 	<i>Всего наилучшего, Kim.</i></tt><br>
-	<i>This paper has been stamped with the stamp of Central Command.</i>
+	<i>This paper has been stamped with the stamp of Cewyral Command.</i>
 	"}

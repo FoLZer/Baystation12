@@ -12,17 +12,14 @@
  * ===========
  */
 
-/obj/item/clothing/accessory/badge/holo/NT
+/obj/item/clothing/accessory/badge/holo/WY
 	badge_access = access_security
 
 /obj/item/clothing/accessory/badge/holo/cord
 	name = "neck holobadge"
 
-/obj/item/clothing/accessory/badge/holo/NT/cord
+/obj/item/clothing/accessory/badge/holo/WY/cord
 	name = "corporate neck holobadge"
-
-/obj/item/clothing/accessory/badge/nanotrasen
-	badge_string = "NanoTrasen Executive Body"
 
 /*
  * OTHER
