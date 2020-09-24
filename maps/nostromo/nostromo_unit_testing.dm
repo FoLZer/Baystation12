@@ -3,7 +3,7 @@
 	apc_test_exempt_areas = list(
 		/area/space = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/exoplanet = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/maintenance = NO_SCRUBBER|NO_VENT,
+		/area/maintenance = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/maintenance/exterior = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/turret_protected/ai_cyborg_station = NO_SCRUBBER|NO_VENT,
 		/area/shield = NO_SCRUBBER|NO_VENT,

@@ -20,6 +20,7 @@
 	name = "Maintenance"
 	icon_state = "maintenance"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	requires_power = 0
 
 /area/crew_quarters/safe_room
 	name = "Safe Room"

@@ -8,9 +8,9 @@
 	warmup_time = 2
 
 /datum/shuttle/autodock/ferry/escape_pod/nostromopod/New()
-	name = "Escape Pod [number]"
-	dock_target = "escape_pod_[number]"
-	arming_controller = "escape_pod_[number]_berth"
+	name = "Escape Pod"
+	dock_target = "escape_pod"
+	arming_controller = "escape_pod_berth"
 	waypoint_station = "escape_pod_[number]_start"
 	landmark_transition = "escape_pod_[number]_internim"
 	waypoint_offsite = "escape_pod_[number]_out"
@@ -24,7 +24,7 @@
 
 /obj/effect/shuttle_landmark/escape_pod/start/New()
 	landmark_tag = "escape_pod_[number]_start"
-	docking_controller = "escape_pod_[number]_berth"
+	docking_controller = "escape_pod_berth"
 	..()
 
 /obj/effect/shuttle_landmark/escape_pod/transit
@@ -53,51 +53,6 @@
 	number = 6
 /obj/effect/shuttle_landmark/escape_pod/transit/pod6
 	number = 6
-//Admin
-
-/datum/shuttle/autodock/ferry/administration
-	name = "Administration"
-	shuttle_area = /area/shuttle/administration/centcom
-	dock_target = "admin_shuttle"
-	waypoint_station = "nav_admin_start"
-	waypoint_offsite = "nav_admin_out"
-	ceiling_type = /turf/simulated/floor/shuttle_ceiling
-	warmup_time = 7
-
-/obj/effect/shuttle_landmark/admin/start
-	name = "Centcom"
-	landmark_tag = "nav_admin_start"
-	docking_controller = "admin_shuttle"
-	base_area = /area/centcom
-	base_turf = /turf/simulated/floor/plating
-
-/obj/effect/shuttle_landmark/admin/out
-	name = "Docking Bay"
-	landmark_tag = "nav_admin_out"
-	docking_controller = "admin_shuttle_dock"
-
-//Transport
-
-/datum/shuttle/autodock/ferry/centcom
-	name = "Centcom"
-	location = 1
-	shuttle_area = /area/shuttle/transport1/centcom
-	dock_target = "centcom_shuttle"
-	waypoint_offsite = "nav_ferry_start"
-	waypoint_station = "nav_ferry_out"
-	ceiling_type = /turf/simulated/floor/shuttle_ceiling
-	warmup_time = 7
-
-/obj/effect/shuttle_landmark/ferry/start
-	name = "Centcom"
-	landmark_tag = "nav_ferry_start"
-	docking_controller = "centcom_shuttle_bay"
-
-/obj/effect/shuttle_landmark/ferry/out
-	name = "Docking Bay"
-	landmark_tag = "nav_ferry_out"
-	docking_controller = "centcom_shuttle_dock"
-//NT Rescue Shuttle
 
 /datum/shuttle/autodock/multi/antag/rescue
 	destination_tags = list(
@@ -142,31 +97,8 @@
 	name = "West of Bridge"
 	landmark_tag = "nav_ert_deck5"
 
-//SCGMC Assault Pod
-
-/datum/shuttle/autodock/ferry/specops/scg
-	name = "Special Operations"
-	location = 1
-	shuttle_area = /area/shuttle/specops/centcom
-	dock_target = "specops_shuttle_fore"
-	waypoint_station = "nav_specops_out"
-	waypoint_offsite = "nav_specops_start"
-	current_location = "nav_specops_start"
-	ceiling_type = /turf/simulated/floor/shuttle_ceiling
-	warmup_time = 7
-
-/obj/effect/shuttle_landmark/specops/start
-	name = "Centcom"
-	landmark_tag = "nav_specops_start"
-	docking_controller = "specops_shuttle_cent"
-
-/obj/effect/shuttle_landmark/specops/out
-	name = "Docking Bay"
-	landmark_tag = "nav_specops_out"
-	docking_controller = "specops_dock"
-
 //Cargo drone
-
+/*
 /datum/shuttle/autodock/ferry/supply/drone
 	name = "Supply Drone"
 	location = 1
@@ -185,7 +117,7 @@
 	landmark_tag = "nav_cargo_station"
 	base_area = /area/quartermaster/hangar
 	base_turf = /turf/simulated/floor/plating
-
+*/
 /datum/shuttle/autodock/overmap/narcissus
 	name = "Narcissus"
 	move_time = 30

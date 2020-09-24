@@ -18,14 +18,19 @@
 	welcome_text += "Результаты сканирования показали следующие потенциальные объекты для исследования:<br />"
 
 	var/list/space_things = list()
-	var/obj/effect/overmap/nostromo = map_sectors["1"]
-
-	var/obj/effect/overmap/visitable/O = map_sectors["1"]
-	if(O.name != nostromo.name && (!istype(O, /obj/effect/overmap/visitable/ship/landable) || istype(O,/obj/effect/overmap/visitable/sector/arcticplanet)) && !O.hide_from_reports)
+	var/obj/effect/overmap/visitable/nostromo = map_sectors["1"]
+	for(var/zlevel in map_sectors)
+		var/obj/effect/overmap/visitable/O = map_sectors[zlevel]
+		if(O.name == nostromo.name)
+			continue
+		if(istype(O, /obj/effect/overmap/visitable/ship/landable)) //Don't show shuttles
+			continue
+		if(O.hide_from_reports)
+			continue
 		space_things |= O
 
 	var/list/distress_calls
-	for(O in space_things)
+	for(var/obj/effect/overmap/visitable/O in space_things)
 		var/location_desc = " на текущем квадрате."
 		if(O.loc != nostromo.loc)
 			var/bearing = round(90 - Atan2(O.x - nostromo.x, O.y - nostromo.y),5) //fucking triangles how do they work

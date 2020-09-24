@@ -7,9 +7,7 @@
 	load_legacy_saves = TRUE
 
 	station_levels = list(1)
-	admin_levels = list(2,3)
-	empty_levels = list(4)
-	accessible_z_levels = list("1"=1,"4"=30)
+	accessible_z_levels = list("1"=1)
 	overmap_size = 40
 	overmap_event_areas = 34
 	usable_email_tlds = list("yutani.net")

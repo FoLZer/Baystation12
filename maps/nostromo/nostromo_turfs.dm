@@ -18,3 +18,6 @@
 
 /turf/simulated/floor/shuttle_ceiling/nostromo/air
 	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
+
+/turf/simulated/floor/tiled/dark/usedup
+	initial_gas = list(GAS_CO2 = MOLES_O2STANDARD, GAS_NITROGEN = MOLES_N2STANDARD)
