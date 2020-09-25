@@ -20,13 +20,13 @@
 	var/chase_time = 0
 
 /obj/item/clothing/mask/xenofacehugger/Initialize()
-	..()
 	START_PROCESSING(SSobj, src)
+	. = ..()
 
 /obj/item/clothing/mask/xenofacehugger/Destroy()
 	target = null
 	STOP_PROCESSING(SSobj, src)
-	return ..()
+	. = ..()
 
 /obj/item/clothing/mask/xenofacehugger/CanPass(atom/movable/mover, turf/target, height=0)
 	return ismob(mover) || (stat == DEAD)
@@ -39,7 +39,8 @@
 	for(var/i in 1 to 8)
 		if(!src || !target)
 			return FALSE
-		step_to(src, target)
+		var/dir = get_general_dir(src.loc, target)
+		forceMove(get_turf(get_step(src.loc, dir)))
 		if(get_dist(src, target) == 0)
 			return TRUE
 	return FALSE
@@ -65,7 +66,7 @@
 					qdel(V)
 					continue
 			if(!target && prob(65))
-				step(src, pick(GLOB.cardinal))
+				forceMove(get_turf(get_step(src.loc, pick(GLOB.cardinal))))
 
 /obj/item/clothing/mask/xenofacehugger/proc/chase()
 	while(target)
@@ -106,13 +107,14 @@
 
 /obj/item/clothing/mask/xenofacehugger/examine(mob/user)
 	..()
-	switch(stat)
-		if(DEAD, UNCONSCIOUS)
-			to_chat(user, "<span class='danger'>[src] is not moving.</span>")
-		if(CONSCIOUS)
-			to_chat(user, "<span class='danger'>[src] seems to be active.</span>")
-	if (sterile)
+	if(stat == DEAD || stat == UNCONSCIOUS)
+		to_chat(user, "<span class='danger'>[src] is not moving.</span>")
+	else
+		to_chat(user, "<span class='danger'>[src] seems to be active.</span>")
+
+	if(sterile)
 		to_chat(user, "<span class='danger'>It looks like the proboscis has been removed.</span>")
+
 
 /obj/item/clothing/mask/xenofacehugger/attackby(obj/item/I, mob/user, params)
 	if(I.force)
