@@ -27,6 +27,10 @@
 	adding += changeling_chems
 //[INF]
 
+	if(isxenomorph(target))
+		var/obj/screen/leap/l = new()
+		adding += l
+
 	// Draw the various inventory equipment slots.
 	var/has_hidden_gear
 	for(var/gear_slot in hud_data.gear)
