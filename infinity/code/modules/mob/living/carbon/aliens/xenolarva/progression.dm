@@ -53,15 +53,6 @@
 		adult.add_language(L.name)
 	qdel(src)
 
-/mob/living/carbon/alien/xenolarva/proc/update_progression(var/drinked_blood)
-	if(amount_grown < max_grown)
-		if(drinked_blood)
-			amount_grown++
-		else
-			if(prob(30))
-				amount_grown++
-	return
-
 /mob/living/carbon/alien/xenolarva/proc/confirm_evolution()
 
 	to_chat(src, SPAN_ALIEN("¬ы растЄте и становитесь ближе к тому, чтобы стать такой же прекрасной, как и ваши сестры!"))

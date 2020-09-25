@@ -1,7 +1,7 @@
 /mob/living/carbon/alien/xenolarva/Process()
 	. = ..()
-	if(stat != DEAD && auto_progress)
-		update_progression(FALSE)
+	if(prob(30))
+		amount_grown++
 
 /mob/living/carbon/alien/xenolarva/update_living_sight()
 	set_sight(sight&(~(SEE_TURFS|SEE_MOBS|SEE_OBJS)))
