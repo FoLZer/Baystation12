@@ -198,6 +198,7 @@
 		/mob/living/carbon/human/proc/evolve_hunter_xeno,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/mimic_xeno,
+		/mob/living/carbon/human/proc/corrosive_acid_xeno,
 		/mob/living/carbon/proc/devour
 		)
 

@@ -36,7 +36,7 @@
 	var/amount = input("Amount:", "Transfer Plasma to [M]") as num
 	if (amount)
 		amount = abs(round(amount))
-		if(check_alien_ability(amount,0,BP_PLASMA) && !is_ventcrawling)
+		if(check_xeno_ability(amount,0,BP_PLASMA) && !is_ventcrawling)
 			M.gain_plasma(amount)
 			to_chat(M, "<span class='alium'>[src] has transfered [amount] plasma to you.</span>")
 			to_chat(src, "<span class='alium'>You have transferred [amount] plasma to [M].</span>")
@@ -58,16 +58,54 @@
 		to_chat(src, "There's already an egg here.")
 		return
 
-	if(check_alien_ability(500,1,BP_EGG) && !is_ventcrawling)
+	if(check_xeno_ability(500,1,BP_EGG) && !is_ventcrawling)
 		visible_message("<span class='alium'><B>[src] has laid an egg!</B></span>")
 		new /obj/structure/alien/egg/xeno(loc)
 
 	return
 
+/mob/living/carbon/human/proc/check_xeno_ability(var/cost,var/needs_foundation,var/needs_organ)
+
+	var/obj/item/organ/internal/xeno/plasmavessel/P = internal_organs_by_name[BP_PLASMA]
+	if(!istype(P))
+		to_chat(src, "<span class='danger'>Your plasma vessel has been removed!</span>")
+		return
+
+	if(needs_organ)
+		var/obj/item/organ/internal/I = internal_organs_by_name[needs_organ]
+		if(!I)
+			to_chat(src, "<span class='danger'>Your [needs_organ] has been removed!</span>")
+			return
+		else if(!I.is_usable())
+			to_chat(src, "<span class='danger'>Your [needs_organ] is too damaged to function!</span>")
+			return
+
+	if(P.stored_plasma < cost)
+		to_chat(src, "<span class='warning'>Not enough plasma stored.</span>")
+		return 0
+
+	if(needs_foundation)
+		var/turf/T = get_turf(src)
+		var/has_foundation
+		if(T)
+			//TODO: Work out the actual conditions this needs.
+			if(!(istype(T,/turf/space)))
+				has_foundation = 1
+		if(!has_foundation)
+			to_chat(src, "<span class='warning'>Bad place for a garden!</span>")
+			return 0
+
+	P.stored_plasma -= cost
+	return 1
+
 /mob/living/carbon/human/proc/plant_xeno()
 	set name = "Plant Weeds (350)"
 	set desc = "Plants some alien weeds"
 	set category = "Abilities"
+
+	if(locate(/obj/structure/alien/weeds/node) in get_turf(src))
+		to_chat(src, "There is already a weed's node.")
+		return
 
 	var/obj/structure/alien/A = locate() in loc
 	if(A)
@@ -75,8 +113,9 @@
 		return
 	if(!do_mob(src, src, 100))
 		return
-	if(check_alien_ability(350,1,BP_RESIN) && !is_ventcrawling)
-		visible_message("<span class='alium'><B>[src] has planted some alien weeds!</B></span>")
+	if(check_xeno_ability(50,1,BP_RESIN) && !is_ventcrawling)
+		playsound(src, 'sound/effects/resin_build.ogg', 100, 33)
+		visible_message("<span class='alium'><B>[src] has planted some alien weeds!</B></span>", "<span class='notice'>You plant some alien weeds.</span>")
 		new /obj/structure/alien/weeds/node(loc)
 	return
 
@@ -109,7 +148,7 @@
 		to_chat(src, "<span class='alium'>You cannot dissolve this object.</span>")
 		return
 
-	if(check_alien_ability(75,0,BP_ACID) && !is_ventcrawling)
+	if(check_xeno_ability(75,0,BP_ACID) && !is_ventcrawling)
 		new /obj/effect/acid(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
@@ -144,7 +183,7 @@
 		to_chat(src, "<span class='alium'>You cannot dissolve this object.</span>")
 		return
 
-	if(check_alien_ability(75,0,BP_ACID) && !is_ventcrawling)
+	if(check_xeno_ability(75,0,BP_ACID) && !is_ventcrawling)
 		new /obj/effect/acid/strong(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
@@ -179,7 +218,7 @@
 		to_chat(src, "<span class='alium'>You cannot dissolve this object.</span>")
 		return
 
-	if(check_alien_ability(75,0,BP_ACID) && !is_ventcrawling)
+	if(check_xeno_ability(75,0,BP_ACID) && !is_ventcrawling)
 		new /obj/effect/acid/moderate(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
@@ -197,7 +236,7 @@
 
 	if(!(isxenomorph(target) || isalien(target)))
 		visible_message("<span class='warning'>[src] spits neurotoxin at [target]!</span>", "<span class='alium'>You spit neurotoxin at [target].</span>")
-		if(!check_alien_ability(50,0,BP_ACID) && !is_ventcrawling)
+		if(!check_xeno_ability(50,0,BP_ACID) && !is_ventcrawling)
 			return
 
 		var/obj/item/projectile/energy/neurotoxin/A = new /obj/item/projectile/energy/neurotoxin(usr.loc)
@@ -215,7 +254,7 @@
 
 	if(!(isxenomorph(target) || isalien(target)))
 		visible_message("<span class='warning'>[src] spits some acid at [target]!</span>", "<span class='alium'>You spit acid at [target].</span>")
-		if(!check_alien_ability(50,0,BP_ACID) && !is_ventcrawling)
+		if(!check_xeno_ability(50,0,BP_ACID) && !is_ventcrawling)
 			return
 
 		var/obj/item/projectile/energy/alien_acid/A = new /obj/item/projectile/energy/alien_acid(usr.loc)
@@ -236,7 +275,7 @@
 	if(!choice)
 		return
 
-	if(!check_alien_ability(75,1,BP_RESIN) && !is_ventcrawling)
+	if(!check_xeno_ability(75,1,BP_RESIN) && !is_ventcrawling)
 		return
 
 	visible_message("<span class='warning'><B>[src] vomits up a thick purple substance and begins to shape it!</B></span>", "<span class='alium'>You shape a [choice].</span>")
@@ -260,7 +299,7 @@
 		to_chat(src, "<span class='notice'>We already have an active queen.</span>")
 		return
 
-	if(check_alien_ability(500))
+	if(check_xeno_ability(500))
 		visible_message("<span class='alium'><B>[src] begins to twist and contort!</B></span>", "<span class='alium'>You begin to evolve!</span>")
 		src.set_species("Xenomorph Queen")
 
@@ -271,7 +310,7 @@
 	set desc = "Raise natural speed in cost of some armor. Also, your attacks will be stronger."
 	set category = "Abilities"
 
-	if(check_alien_ability(300))
+	if(check_xeno_ability(300))
 		visible_message("<span class='alium'><B>[src] begins to twist and contort!</B></span>", "<span class='alium'>You begin to evolve!</span>")
 		src.set_species("Xenomorph Warrior")
 
@@ -282,7 +321,7 @@
 	set desc = "Evolve an additional acid gland, capable of shooting acid."
 	set category = "Abilities"
 
-	if(check_alien_ability(300))
+	if(check_xeno_ability(300))
 		visible_message("<span class='alium'><B>[src] begins to twist and contort!</B></span>", "<span class='alium'>You begin to evolve!</span>")
 		src.set_species("Xenomorph Spitter")
 
@@ -293,7 +332,7 @@
 	set desc = "Produce a better armor and acid gland."
 	set category = "Abilities"
 
-	if(check_alien_ability(300))
+	if(check_xeno_ability(300))
 		visible_message("<span class='alium'><B>[src] begins to twist and contort!</B></span>", "<span class='alium'>You begin to evolve!</span>")
 		src.set_species("Xenomorph Hivelord")
 
@@ -304,7 +343,7 @@
 	set desc = "Use your internal color sacs to mimic to your environment."
 	set category = "Abilities"
 
-	if(check_alien_ability(5))
+	if(check_xeno_ability(5))
 		if(src.alpha < 235)
 			src.alpha = 235
 		else
@@ -316,7 +355,7 @@
 	set desc = "Vomit a facehugger, capable of latching onto people and stunning them."
 	set category = "Abilities"
 
-	if(check_alien_ability(100))
+	if(check_xeno_ability(100))
 		visible_message("<span class='alium'><B>[src] vomits a strange creature with legs and a tail!</B></span>", "<span class='alium'>You vomit a facehugger!</span>")
 		var/obj/item/clothing/mask/facehugger/facehugger = new(get_turf(src))
 		src.put_in_hands(facehugger)

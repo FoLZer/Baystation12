@@ -7,6 +7,7 @@
 	density = 0
 	anchored = 1
 	var/progress = 0
+	var/opened
 
 /obj/structure/alien/egg/Initialize()
 	. = ..()
@@ -27,6 +28,8 @@
 		attack_ghost(usr)
 
 /obj/structure/alien/egg/Process()
+	if(progress == -1)
+		return
 	if(progress == MAX_PROGRESS)
 		update_icon()
 		progress++
@@ -242,6 +245,8 @@
 	return
 
 /obj/structure/alien/egg/xeno/Process()
+	if(progress == -1)
+		return
 	if(progress == MAX_PROGRESS)
 		update_icon()
 		progress++
@@ -254,7 +259,7 @@
 				flick("egg_opening",src)
 				progress = -1 // No harvesting pls.
 				sleep(5)
-				var/obj/item/clothing/mask/facehugger/xeno/hugger = new(get_turf(src))
+				var/obj/item/clothing/mask/xenofacehugger/hugger = new(get_turf(src))
 				hugger.icon_state = "facehugger_thrown"
 				hugger.throw_at(H,3,1)
 				update_icon()
@@ -268,7 +273,7 @@
 	flick("egg_opening",src)
 	progress = -1 // No harvesting pls.
 	sleep(5)
-	var/obj/item/clothing/mask/facehugger/xeno/hugger = new(get_turf(src))
+	var/obj/item/clothing/mask/xenofacehugger/hugger = new(get_turf(src))
 	if(!isxenomorph(user))
 		hugger.icon_state = "facehugger_thrown"
 		hugger.throw_at(user,3,1)
@@ -285,58 +290,11 @@
 	flick("egg_opening",src)
 	progress = -1 // No harvesting pls.
 	sleep(5)
-	var/obj/item/clothing/mask/facehugger/xeno/hugger = new(get_turf(src))
+	var/obj/item/clothing/mask/xenofacehugger/hugger = new(get_turf(src))
 	if(!isxenomorph(user))
 		hugger.icon_state = "facehugger_thrown"
 		hugger.throw_at(user,3,1)
 	update_icon()
 	return 1
-
-/obj/item/clothing/mask/facehugger/xeno
-
-/obj/item/clothing/mask/facehugger/xeno/leap(atom/movable/A)
-	var/mob/living/carbon/human/H = A
-
-	if(!istype(H))
-		return
-
-	if(dead)
-		return
-
-	if(isxenomorph(H))
-		return
-
-
-	if(H.head && (istype(H.head, /obj/item/clothing/head/bio_hood) || istype(H.head, /obj/item/clothing/head/helmet/riot) || istype(H.head, /obj/item/clothing/head/helmet/space) || istype(H.head, /obj/item/clothing/head/welding)))
-		return
-
-	var/obj/item/organ/aff_head = H.get_organ(BP_HEAD)
-	var/obj/item/organ/aff_chest = H.get_organ(BP_CHEST)
-	if(!aff_head || BP_IS_ROBOTIC(aff_head))
-		return
-	if(!aff_chest || BP_IS_ROBOTIC(aff_chest))
-		return
-
-	if(H.wear_mask && istype(H.wear_mask, /obj/item/clothing/mask/facehugger))
-		return
-
-	var/was_mask = 0
-	if(H.wear_mask)
-		H.drop_from_inventory(H.wear_mask)
-		was_mask = 1
-	if(H.equip_to_slot_if_possible(src, slot_wear_mask))
-		canremove = 0
-		if(was_mask)
-			H.visible_message(SPAN_DANGER("[src] jumps onto [H] and tears his mask off!"), SPAN_DANGER("[src] jumps onto you and tears your mask off!"))
-		else
-			H.visible_message(SPAN_DANGER("[src] jumps onto [H]!"), SPAN_DANGER("[src] jumps onto you!"))
-		src.pickup(H)
-		var/obj/item/organ/affecting = H.get_organ(BP_CHEST)
-		var/obj/item/organ/internal/xeno/larva/xeno/larva = new(affecting)
-		H.apply_damage(90, PAIN, affecting)
-		larva.replaced(H, affecting)
-		H.Weaken(8)
-		H.Stun(3)
-		addtimer(CALLBACK(src, .proc/detach), live_time)
 
 #undef MAX_PROGRESS
