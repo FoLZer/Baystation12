@@ -36,7 +36,7 @@
 						SKILL_BOTANY    = SKILL_BASIC,
 						SKILL_CHEMISTRY = SKILL_BASIC)
 
-	access = list(access_maint_tunnels, access_hydroponics, access_kitchen, access_commissary)
+	access = list(access_hydroponics, access_kitchen)
 
 	minimal_access = list()
 
@@ -52,7 +52,7 @@
 	allowed_branches = list(/datum/mil_branch/employee)
 	allowed_ranks = list(/datum/mil_rank/civ/wy)
 
-	access = list(access_hydroponics, access_bar, access_commissary)
+	access = list(access_hydroponics, access_bar)
 
 	minimal_access = list()
 	min_skill = list(	SKILL_COOKING   = SKILL_BASIC,

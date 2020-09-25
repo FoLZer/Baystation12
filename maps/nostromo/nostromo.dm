@@ -53,7 +53,6 @@
 
 	#include "job/jobs_cargo.dm"
 	#include "job/jobs_command.dm"
-	#include "job/jobs_misc.dm"
 	#include "job/jobs_service.dm"
 
 	#include "machinery/doors.dm"

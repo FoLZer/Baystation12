@@ -72,7 +72,7 @@
 
 /obj/structure/closet/secure_closet/security/nostromo
 	name = "security guard's locker"
-	req_access = list(access_guard)
+	req_access = list(access_armory)
 	closet_appearance = /decl/closet_appearance/secure_closet/nostromo/security
 
 /obj/structure/closet/secure_closet/security/nostromo/WillContain()

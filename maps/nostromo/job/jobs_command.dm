@@ -53,10 +53,8 @@
 	                    SKILL_VIROLOGY    = SKILL_MAX)
 	skill_points = 36
 
-	access = list(access_medical, access_morgue, access_maint_tunnels, access_external_airlocks, access_emergency_storage,
-			            access_teleporter, access_eva, access_heads,
-			            access_chapel_office, access_crematorium, access_chemistry, access_virology,
-			            access_cmo, access_surgery, access_RC_announce, access_keycard_auth,
+	access = list(access_medical, access_external_airlocks, access_emergency_storage,access_eva,
+			            access_cmo, access_RC_announce, access_keycard_auth,
 			            access_medical_equip, access_hangar)
 
 	minimal_access = list()
@@ -94,10 +92,9 @@
 	                    SKILL_ENGINES      = SKILL_MAX)
 	skill_points = 30
 
-	access = list(access_engine, access_engine_equip, access_maint_tunnels, access_external_airlocks, access_emergency_storage,
-			            access_teleporter, access_eva, access_heads,
-			            access_tech_storage, access_atmospherics, access_janitor, access_construction,
-			            access_sec_doors,
+	access = list(access_maint_tunnels, access_external_airlocks, access_emergency_storage,
+			            access_teleporter, access_eva,
+			            access_tech_storage, access_atmospherics, access_construction, access_sec_doors,
 			            access_network, access_ce, access_RC_announce, access_keycard_auth, access_tcomsat,
 			            access_hangar)
 
@@ -144,11 +141,11 @@
 	                    SKILL_FORENSICS   = SKILL_MAX)
 	skill_points = 28
 
-	access = list(	access_seceva, access_guard, access_security, access_medical, access_brig, access_armory, access_forensics_lockers,
+	access = list(	access_security, access_brig, access_armory,
 			            access_maint_tunnels, access_external_airlocks, access_emergency_storage,
-			            access_teleporter, access_eva, access_bridge, access_heads,
+			            access_eva, access_bridge,
 			            access_hos, access_RC_announce, access_keycard_auth, access_sec_doors,
-			            access_hangar, access_gun)
+			            access_hangar)
 	minimal_access = list()
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
