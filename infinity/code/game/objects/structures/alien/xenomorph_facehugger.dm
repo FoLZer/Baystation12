@@ -8,84 +8,58 @@
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	tint = 7
-	density = 1
 	throw_range = 1
 	w_class = ITEM_SIZE_SMALL
+	body_parts_covered = FACE|HEAD
 
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = 0
 	var/strength = 5
-	var/current_hugger
 	var/mob/living/carbon/target = null
 	var/chase_time = 0
 
-/obj/item/clothing/mask/xenofacehugger/Initialize()
-	..()
+/obj/item/clothing/mask/xenofacehugger/New()
 	START_PROCESSING(SSobj, src)
+	. = ..()
 
 /obj/item/clothing/mask/xenofacehugger/Destroy()
 	target = null
 	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/item/clothing/mask/xenofacehugger/CanPass(atom/movable/mover, turf/target, height=0)
-	return ismob(mover) || (stat == DEAD)
-
-/obj/effect/vision
-	invisibility = 101
-	var/target = null
-
-/obj/effect/vision/proc/check()
-	for(var/i in 1 to 8)
-		if(!src || !target)
-			return FALSE
-		step_to(src, target)
-		if(get_dist(src, target) == 0)
-			return TRUE
-	return FALSE
+	. = ..()
 
 /obj/item/clothing/mask/xenofacehugger/Process()
 	if(stat)
 		return
 	if(isturf(loc))
 		if(!target)
-			for(var/mob/living/carbon/C in range(7, src))
-				var/obj/effect/vision/V = new /obj/effect/vision(get_turf(src))
-				V.target = C
-				if(V.check())
-					qdel(V)
-					if(CanHug(C, 0))
-						chase_time = 28
-						target = C
-						chase()
-						break
-					else
-						continue
-				else
-					qdel(V)
+			for(var/mob/living/carbon/human/H in view(src,10))
+				if(!istype(H))
 					continue
-			if(!target && prob(65))
+				world.log << "distcheck"
+				if(CanHug(H, 0))
+					world.log << "canhug"
+					chase_time = 28
+					target = H
+					chase()
+					world.log << "chase"
+					break
+			if(prob(65))
 				step(src, pick(GLOB.cardinal))
 
 /obj/item/clothing/mask/xenofacehugger/proc/chase()
 	while(target)
-		if(!isturf(loc))
-			target = null
-			return
-		else if(stat)
+		if(!isturf(loc) || stat)
 			target = null
 			return
 
-		for(var/mob/living/carbon/C in range(4, src))
-			if(C != target)
-				if(CanHug(C, TRUE))
-					if(get_dist(src,C) < get_dist(src,target))
-						target = C
+		for(var/mob/living/carbon/human/H in view(src,10))
+			if(!istype(H))
+				continue
+			if(H != target)
+				if(CanHug(H, TRUE))
+					if(get_dist(src,H) < get_dist(src,target))
+						target = H
 						break
-					else
-						continue
-				else
-					continue
 
 		if(!CanHug(target, FALSE))
 			target = null
@@ -94,7 +68,7 @@
 			Attach(target)
 			target = null
 			return
-		else if(target in view(7,src))
+		else if(target in view(src,7))
 			step_to(src,target)
 		else if(chase_time > 0)
 			chase_time--
@@ -102,17 +76,17 @@
 		else
 			target = null
 			return
-		sleep(5)
+		sleep(3)
 
-/obj/item/clothing/mask/xenofacehugger/examine(mob/user)
+/obj/item/clothing/mask/xenofacehugger/examine()
 	..()
 	switch(stat)
 		if(DEAD, UNCONSCIOUS)
-			to_chat(user, "<span class='danger'>[src] is not moving.</span>")
+			to_chat(usr, "<span class='danger'>[src] is not moving.</span>")
 		if(CONSCIOUS)
-			to_chat(user, "<span class='danger'>[src] seems to be active.</span>")
+			to_chat(usr, "<span class='danger'>[src] seems to be active.</span>")
 	if (sterile)
-		to_chat(user, "<span class='danger'>It looks like the proboscis has been removed.</span>")
+		to_chat(usr, "<span class='danger'>It looks like the proboscis has been removed.</span>")
 
 /obj/item/clothing/mask/xenofacehugger/attackby(obj/item/I, mob/user, params)
 	if(I.force)
@@ -149,26 +123,20 @@
 		Die()
 	return
 
-/obj/item/clothing/mask/xenofacehugger/equipped(mob/living/carbon/C)
+/obj/item/clothing/mask/xenofacehugger/equipped(mob/living/carbon/human/C)
 	Attach(C)
 
-/obj/item/clothing/mask/xenofacehugger/Crossed(atom/movable/AM)
+/obj/item/clothing/mask/xenofacehugger/Crossed(mob/living/carbon/human/H)
 	..()
-	return HasProximity(AM)
+	return HasProximity(H)
 
-/obj/item/clothing/mask/xenofacehugger/HasProximity(mob/living/carbon/C)
-	if(!current_hugger)
-		return Attach(C)
+/obj/item/clothing/mask/xenofacehugger/HasProximity(mob/living/carbon/human/H)
+	return Attach(H)
 
 /obj/item/clothing/mask/xenofacehugger/on_found(mob/finder)
 	if(stat == CONSCIOUS)
 		return HasProximity(finder)
 	return FALSE
-/*
-/obj/item/clothing/mask/xenofacehugger/proc/show_messageold(message, m_type)
-	if(current_hugger)
-		var/mob/living/carbon/xenomorph/facehugger/FH = current_hugger
-		FH.show_message(message,m_type)*/
 
 /obj/item/clothing/mask/xenofacehugger/throw_at(atom/target, range, speed, mob/thrower, spin, diagonals_first = FALSE, datum/callback/callback)
 	if(!..())
@@ -187,12 +155,12 @@
 		icon_state = "[initial(icon_state)]"
 		Attach(hit_atom)
 
-/obj/item/clothing/mask/xenofacehugger/proc/CanHug(mob/living/carbon/C, check = 1)
+/obj/item/clothing/mask/xenofacehugger/proc/CanHug(mob/living/carbon/human/C, check = 1)
 	if(stat || istype(C.wear_mask, src) || loc == C)
 		return FALSE
 	if(check)
 		if(isturf(src.loc))
-			if(!(C in view(1, src)))
+			if(!(C in view(src,1)))
 				return FALSE
 	return TRUE
 
@@ -201,50 +169,38 @@
 		return head
 	return FALSE
 
-/obj/item/clothing/mask/xenofacehugger/proc/Attach(mob/living/carbon/C)
-	if(!CanHug(C, FALSE))
+/obj/item/clothing/mask/xenofacehugger/proc/Attach(mob/living/carbon/human/H)
+	if(!CanHug(H, FALSE))
 		return
 
-	C.visible_message("<span class='danger'>[src] leaps at [C]'s face!</span>", "<span class='userdanger'>[src] leaps at [C]'s face!</span>")
+	H.visible_message("<span class='danger'>[src] leaps at [H]'s face!</span>", "<span class='userdanger'>[src] leaps at [H]'s face!</span>")
 
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		var/headgear = H.mouth_is_protected()
-		if(headgear)
-			if(prob(40))
-				H.visible_message("<span class='danger'>[src] smashes against [H]'s [headgear], and rips it off in the process!</span>", "<span class='userdanger'>[src] smashes against yours [headgear], and rips it off in the process!</span>")
-				H.unEquip(headgear)
-			else
-				H.visible_message("<span class='danger'>[src] smashes against [H]'s [headgear], and fails to rip it off!</span>", "<span class='userdanger'>[src] smashes against yours's [headgear], and fails to rip it off!</span>")
-			if(prob(33))
-				H.visible_message("<span class='danger'>[H]'s [headgear] melts from the acid!</span>", "<span class='userdanger'>Your [headgear] melts from the acid!</span>")
-				qdel(headgear)
-			if(prob(66))
-				Die()
-			else
-				H.visible_message("<span class='danger'>[src] bounces off of the [headgear]!</span>", "<span class='userdanger'>[src] bounces off of the [headgear]!</span>")
-				GoIdle()
-			return FALSE
-	else
-		if(C.wear_mask)
-			if(prob(20))
-				return FALSE
-			var/obj/item/clothing/mask/WM = target.wear_mask
-			if(!WM.canremove)
-				return FALSE
-			target.unEquip(WM)
-			target.visible_message("<span class='danger'>[src] tears [WM] off of [C]'s face!</span>", "<span class='userdanger'>[src] tears [WM] off of [C]'s face!</span>")
+	var/headgear = H.mouth_is_protected()
+	if(H.head.body_parts_covered & FACE)
+		if(prob(40))
+			H.visible_message("<span class='danger'>[src] smashes against [H]'s [headgear], and rips it off in the process!</span>", "<span class='userdanger'>[src] smashes against yours [headgear], and rips it off in the process!</span>")
+			H.unEquip(headgear)
+		else
+			H.visible_message("<span class='danger'>[src] smashes against [H]'s [headgear], and fails to rip it off!</span>", "<span class='userdanger'>[src] smashes against yours's [headgear], and fails to rip it off!</span>")
+		if(prob(33))
+			H.visible_message("<span class='danger'>[H]'s [headgear] melts from the acid!</span>", "<span class='userdanger'>Your [headgear] melts from the acid!</span>")
+			qdel(headgear)
+		if(prob(66))
+			Die()
+		else
+			H.visible_message("<span class='danger'>[src] bounces off of the [headgear]!</span>", "<span class='userdanger'>[src] bounces off of the [headgear]!</span>")
+			GoIdle()
+		return FALSE
 	STOP_PROCESSING(SSobj, src)
-	C.equip_to_slot_if_possible(src, SLOT_MASK, disable_warning = TRUE)
+	H.equip_to_slot_if_possible(src, slot_wear_mask)
 
 	if(!sterile)
-		C.Paralyse(MAX_IMPREGNATION_TIME / 8) //something like 30 seconds
+		H.Paralyse(MAX_IMPREGNATION_TIME / 8) //something like 30 seconds
 
 	GoIdle() //so it doesn't jump the people that tear it off
 	//if(!sterile)
 	//	src.flags |= NODROP
-	if(!current_hugger)
-		addtimer(CALLBACK(src, .proc/Impregnate, C), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	addtimer(CALLBACK(src, .proc/Impregnate, H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 	return TRUE
 
