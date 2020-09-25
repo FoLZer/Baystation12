@@ -262,9 +262,7 @@
 		target.unEquip(src)
 		Die()
 		icon_state = "[initial(icon_state)]_impregnated"
-		var/obj/item/organ/affecting = target.organs_by_name[BP_CHEST]
-		var/obj/item/organ/internal/xeno/larva/larva = new(affecting)
-		larva.replaced(target, affecting)
+		new /obj/item/alien_embryo(target)
 		target.status_flags |= XENO_HOST
 
 	else

@@ -3382,6 +3382,7 @@
 #include "infinity\code\game\objects\effects\decals\posters.dm"
 #include "infinity\code\game\objects\effects\decals\Cleanable\blood.dm"
 #include "infinity\code\game\objects\effects\spawners\gibspawner.dm"
+#include "infinity\code\game\objects\items\alien_embryo.dm"
 #include "infinity\code\game\objects\items\contraband.dm"
 #include "infinity\code\game\objects\items\encryptionkey.dm"
 #include "infinity\code\game\objects\items\toys.dm"
