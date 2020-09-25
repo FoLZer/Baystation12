@@ -1,20 +1,17 @@
 /datum/map/nostromo
 
 #define HUMAN_ONLY_JOBS /datum/job/captain, /datum/job/hos
-	species_to_job_blacklist = list(
-		/datum/species/unathi  		 = list(HUMAN_ONLY_JOBS),
-		/datum/species/unathi/yeosa  = list(HUMAN_ONLY_JOBS),
-		/datum/species/unathi/erosan = list(HUMAN_ONLY_JOBS),
-		/datum/species/skrell  		 = list(HUMAN_ONLY_JOBS),
-		/datum/species/tajaran 		 = list(HUMAN_ONLY_JOBS),
-		/datum/species/machine 		 = list(HUMAN_ONLY_JOBS),
-		/datum/species/resomi  		 = list(HUMAN_ONLY_JOBS),
-		/datum/species/diona   		 = list(HUMAN_ONLY_JOBS),
-		/datum/species/human/booster = list(HUMAN_ONLY_JOBS),
-		/datum/species/adherent      = list(HUMAN_ONLY_JOBS),
-		/datum/species/nabber        = list(HUMAN_ONLY_JOBS),
-		/datum/species/vox           = list(HUMAN_ONLY_JOBS),
-		/datum/species/human/mule	 = list(HUMAN_ONLY_JOBS)
+	species_to_job_whitelist = list(
+		/datum/species/unathi  		 = list(),
+		/datum/species/unathi/yeosa  = list(),
+		/datum/species/unathi/erosan = list(),
+		/datum/species/skrell  		 = list(),
+		/datum/species/tajaran 		 = list(),
+		/datum/species/resomi  		 = list(),
+		/datum/species/diona   		 = list(),
+		/datum/species/adherent      = list(),
+		/datum/species/nabber        = list(),
+		/datum/species/vox           = list()
 	)
 #undef HUMAN_ONLY_JOBS
 

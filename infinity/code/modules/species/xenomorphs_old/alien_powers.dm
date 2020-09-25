@@ -310,6 +310,10 @@
 	set desc = "Raise natural speed in cost of some armor. Also, your attacks will be stronger."
 	set category = "Abilities"
 
+	if(GLOB.using_map.name == "Nostromo")
+		to_chat(src, "<span class='danger'>You can't evolve on this station any further for some reason!</span>")
+		return
+
 	if(check_xeno_ability(300))
 		visible_message("<span class='alium'><B>[src] begins to twist and contort!</B></span>", "<span class='alium'>You begin to evolve!</span>")
 		src.set_species("Xenomorph Warrior")

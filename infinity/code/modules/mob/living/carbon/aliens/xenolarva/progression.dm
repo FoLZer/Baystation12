@@ -61,6 +61,11 @@
 	to_chat(src, SPAN_ALIEN("<B>Стражи (Sentinels)</B> - те, кто способен плавить укрепления кислотой и бороться с на расстоянии. Они крепче, но медленнее охотников. Могут вырастить себе орган для метания кислотой и стать Плевуном(Spitter)."))
 	to_chat(src, SPAN_ALIEN("<B>Дроны (Drones)</B> - рабочая сила улья. Строители стен и те, кто готов садить траву, не учавствуя в активных боях. После они могут вырасти в Лорда Улья(Hivelord). Только лорды улья могут эволюционировать в Королеву(Queen)."))
 	to_chat(src, SPAN_ALIEN("Если вы - последняя (или первая) личинка, то станьте дроном, а затем Королевой."))
+	if(GLOB.using_map.name == "Nostromo")
+		var/alien_caste = alert(src, "Please choose which alien caste you shall belong to.",,"Hunter","Don't evolve yet")
+		if(alien_caste == "Don't evolve yet")
+			return null
 	var/alien_caste = alert(src, "Please choose which alien caste you shall belong to.",,"Hunter","Sentinel","Drone")
+
 	return alien_caste ? "Xenomorph [alien_caste]" : null
 
