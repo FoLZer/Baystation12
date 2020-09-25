@@ -9,7 +9,7 @@
 	icon = 'icons/obj/overmap_inf.dmi'
 
 	initial_restricted_waypoints = list(
-		"narcissus" = list("nav_hangar_narcissus"),
+		"Narcissus" = list("nav_hangar_narcissus"),
 	)
 
 	initial_generic_waypoints = list(
@@ -37,5 +37,5 @@
 
 /obj/machinery/computer/shuttle_control/explore/narcissus
 	name = "narcissus control console"
-	shuttle_tag = "narcissus"
+	shuttle_tag = "Narcissus"
 	req_access = list(access_narcissus_helm)
