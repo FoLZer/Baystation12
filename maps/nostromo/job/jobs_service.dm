@@ -16,7 +16,7 @@
 
 	access = list(access_maint_tunnels, access_emergency_storage, access_janitor)
 
-	minimal_access = list()
+	minimal_access = list(access_maint_tunnels, access_emergency_storage, access_janitor)
 
 /datum/job/chef
 	title = "Chef"
@@ -38,7 +38,7 @@
 
 	access = list(access_hydroponics, access_kitchen)
 
-	minimal_access = list()
+	minimal_access = list(access_hydroponics, access_kitchen)
 
 /datum/job/bartender
 	department = "Service"
@@ -54,7 +54,7 @@
 
 	access = list(access_hydroponics, access_bar)
 
-	minimal_access = list()
+	minimal_access = list(access_hydroponics, access_bar)
 	min_skill = list(	SKILL_COOKING   = SKILL_BASIC,
 						SKILL_BOTANY    = SKILL_BASIC,
 						SKILL_CHEMISTRY = SKILL_BASIC)

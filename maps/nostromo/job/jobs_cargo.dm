@@ -21,7 +21,8 @@
 	access = list(		access_maint_tunnels, access_emergency_storage, access_tech_storage,  access_cargo, access_narcissus_helm,
 						access_cargo_bot, access_qm, access_narcissus, access_hangar, access_keycard_auth)
 
-	minimal_access = list()
+	minimal_access = list(		access_maint_tunnels, access_emergency_storage, access_tech_storage,  access_cargo, access_narcissus_helm,
+						access_cargo_bot, access_qm, access_narcissus, access_hangar, access_keycard_auth)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
 							 /datum/computer_file/program/supply,
@@ -47,7 +48,8 @@
 	access = list(access_maint_tunnels, access_emergency_storage, access_cargo, access_narcissus_helm,
 						access_cargo_bot, access_narcissus, access_hangar)
 
-	minimal_access = list()
+	minimal_access = list(access_maint_tunnels, access_emergency_storage, access_cargo, access_narcissus_helm,
+						access_cargo_bot, access_narcissus, access_hangar)
 
 	software_on_spawn = list(/datum/computer_file/program/supply,
 							 /datum/computer_file/program/deck_management,

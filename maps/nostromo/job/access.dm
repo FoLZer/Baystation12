@@ -24,3 +24,6 @@
 	id = access_narcissus_helm
 	desc = "Narcissus Helm"
 	region = ACCESS_REGION_RESEARCH
+
+/datum/access/network
+	region = ACCESS_REGION_COMMAND

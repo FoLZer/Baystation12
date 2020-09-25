@@ -57,7 +57,9 @@
 			            access_cmo, access_RC_announce, access_keycard_auth,
 			            access_medical_equip, access_hangar)
 
-	minimal_access = list()
+	minimal_access = list(access_medical, access_external_airlocks, access_emergency_storage,access_eva,
+			            access_cmo, access_RC_announce, access_keycard_auth,
+			            access_medical_equip, access_hangar)
 
 	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
 							 /datum/computer_file/program/camera_monitor,
@@ -98,7 +100,11 @@
 			            access_network, access_ce, access_RC_announce, access_keycard_auth, access_tcomsat,
 			            access_hangar)
 
-	minimal_access = list()
+	minimal_access = list(access_maint_tunnels, access_external_airlocks, access_emergency_storage,
+			            access_teleporter, access_eva,
+			            access_tech_storage, access_atmospherics, access_construction, access_sec_doors,
+			            access_network, access_ce, access_RC_announce, access_keycard_auth, access_tcomsat,
+			            access_hangar)
 
 	software_on_spawn = list(/datum/computer_file/program/ntnetmonitor,
 							 /datum/computer_file/program/power_monitor,
@@ -146,7 +152,11 @@
 			            access_eva, access_bridge,
 			            access_hos, access_RC_announce, access_keycard_auth, access_sec_doors,
 			            access_hangar)
-	minimal_access = list()
+	minimal_access = list(	access_security, access_brig, access_armory,
+			            access_maint_tunnels, access_external_airlocks, access_emergency_storage,
+			            access_eva, access_bridge,
+			            access_hos, access_RC_announce, access_keycard_auth, access_sec_doors,
+			            access_hangar)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
 							 /datum/computer_file/program/digitalwarrant,
