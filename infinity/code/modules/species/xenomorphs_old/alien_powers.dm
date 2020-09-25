@@ -99,7 +99,7 @@
 	return 1
 
 /mob/living/carbon/human/proc/plant_xeno()
-	set name = "Plant Weeds (350)"
+	set name = "Plant Weeds (50)"
 	set desc = "Plants some alien weeds"
 	set category = "Abilities"
 
@@ -111,7 +111,7 @@
 	if(A)
 		to_chat(src, "<span class='alium'>We can't plant here!</span>")
 		return
-	if(!do_mob(src, src, 100))
+	if(!do_mob(src, src, 10))
 		return
 	if(check_xeno_ability(50,1,BP_RESIN) && !is_ventcrawling)
 		playsound(src, 'sound/effects/resin_build.ogg', 100, 33)
@@ -120,7 +120,7 @@
 	return
 
 /mob/living/carbon/human/proc/corrosive_acid_xeno(O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N
-	set name = "Corrosive Acid (75)"
+	set name = "Corrosive Acid (150)"
 	set desc = "Drench an object in acid, destroying it over time."
 	set category = "Abilities"
 
@@ -148,14 +148,14 @@
 		to_chat(src, "<span class='alium'>You cannot dissolve this object.</span>")
 		return
 
-	if(check_xeno_ability(75,0,BP_ACID) && !is_ventcrawling)
+	if(check_xeno_ability(150,0,BP_ACID) && !is_ventcrawling)
 		new /obj/effect/acid(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
 	return
 
 /mob/living/carbon/human/proc/strong_corrosive_acid_xeno(O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N
-	set name = "Corrosive Acid (75)"
+	set name = "Corrosive Acid (200)"
 	set desc = "Drench an object in acid, destroying it over time."
 	set category = "Abilities"
 
@@ -183,14 +183,14 @@
 		to_chat(src, "<span class='alium'>You cannot dissolve this object.</span>")
 		return
 
-	if(check_xeno_ability(75,0,BP_ACID) && !is_ventcrawling)
+	if(check_xeno_ability(200,0,BP_ACID) && !is_ventcrawling)
 		new /obj/effect/acid/strong(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
 	return
 
 /mob/living/carbon/human/proc/moderate_corrosive_acid_xeno(O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N
-	set name = "Corrosive Acid (75)"
+	set name = "Corrosive Acid (175)"
 	set desc = "Drench an object in acid, destroying it over time."
 	set category = "Abilities"
 
@@ -218,7 +218,7 @@
 		to_chat(src, "<span class='alium'>You cannot dissolve this object.</span>")
 		return
 
-	if(check_xeno_ability(75,0,BP_ACID) && !is_ventcrawling)
+	if(check_xeno_ability(175,0,BP_ACID) && !is_ventcrawling)
 		new /obj/effect/acid/moderate(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
@@ -243,7 +243,7 @@
 		A.launch(target,get_organ_target())
 
 /mob/living/carbon/human/proc/spit_acid_xeno(mob/target as mob in oview())
-	set name = "Spit Acid (50)"
+	set name = "Spit Acid (150)"
 	set desc = "Spits some acid at someone, dealing some damage to them if they are not wearing protective gear."
 	set category = "Abilities"
 
@@ -254,7 +254,7 @@
 
 	if(!(isxenomorph(target) || isalien(target)))
 		visible_message("<span class='warning'>[src] spits some acid at [target]!</span>", "<span class='alium'>You spit acid at [target].</span>")
-		if(!check_xeno_ability(50,0,BP_ACID) && !is_ventcrawling)
+		if(!check_xeno_ability(150,0,BP_ACID) && !is_ventcrawling)
 			return
 
 		var/obj/item/projectile/energy/alien_acid/A = new /obj/item/projectile/energy/alien_acid(usr.loc)
@@ -350,13 +350,19 @@
 			src.alpha = 0
 	return
 
-/mob/living/carbon/human/proc/create_hugger_xeno()
-	set name = "Vomit Facehugger (100)"
-	set desc = "Vomit a facehugger, capable of latching onto people and stunning them."
-	set category = "Abilities"
+/mob/living/carbon/human/proc/regurgitate()
+	set name = "Regurgitate"
+	set desc = "Empties the contents of your stomach."
+	set category = "Alien"
 
-	if(check_xeno_ability(100))
-		visible_message("<span class='alium'><B>[src] vomits a strange creature with legs and a tail!</B></span>", "<span class='alium'>You vomit a facehugger!</span>")
-		var/obj/item/clothing/mask/facehugger/facehugger = new(get_turf(src))
-		src.put_in_hands(facehugger)
+	if(check_xeno_ability())
+		var/obj/item/organ/internal/stomach/stomach = internal_organs_by_name[BP_STOMACH]
+		if(stomach.contents.len)
+			for(var/mob/M in src)
+				if(M in stomach.contents)
+					stomach.contents.Remove(M)
+					M.loc = loc
+					//M.update_pipe_vision()
+					//Paralyse(10)
+			src.visible_message("<span class='warning'>[src] hurls out the contents of their stomach!</span>")
 	return

@@ -152,7 +152,8 @@
 		/mob/living/carbon/human/proc/evolve_drone_xeno,
 		/mob/living/carbon/human/proc/resin_xeno,
 		/mob/living/carbon/human/proc/corrosive_acid_xeno,
-		/mob/living/carbon/proc/devour
+		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/regurgitate
 		)
 /*
 /datum/species/xenomorph/drone/handle_post_spawn(var/mob/living/carbon/human/H)
@@ -199,7 +200,8 @@
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/mimic_xeno,
 		/mob/living/carbon/human/proc/corrosive_acid_xeno,
-		/mob/living/carbon/proc/devour
+		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/regurgitate
 		)
 
 	force_cultural_info = list(
@@ -238,7 +240,8 @@
 		/mob/living/carbon/human/proc/transfer_plasma_xeno,
 		/mob/living/carbon/human/proc/moderate_corrosive_acid_xeno,
 		/mob/living/carbon/human/proc/neurotoxin_xeno,
-		/mob/living/carbon/proc/devour
+		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/regurgitate
 		)
 
 	force_cultural_info = list(
@@ -285,6 +288,7 @@
 		/mob/living/carbon/human/proc/neurotoxin_xeno,
 		/mob/living/carbon/human/proc/resin_xeno,
 		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/regurgitate,
 		/mob/living/carbon/human/proc/lay_egg_xeno
 		)
 
@@ -333,7 +337,8 @@
 		/mob/living/carbon/human/proc/tackle,
 		/mob/living/carbon/human/proc/leap,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/proc/devour
+		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/regurgitate
 		)
 
 	force_cultural_info = list(
@@ -379,7 +384,8 @@
 		/mob/living/carbon/human/proc/neurotoxin_xeno,
 		/mob/living/carbon/human/proc/spit_acid_xeno,
 		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/proc/devour
+		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/regurgitate
 		)
 
 	force_cultural_info = list(
@@ -418,7 +424,8 @@
 		/mob/living/carbon/human/proc/resin_xeno,
 		/mob/living/carbon/human/proc/neurotoxin_xeno,
 		/mob/living/carbon/human/proc/evolve_hivelord_xeno,
-		/mob/living/carbon/proc/devour
+		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/regurgitate
 		)
 
 	force_cultural_info = list(
