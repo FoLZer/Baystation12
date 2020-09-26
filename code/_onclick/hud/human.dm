@@ -27,9 +27,6 @@
 	adding += changeling_chems
 //[INF]
 
-	if(isxenomorph(target))
-		var/obj/screen/leap/l = new()
-		adding += l
 
 	// Draw the various inventory equipment slots.
 	var/has_hidden_gear
@@ -240,7 +237,6 @@
 		target.cells.SetName("cell")
 		target.cells.screen_loc = ui_nutrition
 		hud_elements |= target.cells
-
 	else if(hud_data.has_nutrition)
 		mymob.nutrition_icon = new /obj/screen/food()
 		mymob.nutrition_icon.icon = 'icons/mob/status_hunger.dmi'

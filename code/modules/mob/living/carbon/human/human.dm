@@ -1368,37 +1368,17 @@
 		W.message = message
 		W.add_fingerprint(src)
 
-/obj/screen/leap
-	name = "toggle leap"
-	icon = 'icons/mob/screen1_action.dmi'
-	icon_state = "action"
-
-	var/on = FALSE
-	var/time_used = 0
-	var/cooldown = 10 SECONDS
-
-
-/obj/screen/leap/Initialize()
-	. = ..()
-	add_overlay(image(icon, "leap"))
-	update_icon()
-
-/obj/screen/leap/update_icon()
-	icon_state = "[initial(icon_state)]_[on]"
-
-/obj/screen/leap/Click()
-	if(ishuman(usr))
-		var/mob/living/carbon/human/H = usr
-		H.toggle_leap()
-
 /mob/living/carbon/human/proc/toggle_leap(message = 1)
-	leap_icon.on = !leap_icon.on
-	leap_icon.update_icon()
+	set category = "Abilities"
+	set name = "Toggle leap"
+	set desc = "Leap at a target and grab them aggressively."
+
+	leap_on = !leap_on
 	if(message)
-		to_chat(src, "<span class='notice'>You will [leap_icon.on ? "now" : "no longer"] leap at enemies!</span>")
+		to_chat(src, "<span class='notice'>You will [leap_on ? "now" : "no longer"] leap at enemies!</span>")
 
 /mob/living/carbon/human/ClickOn(atom/A, params)
-	if(leap_icon && leap_icon.on && A != src)
+	if(leap_on && A != src)
 		leap_at(A)
 	else
 		..()
@@ -1406,7 +1386,7 @@
 #define MAX_LEAP_DIST 4
 
 /mob/living/carbon/human/proc/leap_at(atom/A)
-	if(leap_icon.time_used > world.time)
+	if(leap_cooldown > world.time)
 		to_chat(src, "<span class='warning'>You are too fatigued to leap right now!</span>")
 		return
 
@@ -1421,7 +1401,7 @@
 		to_chat(src, "<span class='warning'>You cannot leap in your current state.</span>")
 		return
 
-	leap_icon.time_used = world.time + leap_icon.cooldown
+	leap_cooldown = world.time + 10 SECONDS
 	status_flags |= LEAPING
 	stop_pulling()
 

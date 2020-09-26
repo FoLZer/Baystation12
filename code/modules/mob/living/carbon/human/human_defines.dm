@@ -117,3 +117,6 @@
 	var/spider_max_eggs = 8
 
 	var/zombie_bites = 0
+
+	var/leap_cooldown = 0
+	var/leap_on = 0

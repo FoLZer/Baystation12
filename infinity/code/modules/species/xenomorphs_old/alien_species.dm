@@ -194,7 +194,7 @@
 		/mob/living/carbon/human/proc/plant_xeno,
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/leap,
+		/mob/living/carbon/human/proc/toggle_leap,
 		/mob/living/carbon/human/proc/evolve_hunter_xeno,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/corrosive_acid_xeno,
@@ -332,7 +332,7 @@
 		/mob/living/carbon/human/proc/plant_xeno,
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/leap,
+		/mob/living/carbon/human/proc/toggle_leap,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/proc/devour,
 		/mob/living/carbon/human/proc/regurgitate
