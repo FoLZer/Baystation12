@@ -175,8 +175,8 @@
 
 	H.visible_message("<span class='danger'>[src] leaps at [H]'s face!</span>", "<span class='userdanger'>[src] leaps at [H]'s face!</span>")
 
-	var/headgear = H.mouth_is_protected()
-	if(H.head.body_parts_covered & FACE)
+	var/headgear = H.wear_mask
+	if(!H.equip_to_slot_if_possible(src, slot_wear_mask))
 		if(prob(40))
 			H.visible_message("<span class='danger'>[src] smashes against [H]'s [headgear], and rips it off in the process!</span>", "<span class='userdanger'>[src] smashes against yours [headgear], and rips it off in the process!</span>")
 			H.unEquip(headgear)
@@ -192,7 +192,6 @@
 			GoIdle()
 		return FALSE
 	STOP_PROCESSING(SSobj, src)
-	H.equip_to_slot_if_possible(src, slot_wear_mask)
 
 	if(!sterile)
 		H.Paralyse(MAX_IMPREGNATION_TIME / 8) //something like 30 seconds
