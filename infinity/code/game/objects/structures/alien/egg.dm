@@ -38,7 +38,7 @@
 
 	if(progress >= MAX_PROGRESS)
 		for(var/mob/living/carbon/human/H in range(3, get_turf(src)))
-			if(istype(H) && !isxenomorph(H))
+			if(istype(H) && !isxenomorph(H) && !H.status_flags & XENO_HOST)
 				flick("egg_opening",src)
 				progress = -1 // No harvesting pls.
 				sleep(5)

@@ -187,7 +187,8 @@
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
 		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel/hunter,
 		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode/xenomorph,
-		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner
+		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner,
+		BP_ACID =     /obj/item/organ/internal/xeno/acidgland/moderate
 		)
 
 	inherent_verbs = list(

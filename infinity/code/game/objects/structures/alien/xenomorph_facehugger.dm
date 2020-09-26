@@ -156,7 +156,7 @@
 		Attach(hit_atom)
 
 /obj/item/clothing/mask/xenofacehugger/proc/CanHug(mob/living/carbon/human/C, check = 1)
-	if(stat || istype(C.wear_mask, src) || loc == C)
+	if(stat || istype(C.wear_mask, src) || loc == C || C.status_flags & XENO_HOST)
 		return FALSE
 	if(check)
 		if(isturf(src.loc))
