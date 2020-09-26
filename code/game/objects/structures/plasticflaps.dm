@@ -33,6 +33,8 @@
 	if(istype(M))
 		if(M.lying)
 			return ..()
+		if(isxenomorph(M))
+			return ..()
 		for(var/mob_type in mobs_can_pass)
 			if(istype(A, mob_type))
 				return ..()
@@ -79,5 +81,5 @@
 			T.blocks_air = 0
 
 
-/obj/structure/plasticflaps/airtight // airtight defaults to on 
+/obj/structure/plasticflaps/airtight // airtight defaults to on
 	airtight = 1

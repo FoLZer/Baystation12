@@ -1368,14 +1368,13 @@
 		W.message = message
 		W.add_fingerprint(src)
 
-/mob/living/carbon/human/proc/toggle_leap(message = 1)
+/mob/living/carbon/human/proc/toggle_leap()
 	set category = "Abilities"
 	set name = "Toggle leap"
 	set desc = "Leap at a target and grab them aggressively."
 
 	leap_on = !leap_on
-	if(message)
-		to_chat(src, "<span class='notice'>You will [leap_on ? "now" : "no longer"] leap at enemies!</span>")
+	to_chat(src, "<span class='notice'>You will [leap_on ? "now" : "no longer"] leap at enemies!</span>")
 
 /mob/living/carbon/human/ClickOn(atom/A, params)
 	if(leap_on && A != src)

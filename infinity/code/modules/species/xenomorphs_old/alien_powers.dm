@@ -149,7 +149,7 @@
 		return
 
 	if(check_xeno_ability(150,0,BP_ACID) && !is_ventcrawling)
-		new /obj/effect/acid(get_turf(O), O)
+		new /obj/effect/alien/acid(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
 	return

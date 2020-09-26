@@ -20,7 +20,7 @@
 		weeds.update_icon()
 
 	if(node)
-		addtimer(CALLBACK(src, .proc/spread), rand(5,10) SECONDS)
+		addtimer(CALLBACK(src, .proc/spread), rand(30,40) SECONDS)
 
 /obj/structure/alien/weeds/xeno/spread()
 	if(distance > max_distance)

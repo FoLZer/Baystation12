@@ -8,8 +8,8 @@
 	rarity_value = 3
 	health_hud_intensity = 1
 
-	slowdown = 0
-	total_health = 100
+	slowdown = -0.6
+	total_health = 400
 
 	natural_armour_values = list(melee = 30, bullet = 28, laser = 25, energy = 0, bomb = 0, bio = 100, rad = 100)
 
@@ -29,8 +29,8 @@
 
 	siemens_coefficient = 0
 
-//	brute_mod =     0.75 // Hardened carapace.
-//	burn_mod =      0.75 // ~~Weak to fire.~~ scratch that, we :original_character: now
+	brute_mod =     0.75 // Hardened carapace.
+	burn_mod =      1.25 // ~~Weak to fire.~~ scratch that, we :original_character: now
 	radiation_mod = 0    // No feasible way of curing radiation.
 	flash_mod =     0    // Denied.
 	stun_mod =      0.25  // Halved stun times.
@@ -106,7 +106,7 @@
 	push_flags = (~HEAVY) ^ ROBOT
 
 	var/weeds_heal_rate = 1.5     // Health regen on weeds.
-	var/weeds_plasma_rate = 5   // Plasma regen on weeds.
+	var/weeds_plasma_rate = 15   // Plasma regen on weeds.
 
 	genders = list(NEUTER)
 
