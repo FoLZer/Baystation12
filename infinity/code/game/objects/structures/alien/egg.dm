@@ -28,7 +28,7 @@
 		attack_ghost(usr)
 
 /obj/structure/alien/egg/Process()
-	if(progress == -1)
+	if(progress < 0)
 		return
 	if(progress == MAX_PROGRESS)
 		update_icon()

@@ -46,7 +46,9 @@
 
 	var/obj/item/organ/internal/xeno/plasmavessel/P = H.internal_organs_by_name["plasma vessel"]
 
-	P.stored_plasma += weeds_plasma_rate * 0.25
+	if(P.stored_plasma < P.max_plasma)
+		P.stored_plasma += weeds_plasma_rate * 0.25
+		P.stored_plasma = min(max(P.stored_plasma,0),P.max_plasma)
 
 	var/obj/structure/alien/weeds/plant = locate() in T
 
