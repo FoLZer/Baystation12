@@ -27,6 +27,8 @@
 	gluttonous = GLUT_ANYTHING
 	stomach_capacity = MOB_MEDIUM
 
+	siemens_coefficient = 0
+
 //	brute_mod =     0.75 // Hardened carapace.
 //	burn_mod =      0.75 // ~~Weak to fire.~~ scratch that, we :original_character: now
 	radiation_mod = 0    // No feasible way of curing radiation.
@@ -200,6 +202,7 @@
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/corrosive_acid_xeno,
 		/mob/living/carbon/proc/devour,
+		/mob/living/carbon/human/proc/resin_xeno,
 		/mob/living/carbon/human/proc/regurgitate
 		)
 
