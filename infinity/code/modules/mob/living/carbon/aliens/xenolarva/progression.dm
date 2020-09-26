@@ -65,6 +65,7 @@
 		var/alien_caste = alert(src, "Please choose which alien caste you shall belong to.",,"Hunter","Don't evolve yet")
 		if(alien_caste == "Don't evolve yet")
 			return null
+		return "Xenomorph Hunter"
 	var/alien_caste = alert(src, "Please choose which alien caste you shall belong to.",,"Hunter","Sentinel","Drone")
 
 	return alien_caste ? "Xenomorph [alien_caste]" : null

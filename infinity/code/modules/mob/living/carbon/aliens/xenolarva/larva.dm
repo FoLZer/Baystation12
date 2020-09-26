@@ -29,8 +29,10 @@
 	..()
 	time_of_birth = world.time
 	add_language("Xenophage")
-	internal_organs |= new /obj/item/organ/internal/xeno/hivenode(src)
+	internal_organs |= new /obj/item/organ/internal/xeno/hivenode/xenomorph(src)
 	create_reagents(100)
+	name = "alien larva ([rand(1, 1000)])"
+	real_name = name
 
 /mob/living/carbon/alien/xenolarva/update_icons()
 

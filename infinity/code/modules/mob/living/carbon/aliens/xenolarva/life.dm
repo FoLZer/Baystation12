@@ -1,6 +1,6 @@
-/mob/living/carbon/alien/xenolarva/Process()
+/mob/living/carbon/alien/xenolarva/Life()
 	. = ..()
-	if(prob(30))
+	if(prob(70) && round(amount_grown) < max_grown)
 		amount_grown++
 
 /mob/living/carbon/alien/xenolarva/update_living_sight()

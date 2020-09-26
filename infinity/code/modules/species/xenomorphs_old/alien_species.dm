@@ -187,7 +187,6 @@
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
 		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel/hunter,
 		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode/xenomorph,
-		BP_MIMIC = 	  /obj/item/organ/internal/xeno/mimicsac,
 		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner
 		)
 
@@ -198,7 +197,6 @@
 		/mob/living/carbon/human/proc/leap,
 		/mob/living/carbon/human/proc/evolve_hunter_xeno,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/mimic_xeno,
 		/mob/living/carbon/human/proc/corrosive_acid_xeno,
 		/mob/living/carbon/proc/devour,
 		/mob/living/carbon/human/proc/regurgitate
@@ -327,7 +325,6 @@
 		BP_STOMACH =  /obj/item/organ/internal/stomach,
 		BP_PLASMA =   /obj/item/organ/internal/xeno/plasmavessel/hunter,
 		BP_HIVE =     /obj/item/organ/internal/xeno/hivenode/xenomorph,
-		BP_MIMIC =    /obj/item/organ/internal/xeno/mimicsac,
 		BP_RESIN =    /obj/item/organ/internal/xeno/resinspinner
 		)
 
