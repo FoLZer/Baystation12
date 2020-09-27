@@ -197,7 +197,7 @@
 		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/leap,
+		/mob/living/carbon/human/proc/toggle_leap,
 		/mob/living/carbon/human/proc/evolve_hunter,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/mimic,
@@ -335,7 +335,7 @@
 		/mob/living/carbon/human/proc/plant,
 		/mob/living/carbon/human/proc/pry_open,
 		/mob/living/carbon/human/proc/tackle,
-		/mob/living/carbon/human/proc/leap,
+		/mob/living/carbon/human/proc/toggle_leap,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/mimic,
 		/mob/living/carbon/proc/devour

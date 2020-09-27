@@ -113,54 +113,52 @@
 		visible_message("<span class='danger'>\The [src] tried to tackle down [T]!</span>")
 		src.Weaken(rand(2,4)) //failure, you both get knocked down
 
-/mob/living/carbon/human/proc/leap()
+/mob/living/carbon/human/proc/toggle_leap()
 	set category = "Abilities"
-	set name = "Leap"
+	set name = "Toggle leap"
 	set desc = "Leap at a target and grab them aggressively."
 
-	if(last_special > world.time)
+	leap_on = !leap_on
+	to_chat(src, "<span class='notice'>You will [leap_on ? "now" : "no longer"] leap at enemies!</span>")
+
+/mob/living/carbon/human/ClickOn(atom/A, params)
+	if(leap_on && A != src)
+		leap_at(A)
+	else
+		..()
+
+#define MAX_LEAP_DIST 4
+
+/mob/living/carbon/human/proc/leap_at(atom/A)
+	if(leap_cooldown > world.time)
+		to_chat(src, "<span class='warning'>You are too fatigued to leap right now!</span>")
 		return
 
-	if(incapacitated(INCAPACITATION_DISABLED) || buckled || pinned.len)
+	if(status_flags & LEAPING) // Leap while you leap, so you can leap while you leap
+		return
+
+	if(!has_gravity(src))
+		to_chat(src, "<span class='notice'>It is unsafe to leap without gravity!</span>")
+		return
+
+	if(incapacitated(LEGS) || buckled || pinned.len || stance_damage >= 4) //because you need !restrained legs to leap
 		to_chat(src, "<span class='warning'>You cannot leap in your current state.</span>")
 		return
 
-	var/list/choices = list()
-	for(var/mob/living/M in oview(6,src))
-		if(!istype(M,/mob/living/silicon))
-			choices += M
-	choices -= src
+	leap_cooldown = world.time + 10 SECONDS
+	status_flags |= LEAPING
+	stop_pulling()
 
-	var/mob/living/T = input(src,"Who do you wish to leap at?") as null|anything in choices
 
-	if(!T || !isturf(T.loc) || !src || !isturf(loc)) return
+	var/prev_intent = a_intent
+	a_intent_change(I_HURT)
 
-	if(get_dist(get_turf(T), get_turf(src)) > 4) return
+	toggle_leap()
 
-	//check again because we waited for user input
-	if(last_special > world.time)
-		return
+	throw_at(A, MAX_LEAP_DIST, 2, null, FALSE, TRUE, CALLBACK(src, .proc/leap_end, prev_intent))
 
-	if(incapacitated(INCAPACITATION_DISABLED) || buckled || pinned.len || stance_damage >= 4)
-		to_chat(src, "<span class='warning'>You cannot leap in your current state.</span>")
-		return
+/mob/living/carbon/human/proc/leap_end(prev_intent)
+	status_flags &= ~LEAPING
+	a_intent_change(prev_intent)
 
-	playsound(src.loc, 'sound/voice/shriek1.ogg', 50, 1)
-
-	last_special = world.time + (17.5 SECONDS)
-
-	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
-	src.throw_at(get_step(get_turf(T),get_turf(src)), 4, 1, src)
-
-	sleep(5)
-
-	if(!src.Adjacent(T))
-		to_chat(src, "<span class='warning'>You miss!</span>")
-		return
-
-	T.Weaken(3)
-	if(mind && !player_is_antag(mind))
-		Weaken(3)
-
-	if(src.make_grab(src, T))
-		src.visible_message("<span class='warning'><b>\The [src]</b> seizes [T]!</span>")
+#undef MAX_LEAP_DIST

@@ -7,5 +7,4 @@
 	life_span = 6
 
 /obj/item/projectile/energy/alien_acid/on_impact(var/atom/A)
-	A.acid_melt()
 	. = ..()

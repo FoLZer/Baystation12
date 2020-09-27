@@ -1368,56 +1368,6 @@
 		W.message = message
 		W.add_fingerprint(src)
 
-/mob/living/carbon/human/proc/toggle_leap()
-	set category = "Abilities"
-	set name = "Toggle leap"
-	set desc = "Leap at a target and grab them aggressively."
-
-	leap_on = !leap_on
-	to_chat(src, "<span class='notice'>You will [leap_on ? "now" : "no longer"] leap at enemies!</span>")
-
-/mob/living/carbon/human/ClickOn(atom/A, params)
-	if(leap_on && A != src)
-		leap_at(A)
-	else
-		..()
-
-#define MAX_LEAP_DIST 4
-
-/mob/living/carbon/human/proc/leap_at(atom/A)
-	if(leap_cooldown > world.time)
-		to_chat(src, "<span class='warning'>You are too fatigued to leap right now!</span>")
-		return
-
-	if(status_flags & LEAPING) // Leap while you leap, so you can leap while you leap
-		return
-
-	if(!has_gravity(src))
-		to_chat(src, "<span class='notice'>It is unsafe to leap without gravity!</span>")
-		return
-
-	if(incapacitated(LEGS) || buckled || pinned.len || stance_damage >= 4) //because you need !restrained legs to leap
-		to_chat(src, "<span class='warning'>You cannot leap in your current state.</span>")
-		return
-
-	leap_cooldown = world.time + 10 SECONDS
-	status_flags |= LEAPING
-	stop_pulling()
-
-
-	var/prev_intent = a_intent
-	a_intent_change(I_HURT)
-
-	toggle_leap()
-
-	throw_at(A, MAX_LEAP_DIST, 2, null, FALSE, TRUE, CALLBACK(src, .proc/leap_end, prev_intent))
-
-/mob/living/carbon/human/proc/leap_end(prev_intent)
-	status_flags &= ~LEAPING
-	a_intent_change(prev_intent)
-
-#undef MAX_LEAP_DIST
-
 /mob/living/carbon/human/can_inject(var/mob/user, var/target_zone)
 	var/obj/item/organ/external/affecting = get_organ(target_zone)
 
