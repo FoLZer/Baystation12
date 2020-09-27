@@ -70,7 +70,7 @@
 		return
 
 	//If heart is stopped, it isn't going to restart itself randomly.
-	if(pulse == PULSE_NONE)
+	if(pulse == PULSE_NONE || open)
 		return
 	else //and if it's beating, let's see if it should
 		var/should_stop = prob(80) && owner.get_blood_circulation() < BLOOD_VOLUME_SURVIVE //cardiovascular shock, not enough liquid to pump
