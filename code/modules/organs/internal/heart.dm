@@ -70,14 +70,15 @@
 		return
 
 	//If heart is stopped, it isn't going to restart itself randomly.
-	if(pulse == PULSE_NONE || open)
+	if(pulse == PULSE_NONE)
 		return
 	else //and if it's beating, let's see if it should
 		var/should_stop = prob(80) && owner.get_blood_circulation() < BLOOD_VOLUME_SURVIVE //cardiovascular shock, not enough liquid to pump
 		should_stop = should_stop || prob(max(0, owner.getBrainLoss() - owner.maxHealth * 0.75)) //brain failing to work heart properly
 		should_stop = should_stop || (prob(5) && pulse == PULSE_THREADY) //erratic heart patterns, usually caused by oxyloss
 		if(should_stop) // The heart has stopped due to going into traumatic or cardiovascular shock.
-			to_chat(owner, "<span class='danger'>Your heart has stopped!</span>")
+			if(!open)
+				to_chat(owner, "<span class='danger'>Your heart has stopped!</span>")
 			pulse = PULSE_NONE
 			return
 
