@@ -116,7 +116,7 @@
 	if(check_xeno_ability(50,1,BP_RESIN) && !is_ventcrawling)
 		playsound(src, 'sound/effects/resin_build.ogg', 100, 33)
 		visible_message("<span class='alium'><B>[src] has planted some alien weeds!</B></span>", "<span class='notice'>You plant some alien weeds.</span>")
-		new /obj/structure/alien/weeds/node(loc)
+		new /obj/structure/alien/weeds/xeno/node(loc)
 	return
 
 /mob/living/carbon/human/proc/corrosive_acid_xeno(O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N

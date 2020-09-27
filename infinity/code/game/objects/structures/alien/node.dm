@@ -6,21 +6,21 @@
 /obj/structure/alien/weeds/node/SetRandomIcon_State()
 	node = src
 
-/obj/structure/alien/weeds/xeno/node
+/obj/structure/alien/weeds/node/xeno
 
-/obj/structure/alien/weeds/xeno
+/obj/structure/alien/weeds/node/xeno
 
-/obj/structure/alien/weeds/xeno/Initialize()
+/obj/structure/alien/weeds/node/xeno/Initialize()
 	. = ..()
 
 	max_distance = rand(2,4)
 	SetRandomIcon_State()
 
-	for(var/obj/structure/alien/weeds/weeds in range(1, src))
+	for(var/obj/structure/alien/weeds/xeno/weeds in range(1, src))
 		weeds.update_icon()
 
 	if(node)
-		addtimer(CALLBACK(src, .proc/spread), rand(30,40) SECONDS)
+		addtimer(CALLBACK(src, .proc/spread), rand(15,25) SECONDS)
 
 /obj/structure/alien/weeds/xeno/spread()
 	if(distance > max_distance)
@@ -30,8 +30,8 @@
 
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
-		if(istype(turf_to_check, /turf/simulated/floor) && (!locate(/obj/structure/alien/weeds) in turf_to_check) && (!locate(/obj/structure/wall_frame) in turf_to_check))
-			var/obj/structure/alien/weeds/weeds = new(turf_to_check)
+		if(istype(turf_to_check, /turf/simulated/floor) && (!locate(/obj/structure/alien/weeds/xeno) in turf_to_check) && (!locate(/obj/structure/wall_frame) in turf_to_check))
+			var/obj/structure/alien/weeds/xeno/weeds = new(turf_to_check)
 			weeds.distance = distance + 1
 			weeds.node = node
 			addtimer(CALLBACK(weeds, .proc/spread), rand(30,40) SECONDS)
