@@ -196,7 +196,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/plant_xeno,
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/tackle,
 		/mob/living/carbon/human/proc/toggle_leap,
 		/mob/living/carbon/human/proc/evolve_hunter_xeno,
 		/mob/living/carbon/human/proc/psychic_whisper,
@@ -237,7 +236,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/plant_xeno,
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/tackle,
 		/mob/living/carbon/human/proc/evolve_sentinel_xeno,
 		/mob/living/carbon/human/proc/transfer_plasma_xeno,
 		/mob/living/carbon/human/proc/moderate_corrosive_acid_xeno,
@@ -335,7 +333,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/plant_xeno,
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/tackle,
 		/mob/living/carbon/human/proc/toggle_leap,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/proc/devour,
@@ -384,7 +381,6 @@
 		/mob/living/carbon/human/proc/strong_corrosive_acid_xeno,
 		/mob/living/carbon/human/proc/neurotoxin_xeno,
 		/mob/living/carbon/human/proc/spit_acid_xeno,
-		/mob/living/carbon/human/proc/tackle,
 		/mob/living/carbon/proc/devour,
 		/mob/living/carbon/human/proc/regurgitate
 		)
@@ -419,7 +415,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/plant_xeno,
 		/mob/living/carbon/human/proc/pry_open,
-		/mob/living/carbon/human/proc/tackle,
 		/mob/living/carbon/human/proc/transfer_plasma_xeno,
 		/mob/living/carbon/human/proc/moderate_corrosive_acid_xeno,
 		/mob/living/carbon/human/proc/resin_xeno,
