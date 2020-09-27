@@ -178,7 +178,7 @@
 //	burn_mod =      0.8
 //	weeds_plasma_rate = 10
 
-	slowdown = -0.75
+	slowdown = 2
 
 	natural_armour_values = list(melee = 35, bullet = 28, laser = 25, energy = 0, bomb = 0, bio = 100, rad = 100)
 
