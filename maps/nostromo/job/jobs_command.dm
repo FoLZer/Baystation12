@@ -53,12 +53,12 @@
 	                    SKILL_VIROLOGY    = SKILL_MAX)
 	skill_points = 36
 
-	access = list(access_medical, access_external_airlocks, access_emergency_storage,access_eva,
-			            access_cmo, access_RC_announce, access_keycard_auth,
+	access = list(access_medical, access_eva,
+			            access_cmo, access_chemistry,
 			            access_medical_equip, access_hangar)
 
-	minimal_access = list(access_medical, access_external_airlocks, access_emergency_storage,access_eva,
-			            access_cmo, access_RC_announce, access_keycard_auth,
+	minimal_access = list(access_medical, access_eva,
+			            access_cmo, access_chemistry,
 			            access_medical_equip, access_hangar)
 
 	software_on_spawn = list(/datum/computer_file/program/suit_sensors,
@@ -92,18 +92,18 @@
 	                    SKILL_ELECTRICAL   = SKILL_MAX,
 	                    SKILL_ATMOS        = SKILL_MAX,
 	                    SKILL_ENGINES      = SKILL_MAX)
-	skill_points = 30
+	skill_points = 35
 
-	access = list(access_maint_tunnels, access_external_airlocks, access_emergency_storage,
-			            access_teleporter, access_eva,
-			            access_tech_storage, access_atmospherics, access_construction, access_sec_doors,
-			            access_network, access_ce, access_RC_announce, access_keycard_auth, access_tcomsat,
+	access = list(access_maint_tunnels,
+			            access_eva,
+			            access_tech_storage, access_construction,
+			            access_network, access_ce, access_tcomsat,
 			            access_hangar)
 
-	minimal_access = list(access_maint_tunnels, access_external_airlocks, access_emergency_storage,
-			            access_teleporter, access_eva,
-			            access_tech_storage, access_atmospherics, access_construction, access_sec_doors,
-			            access_network, access_ce, access_RC_announce, access_keycard_auth, access_tcomsat,
+	minimal_access = list(access_maint_tunnels,
+			            access_eva,
+			            access_tech_storage, access_construction,
+			            access_network, access_ce, access_tcomsat,
 			            access_hangar)
 
 	software_on_spawn = list(/datum/computer_file/program/ntnetmonitor,
@@ -145,17 +145,17 @@
 	max_skill = list(   SKILL_COMBAT      = SKILL_MAX,
 	                    SKILL_WEAPONS     = SKILL_MAX,
 	                    SKILL_FORENSICS   = SKILL_MAX)
-	skill_points = 28
+	skill_points = 38
 
 	access = list(	access_security, access_brig, access_armory,
-			            access_maint_tunnels, access_external_airlocks, access_emergency_storage,
+			            access_maint_tunnels, access_emergency_storage,
 			            access_eva, access_bridge,
-			            access_hos, access_RC_announce, access_keycard_auth, access_sec_doors,
+			            access_hos, access_keycard_auth, access_sec_doors,
 			            access_hangar)
 	minimal_access = list(	access_security, access_brig, access_armory,
-			            access_maint_tunnels, access_external_airlocks, access_emergency_storage,
+			            access_maint_tunnels, access_emergency_storage,
 			            access_eva, access_bridge,
-			            access_hos, access_RC_announce, access_keycard_auth, access_sec_doors,
+			            access_hos, access_keycard_auth, access_sec_doors,
 			            access_hangar)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,

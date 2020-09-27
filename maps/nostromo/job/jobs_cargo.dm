@@ -16,13 +16,13 @@
 	                    SKILL_HAULING     = SKILL_BASIC,
 	                    SKILL_EVA         = SKILL_BASIC)
 
-	skill_points = 14
+	skill_points = 30
 
-	access = list(		access_maint_tunnels, access_emergency_storage, access_tech_storage,  access_cargo, access_narcissus_helm,
-						access_cargo_bot, access_qm, access_narcissus, access_hangar, access_keycard_auth)
+	access = list(		access_maint_tunnels, access_tech_storage,  access_cargo, access_narcissus_helm,
+						access_cargo_bot, access_qm, access_narcissus, access_hangar, access_external_airlocks)
 
-	minimal_access = list(		access_maint_tunnels, access_emergency_storage, access_tech_storage,  access_cargo, access_narcissus_helm,
-						access_cargo_bot, access_qm, access_narcissus, access_hangar, access_keycard_auth)
+	minimal_access = list(		access_maint_tunnels, access_tech_storage,  access_cargo, access_narcissus_helm,
+						access_cargo_bot, access_qm, access_narcissus, access_hangar, access_external_airlocks)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
 							 /datum/computer_file/program/supply,
@@ -36,7 +36,7 @@
 	total_positions = 40
 	spawn_positions = 40
 	supervisors = "Завхозом и Капитаном"
-	ideal_character_age = 24
+	ideal_character_age = 34
 	outfit_type = /decl/hierarchy/outfit/job/nostromo/crew/supply/tech
 	allowed_branches = list(/datum/mil_branch/employee)
 	allowed_ranks = list(/datum/mil_rank/civ/wy)
@@ -45,11 +45,11 @@
 	                    SKILL_HAULING     = SKILL_BASIC,
 	                    SKILL_EVA         = SKILL_BASIC)
 
-	access = list(access_maint_tunnels, access_emergency_storage, access_cargo, access_narcissus_helm,
-						access_cargo_bot, access_narcissus, access_hangar)
+	access = list(access_maint_tunnels, access_cargo, access_narcissus_helm,
+						access_cargo_bot, access_narcissus, access_hangar, access_external_airlocks)
 
-	minimal_access = list(access_maint_tunnels, access_emergency_storage, access_cargo, access_narcissus_helm,
-						access_cargo_bot, access_narcissus, access_hangar)
+	minimal_access = list(access_maint_tunnels, access_cargo, access_narcissus_helm,
+						access_cargo_bot, access_narcissus, access_hangar, access_external_airlocks)
 
 	software_on_spawn = list(/datum/computer_file/program/supply,
 							 /datum/computer_file/program/deck_management,

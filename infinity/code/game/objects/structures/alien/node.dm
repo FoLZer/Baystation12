@@ -10,6 +10,8 @@
 
 /obj/structure/alien/weeds/node/xeno
 
+/obj/structure/alien/weeds/xeno
+
 /obj/structure/alien/weeds/node/xeno/Initialize()
 	. = ..()
 

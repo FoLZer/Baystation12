@@ -15,7 +15,7 @@
 	)
 #undef HUMAN_ONLY_JOBS
 
-	allowed_jobs = list(/datum/job/captain, /datum/job/hos,
+	allowed_jobs = list(/datum/job/captain,
 						/datum/job/engineer,
 						/datum/job/officer,
 						/datum/job/doctor,

@@ -103,7 +103,7 @@
 	set desc = "Plants some alien weeds"
 	set category = "Abilities"
 
-	if(locate(/obj/structure/alien/weeds/node) in get_turf(src))
+	if(locate(/obj/structure/alien/weeds/node/xeno) in get_turf(src))
 		to_chat(src, "There is already a weed's node.")
 		return
 
@@ -116,7 +116,7 @@
 	if(check_xeno_ability(50,1,BP_RESIN) && !is_ventcrawling)
 		playsound(src, 'sound/effects/resin_build.ogg', 100, 33)
 		visible_message("<span class='alium'><B>[src] has planted some alien weeds!</B></span>", "<span class='notice'>You plant some alien weeds.</span>")
-		new /obj/structure/alien/weeds/xeno/node(loc)
+		new /obj/structure/alien/weeds/node/xeno(loc)
 	return
 
 /mob/living/carbon/human/proc/corrosive_acid_xeno(O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N
@@ -268,7 +268,7 @@
 	var/obj/structure/alien/A = locate() in loc
 	var/obj/structure/bed/nest/B = locate() in loc
 	var/obj/machinery/door/unpowered/simple/resin/C = locate() in loc
-	if((A && !istype(A, /obj/structure/alien/weeds)) || B || C)
+	if((A && !istype(A, /obj/structure/alien/weeds/xeno)) || B || C)
 		to_chat(src, "<span class='alium'>We can't secrete more resin here!</span>")
 		return
 	var/choice = input("Choose what you wish to shape.","Resin building") as null|anything in list("resin door","resin wall","resin membrane","resin nest") //would do it through typesof but then the player choice would have the type path and we don't want the internal workings to be exposed ICly - Urist
