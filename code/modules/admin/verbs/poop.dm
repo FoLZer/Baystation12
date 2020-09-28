@@ -9,3 +9,4 @@
 		else
 			poop = world.time + rand(450,750) SECONDS
 			playsound(loc,'sound/effects/snap.ogg',50,1)
+			new /obj/effect/decal/cleanable/blood/poopsplatter(get_turf(src))
