@@ -221,11 +221,6 @@
 			return 1
 	return 0
 
-/obj/structure/hygiene/toilet/buckle_mob(mob/living/M)
-	. = ..()
-	if(. && buckling_sound)
-		playsound(src, buckling_sound, 20)
-
 /obj/structure/hygiene/urinal
 	name = "urinal"
 	desc = "The HU-452, an experimental urinal."
