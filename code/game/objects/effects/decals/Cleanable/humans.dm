@@ -291,20 +291,6 @@ var/global/list/image/splatter_cache=list()
 	spawn(DRYING_TIME * 2)
 		dry=1
 
-/obj/effect/decal/cleanable/blood/poopsplatter
-	name = "Disgusting mess"
-	desc = "What is this?!"
-	gender = PLURAL
-	icon = 'icons/effects/bloodspatter.dmi'
-	icon_state = "splatter1"
-	random_icon_states = list("splatter1", "splatter2", "splatter3", "splatter4", "splatter5", "splatter6")
-	generic_filth = TRUE
-	persistent = TRUE
-	appearance_flags = NO_CLIENT_COLOR
-	cleanable_scent = "blood"
-	scent_descriptor = SCENT_DESC_SMELL
-	basecolor = COLOR_BROWN
-
 #undef BLOOD_SIZE_SMALL
 #undef BLOOD_SIZE_MEDIUM
 #undef BLOOD_SIZE_BIG
