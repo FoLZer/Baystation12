@@ -98,7 +98,7 @@
 /datum/stack_recipe/grenade
 	title = "grenade casing"
 	result_type = /obj/item/weapon/grenade/chem_grenade
-	difficulty = 3
+	difficulty = 2
 
 /datum/stack_recipe/light
 	title = "light fixture frame"
@@ -206,13 +206,13 @@
 	title = "zip gun frame"
 	result_type = /obj/item/weapon/zipgunframe
 	req_amount = 5
-	difficulty = 3
+	difficulty = 2
 
 /datum/stack_recipe/coilgun
 	title = "coilgun stock"
 	result_type = /obj/item/weapon/coilgun_assembly
 	req_amount = 5
-	difficulty = 3
+	difficulty = 2
 
 /datum/stack_recipe/stick
 	title = "stick"
@@ -225,7 +225,7 @@
 	result_type = /obj/item/weapon/crossbowframe
 	req_amount = 5
 	time = 25
-	difficulty = 3
+	difficulty = 2
 
 /datum/stack_recipe/beehive_assembly
 	title = "beehive assembly"
