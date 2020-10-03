@@ -42,6 +42,7 @@
 	if(istype(tool, /obj/item/weapon/screwdriver) && isturf(user.loc))
 		var/direction = input("In which direction?", "Select direction.") in list("North", "East", "South", "West", "Cancel")
 		if(direction == "Cancel") return
+		if(QDELETED(src)) return
 		var/obj/structure/sign/S = new(user.loc)
 		switch(direction)
 			if("North")
