@@ -615,6 +615,27 @@
 	if(!.)
 		return
 
+	if(client.holder)
+		if(statpanel("MC"))
+			stat("CPU:","[world.cpu]")
+			stat("Instances:","[world.contents.len]")
+			stat(null)
+			if(Master)
+				Master.stat_entry()
+			else
+				stat("Master Controller:", "ERROR")
+			if(Failsafe)
+				Failsafe.stat_entry()
+			else if (Master.initializing)
+				stat("Failsafe Controller:", "Waiting for MC")
+			else
+				stat("Failsafe Controller:", "ERROR")
+			if(Master)
+				stat(null)
+				for(var/datum/controller/subsystem/SS in Master.subsystems)
+					if(!istype(SS, /datum/controller/subsystem/disease))
+						SS.stat_entry()
+
 	if(statpanel("Status"))
 		if(GAME_STATE >= RUNLEVEL_LOBBY)
 			stat("Local Time", stationtime2text())
@@ -634,26 +655,6 @@
 			stat("Server Time", time2text(world.realtime, "YYYY-MM-DD hh:mm"))
 		if(client.holder || isghost(client.mob))
 			stat("Location:", "([x], [y], [z]) [loc]")
-
-	if(client.holder)
-		if(statpanel("MC"))
-			stat("CPU:","[world.cpu]")
-			stat("Instances:","[world.contents.len]")
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else if (Master.initializing)
-				stat("Failsafe Controller:", "Waiting for MC")
-			else
-				stat("Failsafe Controller:", "ERROR")
-			if(Master)
-				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
 
 	if(listed_turf && client)
 		if(!TurfAdjacent(listed_turf))

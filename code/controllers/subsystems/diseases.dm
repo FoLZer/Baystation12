@@ -1,8 +1,9 @@
 SUBSYSTEM_DEF(disease)
 	name = "Disease"
 	flags = SS_NO_INIT | SS_KEEP_TIMING
+	wait = 1
 
-	var/list/currentrun = list()
+	var/list/currentrun
 	var/list/processing = list()
 
 /datum/controller/subsystem/disease/stat_entry(msg)
@@ -15,14 +16,19 @@ SUBSYSTEM_DEF(disease)
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 
-	while (currentrun.len)
+	while (length(currentrun))
 		var/datum/thing = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(thing)
-			thing.Process()
-		else
+		if(QDELETED(thing))
 			processing -= thing
+			if (MC_TICK_CHECK)
+				return
+			continue
+
+		thing.Process()
 
 		if (MC_TICK_CHECK)
 			return
+
+	currentrun = null
